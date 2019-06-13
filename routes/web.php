@@ -14,3 +14,31 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//user routes
+Route::get('/newuser', 'userController@index')->name('newuser');
+Route::get('/userlist', 'UserController@showUserList')->name('userlist');
+Route::get('/delete-user/{id}', 'UserController@removeUser');
+
+//company routes
+Route::get('company-list', 'CompanyController@showCompany');
+Route::get('company-create', 'CompanyController@addCompany');
+Route::post('company-create', 'CompanyController@createCompany');
+Route::get('/company-delete/{id}', 'CompanyController@removeCompany');
+
+//merchant routes
+Route::get('merchant-list', 'MerchantController@showMerchant');
+Route::get('merchant-create', 'MerchantController@addMerchant');
+Route::post('merchant-create', 'MerchantController@createMerchant');
+Route::get('/merchant-delete/{id}', 'MerchantController@removeMerchant');
+
+//purchase order routes
+Route::get('po-list', 'PoController@listPo');
+Route::get('po-create', 'PoController@addPo');
+Route::post('po-create', 'PoController@createPo');
+Route::get('po-edit/{id}', 'PoController@showPo');
+Route::post('po-edit/{id}', 'PoController@editPo');
