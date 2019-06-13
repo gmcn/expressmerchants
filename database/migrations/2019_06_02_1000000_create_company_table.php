@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRetailersTable extends Migration
+class CreateCompanyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,12 @@ class CreateRetailersTable extends Migration
     {
         Schema::create('company', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company');
-            $table->string('companyId');
+            $table->string('companyName');
+            $table->string('companyPhone');
+            $table->string('companyFax');
+            $table->string('companyContact');
+            $table->string('companyContactEmail');
+            $table->string('companyAddress');
             $table->timestamps();
         });
     }
