@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use Validator;
 use Mail;
+use App\User;
 
 class PoController extends Controller
 {
@@ -45,14 +46,37 @@ class PoController extends Controller
 
   }
 
-  public function listPo()
+  public function listPo(Request $search)
   {
+    
+    $adminusr = User::where('accessLevel', '2')->where('companyId', Auth::user()->companyId)->first();
+
+    $search = \Request::get('search');
 
     if (Auth::user()->accessLevel == '1') {
+
+
+      if ($search != "") {
+        $pos = Po::select('pos.*', 'companies.companyName', 'users.name')
+        ->where('pos.id','LIKE',"%$search%")
+        ->orwhere('pos.poType','LIKE',"%$search%")
+        ->orwhere('pos.poPurpose','LIKE',"%$search%")
+        ->orwhere('pos.poProject','LIKE',"%$search%")
+        ->orwhere('pos.poProjectLocation','LIKE',"%$search%")
+        ->leftJoin('companies', 'pos.companyId', '=', 'companies.id')
+        ->leftJoin('users', 'pos.u_id', '=', 'users.id')
+        ->orWhere('companies.companyName','LIKE',"%$search%")
+        ->orWhere('users.name','LIKE',"%$search%")
+        // ->orWhere('lchId','LIKE',"%$search%")
+        ->paginate(1000);
+      } else {
         $pos = DB::table('pos')
         ->join('companies', 'pos.companyId', '=', 'companies.id')
         ->select('pos.*', 'companies.companyName')
         ->paginate(25);
+      }
+
+
       } elseif (Auth::user()->accessLevel == '2') {
         $pos = DB::table('pos')
         ->join('companies', 'pos.companyId', '=', 'companies.id')
@@ -67,7 +91,7 @@ class PoController extends Controller
         // ->get();
       }
 
-      return view('po-list', compact('pos'));
+      return view('po-list', compact('pos', 'search', 'adminusr'));
   }
 
   public function showPo($id)
