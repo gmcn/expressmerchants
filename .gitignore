@@ -1,5 +1,6 @@
 /config/database.php
 /node_modules
+/.sass-cache
 /public/hot
 /public/storage
 /storage/*.key
