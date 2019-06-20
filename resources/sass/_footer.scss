@@ -1,0 +1,19 @@
+footer {
+  color: #0D2134;
+  a {
+    color: #0D2134;
+    transition: .5s;
+  }
+  a:hover {
+    color: #2B88F1;
+  }
+  .byline {
+    @include media-breakpoint-up(md) {
+        text-align: right;
+    }
+    span {
+      border-bottom: 6px solid #0D2134;
+      padding-bottom: 15px;
+    }
+  }
+}

@@ -85,7 +85,6 @@ fieldset:disabled a.btn {
 
   @include hover {
     color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
     background-color: transparent;
     border-color: transparent;
   }

@@ -1,6 +1,6 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,500i,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,500i,700');
 
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
@@ -49,7 +49,8 @@
 // Variables
 @import 'variables';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// Elements
+@import 'header';
+@import 'login';
+@import 'application';
+@import 'footer';
