@@ -71,7 +71,7 @@
     </div>
 
     <div class="form-group custom-search-form">
-      <button type="submit" class="btn btn-default red">Submit </button>
+      <button type="submit" class="btn btn-default">Submit </button>
     </div>
 
   </form>

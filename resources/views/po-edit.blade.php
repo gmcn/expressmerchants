@@ -62,8 +62,8 @@
     <div class="form-group">
 
       @if ($po->poPod)
-      <a href="{{ url('/images/') }}/{{ $po->id }}.jpg" target="_blank">View POD</a><br />
-      <a href="{{ url('/images/') }}/{{ $po->id }}.jpg" download>Download POD</a>
+      <a href="{{ url('/uploads/') }}/{{ $po->id }}.jpg" target="_blank">View POD</a><br />
+      <a href="{{ url('/uploads/') }}/{{ $po->id }}.jpg" download>Download POD</a>
       @else
       <input type="file" id="poPod" name="poPod" accept="image/jpeg">
       @endif
@@ -93,7 +93,7 @@
     @endif
 
     <div class="form-group custom-search-form">
-      <button type="submit" class="btn btn-default red">Submit </button>
+      <button type="submit" class="btn btn-default">Submit </button>
     </div>
 
   </form>

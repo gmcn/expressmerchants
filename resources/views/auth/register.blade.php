@@ -7,10 +7,6 @@
           @if (Auth::check())
 
           @if (Auth::user()->accessLevel == 1 || Auth::user()->accessLevel == 2)
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -53,8 +49,9 @@
 
                               @if (Auth::user()->accessLevel == 1)
                               <select class="form-control{{ $errors->has('companyId') ? ' is-invalid' : '' }}" name="companyId" required>
+                                <option value="">Select a company</option>
                                 @foreach($company as $companies)
-                                  <option value="{{ $companies->id }}">{{ $companies->companyName }}</li>
+                                  <option value="{{ $companies->id }}">{{ $companies->companyName }}</option>
                                 @endforeach
                               </select>
 
@@ -102,6 +99,7 @@
 
                                   @if (Auth::user()->accessLevel == 1)
                                   <select class="form-control" name="accessLevel" id="accessLevel">
+                                    <option value="">Select an access level</option>
                                     <option value="2">Company Admin</option>
                                     <option value="3">User</option>
                                   </select>
@@ -152,8 +150,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div><!-- /.card -->
 
             @else
 
