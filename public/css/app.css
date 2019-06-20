@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,500i,700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,500i,700");
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -142,8 +142,7 @@ a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: #0056b3;
-    text-decoration: underline; }
+    color: #0056b3; }
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -1407,7 +1406,7 @@ pre {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   .form-control::-ms-expand {
@@ -2109,7 +2108,6 @@ fieldset:disabled a.btn {
   background-color: transparent; }
   .btn-link:hover {
     color: #0056b3;
-    text-decoration: underline;
     background-color: transparent;
     border-color: transparent; }
   .btn-link:focus, .btn-link.focus {
@@ -2734,8 +2732,7 @@ tbody.collapse.show {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem; }
+  justify-content: space-between; }
   .navbar > .container,
   .navbar > .container-fluid {
     display: flex;
@@ -6491,8 +6488,256 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important; } }
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); }
+header .navbar-brand {
+  padding-left: 15px; }
+  header .navbar-brand img {
+    margin-top: -1rem; }
+header .companyname {
+  color: #FF4848;
+  font-size: 13px;
+  font-weight: 600; }
+header .username {
+  font-size: 13px; }
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
+  right: 0;
+  background-color: #0D2134;
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidenav */ }
+  .sidenav img {
+    margin-right: 25px; }
+  .sidenav a {
+    padding: 8px 8px 20px 32px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #fff;
+    display: block;
+    transition: 0.3s; }
+    .sidenav a:hover {
+      color: #2B88F1; }
+  .sidenav a.logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #2B88F1; }
+    .sidenav a.logout img {
+      margin-left: 15px; }
+    .sidenav a.logout:hover {
+      color: #0D2134; }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px; }
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; }
+
+  .sidenav a {
+    font-size: 18px; } }
+.login {
+  background: #2B88F1 url(../images/login_bg.jpg) center center no-repeat;
+  background-size: cover; }
+  .login form {
+    padding: 15px;
+    height: 100%;
+    color: #fff;
+    background: rgba(43, 136, 241, 0.5); }
+    .login form input {
+      color: #fff;
+      border-radius: 0;
+      border-bottom: 1px solid #fff;
+      font-weight: 700;
+      width: 100%; }
+    .login form input[type="email"] {
+      background: url(../images/email.svg) left no-repeat !important;
+      padding-left: 25px;
+      color: #fff; }
+      .login form input[type="email"]:focus {
+        background: none; }
+    .login form input[type="password"] {
+      background: url(../images/password.svg) left no-repeat !important;
+      padding-left: 25px;
+      color: #fff; }
+      .login form input[type="password"]:focus {
+        background: none; }
+    .login form button {
+      width: 100%;
+      background-color: #0D2134;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-top: 10px;
+      padding-bottom: 10px; }
+    .login form a {
+      color: #fff; }
+    .login form ::placeholder {
+      color: #fff;
+      text-transform: uppercase; }
+    .login form .login_branding {
+      max-width: 100%; }
+      @media (min-width: 768px) {
+        .login form .login_branding {
+          position: absolute;
+          bottom: 50px; } }
+      @media (max-width: 991.98px) {
+        .login form .login_branding {
+          margin-top: 25px; } }
+  .login .content {
+    color: #fff;
+    font-weight: 300;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    background: #2a89f4;
+    background: linear-gradient(180deg, rgba(42, 137, 244, 0.6) 0%, rgba(17, 49, 87, 0.6) 100%); }
+    .login .content h1 {
+      font-size: 60px;
+      margin-bottom: 100px;
+      font-weight: 200; }
+      .login .content h1 span {
+        font-weight: 700; }
+    .login .content p {
+      width: 50%;
+      margin-bottom: 25px; }
+      .login .content p:first-of-type {
+        font-size: 25px;
+        width: 75%;
+        margin-bottom: 75px; }
+    .login .content a {
+      font-size: 45px;
+      color: #fff;
+      font-weight: 300;
+      transition: .5s; }
+      .login .content a:hover {
+        color: #000; }
+  .login footer {
+    color: #fff; }
+    .login footer a {
+      color: #fff; }
+      .login footer a:hover {
+        color: #000; }
+    .login footer .byline span {
+      border-bottom: 6px solid #fff; }
+
+.app {
+  background: #0D2134;
+  color: #fff; }
+  .app h1 {
+    margin-top: 80px;
+    font-weight: 700; }
+    .app h1 span {
+      font-weight: 200; }
+    @media (min-width: 768px) {
+      .app h1 {
+        font-size: 35px; } }
+    @media (max-width: 991.98px) {
+      .app h1 {
+        font-size: 22px; } }
+  .app h2 {
+    font-size: 26px;
+    font-weight: 500; }
+    .app h2 span {
+      font-weight: 200; }
+  .app a {
+    line-height: 22px;
+    font-weight: 500; }
+    .app a span {
+      font-weight: 200; }
+  .app .red, .app .blue, .app .users {
+    border-radius: 5px; }
+  .app .col3 .blue {
+    background: #2B88F1 url(../images/login_bg.jpg) bottom center no-repeat;
+    background-size: cover;
+    height: 600px; }
+  .app .blue {
+    background: #2B88F1;
+    color: #fff;
+    padding: 30px;
+    margin-bottom: 15px; }
+    .app .blue a {
+      color: #fff; }
+  .app .users {
+    background: #000;
+    color: #fff;
+    padding: 30px;
+    margin-bottom: 15px;
+    min-height: 300px; }
+    .app .users .icon {
+      text-align: right; }
+      .app .users .icon img {
+        height: 50px; }
+    .app .users .details {
+      color: #2B88F1;
+      border-bottom: 5px solid #2B88F1;
+      padding-bottom: 15px;
+      margin-bottom: 15px; }
+      .app .users .details a {
+        color: #2B88F1; }
+    .app .users .add {
+      padding: 25px 0;
+      color: #E0C21B;
+      border-bottom: 5px solid #E0C21B;
+      padding-bottom: 15px;
+      margin-bottom: 15px; }
+      .app .users .add a {
+        color: #E0C21B; }
+    .app .users .manage {
+      padding: 25px 0;
+      color: #FF4848;
+      border-bottom: 5px solid #FF4848;
+      padding-bottom: 15px;
+      margin-bottom: 15px; }
+      .app .users .manage a {
+        color: #FF4848; }
+    .app .users a {
+      font-size: 18px;
+      transition: .5s; }
+      .app .users a:hover {
+        color: #fff; }
+  .app .red {
+    background: #A71F47;
+    color: #FF4848;
+    padding: 30px;
+    margin-bottom: 15px; }
+    @media (min-width: 768px) {
+      .app .red {
+        height: 600px; } }
+    .app .red h2 {
+      border-bottom: 1px solid #FF4848;
+      padding-bottom: 15px; }
+    .app .red a {
+      color: #FF4848; }
+
+footer {
+  color: #0D2134; }
+  footer a {
+    color: #0D2134;
+    transition: .5s; }
+  footer a:hover {
+    color: #2B88F1; }
+  @media (min-width: 768px) {
+    footer .byline {
+      text-align: right; } }
+  footer .byline span {
+    border-bottom: 6px solid #0D2134;
+    padding-bottom: 15px; }
 
 /*# sourceMappingURL=app.css.map */

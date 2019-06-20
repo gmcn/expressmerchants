@@ -141,8 +141,7 @@ a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: #0056b3;
-    text-decoration: underline; }
+    color: #0056b3; }
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -1406,7 +1405,7 @@ pre {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   .form-control::-ms-expand {
@@ -2108,7 +2107,6 @@ fieldset:disabled a.btn {
   background-color: transparent; }
   .btn-link:hover {
     color: #0056b3;
-    text-decoration: underline;
     background-color: transparent;
     border-color: transparent; }
   .btn-link:focus, .btn-link.focus {
@@ -2733,8 +2731,7 @@ tbody.collapse.show {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem; }
+  justify-content: space-between; }
   .navbar > .container,
   .navbar > .container-fluid {
     display: flex;
