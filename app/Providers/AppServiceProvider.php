@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Providers;
+use View;
+use App\User;
+use App\Company;
+use Auth;
+use DB;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +28,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+      View::composer('*', function ($view) {
+        if (Auth::check()) {
+          $company = Company::where('id',Auth::user()->companyId)->first();
+          $view->with('company', $company);
+        }
+      });
+
     }
 }
