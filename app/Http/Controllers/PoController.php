@@ -48,7 +48,7 @@ class PoController extends Controller
 
   public function listPo(Request $search)
   {
-    
+
     $adminusr = User::where('accessLevel', '2')->where('companyId', Auth::user()->companyId)->first();
 
     $search = \Request::get('search');
@@ -67,7 +67,6 @@ class PoController extends Controller
         ->leftJoin('users', 'pos.u_id', '=', 'users.id')
         ->orWhere('companies.companyName','LIKE',"%$search%")
         ->orWhere('users.name','LIKE',"%$search%")
-        // ->orWhere('lchId','LIKE',"%$search%")
         ->paginate(1000);
       } else {
         $pos = DB::table('pos')
@@ -113,7 +112,7 @@ class PoController extends Controller
     $editPo = Po::findOrFail($id);
     $input = $request->all();
 
-    $destinationPath = 'images/'; // upload path
+    $destinationPath = 'uploads/'; // upload path
     $file = Input::file('poPod');
     // $fileName = $file->getClientOriginalName();
 
