@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use App\Po;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      if (Auth::user()->accessLevel == '1') {
+        $count = Po::where('poPod',"")
+        ->get();
+      } else {
+        $count = Po::where('poPod',"")
+        ->where('companyId', '=', Auth::user()->companyId)
+        ->get();
+      }
+
+      $countresult = count($count);
+
+      return view('home', compact('countresult'));
     }
+
+
 }
