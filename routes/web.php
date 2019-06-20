@@ -11,11 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
+Route::group(['middleware' => 'auth'], function () {
+
+  // Route::get('/', function () {
+  //     return view('welcome');
+  // });
+
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -42,3 +46,5 @@ Route::get('po-create', 'PoController@addPo');
 Route::post('po-create', 'PoController@createPo');
 Route::get('po-edit/{id}', 'PoController@showPo');
 Route::post('po-edit/{id}', 'PoController@editPo');
+
+});
