@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4 col-lg-3 col1">
 
-          <div class="blue">
+          <div class="blue findmerch">
             <a href="/merchants">
               <span>Find</span><br />Merchant
             </a>
@@ -43,6 +43,7 @@
               <h2><span>the right products <br />
               the first time</span> <br />
               one invoice.</h2>
+              <img src="{{ asset('/images/em_logomark.svg') }}" alt="">
           </div>
         </div>
         <div class="col-md-4 col-lg-3 col4">
@@ -89,14 +90,14 @@
 
           <div class="row">
             <div class="col-sm-6">
-              <div class="blue">
+              <div class="blue gethelp">
                 <a href="#" onclick="return confirm('Coming Soon')">
                   <span>Get</span> <br /> Help
                 </a>
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="blue">
+              <div class="blue userguide">
                 <a href="#" onclick="return confirm('Coming Soon')">
                   <span>User</span> <br /> Guide
                 </a>
