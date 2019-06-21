@@ -1,6 +1,7 @@
 .app {
   background: #0D2134;
   color: #fff;
+  min-height: calc(100vh - 50px);
   h1 {
     margin-top: 80px;
     font-weight: 700;
@@ -22,6 +23,7 @@
     }
   }
   a {
+    // font-size: 22px;
     line-height: 22px;
     font-weight: 500;
     span {
@@ -36,6 +38,12 @@
       background: #2B88F1 url(../images/login_bg.jpg) bottom center no-repeat;
       background-size: cover;
       height: 600px;
+      position: relative;
+      img {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+      }
     }
   }
   .blue {
@@ -45,7 +53,20 @@
     margin-bottom: 15px;
     a {
       color: #fff;
+      font-size: 22px;
     }
+  }
+  .findmerch {
+    background: #2B88F1 url(../images/merchant_lrg.svg) right center no-repeat;
+    background-position: 80% 50%;
+  }
+  .gethelp {
+    background: #2B88F1 url(../images/get-help_lrg.svg) right center no-repeat;
+    background-position: 80% 50%;
+  }
+  .userguide {
+    background: #2B88F1 url(../images/user-guide_lrg.svg) right center no-repeat;
+    background-position: 80% 50%;
   }
   .users {
     background: #000;
