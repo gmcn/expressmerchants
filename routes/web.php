@@ -27,6 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/newuser', 'userController@index')->name('newuser');
 Route::get('/userlist', 'UserController@showUserList')->name('userlist');
 Route::get('/delete-user/{id}', 'UserController@removeUser');
+Route::get('/disable-user/{id}', 'UserController@disableUser');
+Route::get('/enable-user/{id}', 'UserController@enableUser');
 
 //company routes
 Route::get('company-list', 'CompanyController@showCompany');
