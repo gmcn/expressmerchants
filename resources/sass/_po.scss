@@ -1,0 +1,56 @@
+.po_list {
+  background: #F1F9FF;
+  color: #0D2134;
+  padding: 50px 30px;
+  border-radius: 5px;
+  .list {
+    @include media-breakpoint-up(md) {
+      border-left: 1px solid #0D2134;
+    }
+    input {
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+    .clearsearch {
+      position: absolute;
+      top: 0;
+      right: 30px;
+      font-size: 22px;
+      color: #FF4848;
+      font-weight: 700;
+    }
+    .date {
+      text-align: right;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .po_entry {
+      margin-left: 0;
+      padding: 10px 0 10px 10px;
+      color: #2B88F1;
+      border-radius: 5px;
+      background: #0D2134;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #000;
+      padding-bottom: 15px;
+      .po_number {
+        font-size: 30px;
+      }
+      .add_pod {
+        text-align: right;
+      }
+      a {
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+    hr {
+      border-top: 1px solid #000;
+      margin-top: 0;
+      width: 100%;
+    }
+    .warning {
+      color: #FF4848;
+    }
+  }
+}

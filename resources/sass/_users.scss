@@ -1,0 +1,98 @@
+.user {
+  background: #F1F9FF;
+  color: #0D2134;
+  padding: 50px 30px;
+  border-radius: 5px;
+  form {
+    background: #EBBB36;
+    color: #0D2134;
+    padding: 50px 30px;
+    border-radius: 5px;
+    label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: rgba(13, 33, 52, .3);
+      font-weight: 600;
+    }
+    input, select {
+      background: none;
+      border-bottom: 1px solid #0D2134;
+      border-radius: 0 !important;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      font-weight: 500;
+    }
+    button {
+      background: #0D2134;
+      border: #0D2134;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 15px 15px;
+    }
+  }
+  .user_entry {
+    &_name {
+      background: #1F5384;
+      padding: 5px 5px 5px 15px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      position: relative;
+      margin-bottom: 15px;
+      span {
+
+      }
+      img {
+        position: relative;
+        z-index: 1;
+        float: right;
+      }
+    }
+    &_pos {
+      background: rgba(0,0,0,.1);
+      padding: 15px;
+      color: #000;
+      margin-bottom: 15px;
+      font-size: 30px;
+      line-height: 14px;
+      font-weight: 600;
+      color: #2B88F1;
+    }
+    &_pod {
+      background: rgba(0,0,0,.1);
+      padding: 15px;
+      color: #000;
+      margin-bottom: 15px;
+      font-size: 30px;
+      line-height: 14px;
+      font-weight: 600;
+      color: #A71F47;
+    }
+    &_email {
+      background: rgba(0,0,0,.1);
+      padding: 15px;
+      color: #000;
+      margin-bottom: 15px;
+      img {
+        float: right;
+        height: 100%;
+      }
+    }
+    label {
+      width: 100%;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: rgba(13, 33, 52, .3);
+      font-weight: 600;
+    }
+    &_controls {
+      img {
+        float: right;
+        max-width: 50%;
+        margin-left: 10px;
+        height: calc(100% - 15px);
+      }
+    }
+  }
+}

@@ -2,135 +2,203 @@
   background: #0D2134;
   color: #fff;
   min-height: calc(100vh - 50px);
-  h1 {
-    margin-top: 80px;
-    font-weight: 700;
-    span {
-      font-weight: 200;
-    }
-    @include media-breakpoint-up(md) {
-      font-size: 35px;
-    }
-    @include media-breakpoint-down(md) {
-      font-size: 22px;
-    }
-  }
-  h2 {
-    font-size: 26px;
-    font-weight: 500;
-    span {
-      font-weight: 200;
-    }
-  }
-  a {
-    // font-size: 22px;
-    line-height: 22px;
-    font-weight: 500;
-    span {
-      font-weight: 200;
-    }
-  }
-  .red, .blue, .users {
-    border-radius: 5px;
-  }
-  .col3 {
-    .blue {
-      background: #2B88F1 url(../images/login_bg.jpg) bottom center no-repeat;
-      background-size: cover;
-      height: 600px;
-      position: relative;
-      img {
-        position: absolute;
-        bottom: 40px;
-        left: 40px;
+  .dashboard {
+    h1 {
+      margin-top: 80px;
+      font-weight: 700;
+      span {
+        font-weight: 200;
+      }
+      @include media-breakpoint-up(md) {
+        font-size: 35px;
+      }
+      @include media-breakpoint-down(md) {
+        font-size: 22px;
       }
     }
-  }
-  .blue {
-    background: #2B88F1;
-    color: #fff;
-    padding: 30px;
-    margin-bottom: 15px;
+    h2 {
+      font-size: 26px;
+      font-weight: 500;
+      span {
+        font-weight: 200;
+      }
+    }
     a {
+      // font-size: 22px;
+      line-height: 22px;
+      font-weight: 500;
+      span {
+        font-weight: 200;
+      }
+    }
+    .red, .blue, .users {
+      border-radius: 5px;
+    }
+    .col3 {
+      .blue {
+        background: #2B88F1 url(../images/login_bg.jpg) bottom center no-repeat;
+        background-size: cover;
+        height: 600px;
+        position: relative;
+        img {
+          position: absolute;
+          bottom: 40px;
+          left: 40px;
+        }
+      }
+    }
+    .blue {
+      background: #2B88F1;
       color: #fff;
-      font-size: 22px;
-    }
-  }
-  .findmerch {
-    background: #2B88F1 url(../images/merchant_lrg.svg) right center no-repeat;
-    background-position: 80% 50%;
-  }
-  .gethelp {
-    background: #2B88F1 url(../images/get-help_lrg.svg) right center no-repeat;
-    background-position: 80% 50%;
-  }
-  .userguide {
-    background: #2B88F1 url(../images/user-guide_lrg.svg) right center no-repeat;
-    background-position: 80% 50%;
-  }
-  .users {
-    background: #000;
-    color: #fff;
-    padding: 30px;
-    margin-bottom: 15px;
-    min-height: 300px;
-    .icon {
-      text-align: right;
-      img {
-        height: 50px;
-      }
-    }
-    .details {
-      color: #2B88F1;
-      border-bottom: 5px solid #2B88F1;
-      padding-bottom: 15px;
+      padding: 30px;
       margin-bottom: 15px;
       a {
+        color: #fff;
+        font-size: 22px;
+        transition: .5s;
+      }
+      a:hover {
+        color: #0D2134;
+      }
+    }
+    .findmerch {
+      background: #2B88F1 url(../images/merchant_lrg.svg) right center no-repeat;
+      background-position: 80% 50%;
+    }
+    .gethelp {
+      background: #2B88F1 url(../images/get-help_lrg.svg) right center no-repeat;
+      background-position: 80% 50%;
+    }
+    .userguide {
+      background: #2B88F1 url(../images/user-guide_lrg.svg) right center no-repeat;
+      background-position: 80% 50%;
+    }
+    .users {
+      background: #000;
+      color: #fff;
+      padding: 30px;
+      margin-bottom: 15px;
+      min-height: 300px;
+      .icon {
+        text-align: right;
+        img {
+          height: 50px;
+        }
+      }
+      .details {
         color: #2B88F1;
+        border-bottom: 5px solid #2B88F1;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        a {
+          color: #2B88F1;
+        }
       }
-    }
-    .add {
-      padding: 25px 0;
-      color: #E0C21B;
-      border-bottom: 5px solid #E0C21B;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
-      a {
+      .add {
+        padding: 25px 0;
         color: #E0C21B;
+        border-bottom: 5px solid #E0C21B;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        a {
+          color: #E0C21B;
+        }
+      }
+      .manage {
+        padding: 25px 0;
+        color: #FF4848;
+        border-bottom: 5px solid #FF4848;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        a {
+          color: #FF4848;
+        }
+      }
+      a {
+        font-size: 18px;
+        transition: .5s;
+        &:hover {
+          color: #fff;
+        }
       }
     }
-    .manage {
-      padding: 25px 0;
+    .red {
+      background: #A71F47;
       color: #FF4848;
-      border-bottom: 5px solid #FF4848;
-      padding-bottom: 15px;
+      padding: 30px;
+      @include media-breakpoint-up(md) {
+        height: 600px;
+      }
       margin-bottom: 15px;
+      h2 {
+        border-bottom: 1px solid #FF4848;
+        padding-bottom: 15px;
+      }
       a {
         color: #FF4848;
+        transition: .5s;
       }
-    }
-    a {
-      font-size: 18px;
-      transition: .5s;
-      &:hover {
+      a:hover {
         color: #fff;
       }
     }
   }
-  .red {
-    background: #A71F47;
-    color: #FF4848;
-    padding: 30px;
-    @include media-breakpoint-up(md) {
-      height: 600px;
+  ul.pagination {
+    background: #2B88F1;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    .page-item {
+
     }
-    margin-bottom: 15px;
-    h2 {
-      border-bottom: 1px solid #FF4848;
-      padding-bottom: 15px;
+    .active {
+      .page-link {
+        color: #0D2134 !important;
+      }
     }
-    a {
-      color: #FF4848;
+    .page-link {
+      display:block;
+      float:left;
+      color: #fff;
+      background: none;
+      border: 0;
+      &:hover {
+        background: #0D2134;
+      }
     }
+  }
+}
+
+.vert-align {
+    position: absolute;
+    top: 50%;
+    width: calc(100% - 30px);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.contactdetails {
+  h3 {
+    text-transform: uppercase;
+    color: rgba(13, 33, 52, .3);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  p.company {
+    font-size: 20px;
+  }
+  p {
+    color: #0D2134;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  p.phone {
+    @include media-breakpoint-up(lg) {
+      font-size: 40px;
+    }
+    font-size: 30px;
   }
 }
