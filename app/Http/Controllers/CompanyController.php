@@ -31,10 +31,11 @@ class CompanyController extends Controller
   {
 
     $this->validate($request, [
-        'poType' => 'required|max:255',
-        'poPurpose' => 'required|max:255',
-        'poProject' => 'required|max:255',
-        'poProjectLocation' => 'required|email|max:255',
+        'companyName' => 'required|max:255',
+        'companyPhone' => 'required|max:255',
+        'companyContact' => 'required|max:255',
+        'companyContactEmail' => 'required|email|max:255',
+        'companyAddress' => 'required|max:255'
         ]);
 
     Company::create($request->toArray());
