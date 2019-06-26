@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<?php $title = 'Create <span>Purchase Order</span>'; ?>
 <div class="container">
   <form class="form-horizontal" role="form" method="POST" action="{{ url('/po-create') }}">
   {!! csrf_field() !!}

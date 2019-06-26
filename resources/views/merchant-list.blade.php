@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<?php $title = 'Merchant <span>List</span>'; ?>
+<div class="container-fluid user">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
@@ -14,37 +15,38 @@
             </div>
           @endif
 
-          <table class="table">
-          <thead>
-            <tr>
-              <th>Merchant Name</th>
-              <th>Merchant Phone</th>
-              <th>Merchant Fax</th>
-              <th>Merchant Contact</th>
-              <th>Merchant ContactEmail</th>
-              <th>Merchant Address</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-
 
           @foreach($merchants as $merchant)
-          <tr>
-            <td>{{ $merchant->merchantName }}</td>
-            <td>{{ $merchant->merchantPhone }}</td>
-            <td>{{ $merchant->merchantEmail }}</td>
-            <td>{{ $merchant->merchantContactName }}</td>
-            <td>{{ $merchant->merchantContactEmail }}</td>
-            <td>{{ $merchant->merchantAddress1 }} <br  />{{ $merchant->merchantAddress2 }}  </td>
-            <td>
-              <a href="{{ url('merchant-delete') }}/{{ $merchant->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">x</a>
-            </td>
-          </tr>
+          <div class="row user_entry">
+            <div class="col-md-3 user_entry_email">
+              <label>Merchant Name</label>
+              {{ $merchant->merchantName }}
+            </div>
+            <div class="col-md-3 user_entry_email">
+              <label>Merchant Address</label>
+              {{ $merchant->merchantAddress1 }},
+              {{ $merchant->merchantCounty }},
+              {{ $merchant->merchantPostcode }}
+              <a href="https://maps.google.com/?ll={{ $merchant->long }},{{ $merchant->lat }}" target="_blank">View on Google Maps</a>
+            </div>
+            <div class="col-md-2 user_entry_email">
+              <label>Merchant Contact Details</label>
+              {{ $merchant->merchantContactName }}<br />
+              {{ $merchant->merchantContactPhone }}
+            </div>
+            <div class="col-md-2 user_entry_email">
+              <label>Merchant Contact Email</label>
+              <a href="mailto:{{ $merchant->merchantContactEmail }}" target="_blank">{{ $merchant->merchantContactEmail }}</a>
+            </div>
+            <div class="col-md-2 user_entry_email">
+              @if (Auth::user()->accessLevel == '1')
+                <a href="{{ url('merchant-delete') }}/{{ $merchant->id }}" onclick="return confirm('This action cannot be undone, are you sure you want to remove {{ $merchant->merchantName }}?')">
+                  <img src="{{ asset('/images/remove.svg') }}" alt="Remove Merchant">
+                </a>
+              @endif
+            </div>
+          </div>
           @endforeach
-
-          </tbody>
-        </table>
 
         {{ $merchants->links() }}
       </div>

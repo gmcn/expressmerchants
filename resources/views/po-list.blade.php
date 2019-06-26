@@ -1,23 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<?php $title = 'Purchase Order <span>List</span>'; ?>
+<div class="container-fluid po_list">
     <div class="row justify-content-center">
-      <div class="col-md-4 col-lg-2">
+      <div class="col-md-5 col-lg-3 contactdetails">
 
-        @if (Auth::user()->accessLevel == '3')
+        
 
           <h3>Company</h3>
-          {{ $adminusr->name }}
+          <p class="company">{{ $company->companyName }}</p>
           <h3>Operator</h3>
-          {{ $adminusr->email }}
-          <h3>For assistance please call</h3>
-          {{ $adminusr->phone }}
+          <p>{{ Auth::user()->name }}</p>
 
-        @endif
+          @if (Auth::user()->accessLevel == '3' || Auth::user()->accessLevel == '2')
+
+            <h3>For assistance please call</h3>
+            <p class="phone">{{ $adminusr->phone }}</p>
+
+          @endif
 
       </div>
-        <div class="col-md-8 col-lg-10">
+        <div class="col-md-7 col-lg-9 list">
 
           @if (session('message'))
             <div class="flash-message">
@@ -29,45 +33,61 @@
           @endif
 
           <form>
-            <input name="search" type="text" class="form-control" placeholder="Search..." value="{{ $search }}">
+            <input name="search" type="text" class="form-control" placeholder="Search POs...." value="{{ $search }}">
             @if ($search)
-            <a href="/po-list">clear search</a>
+            <a class="clearsearch" href="/po-list">x</a>
             @endif
           </form>
 
-
-
-          <table class="table">
-          <thead>
-            <tr>
-              <th>PO #</th>
-              @if (Auth::user()->accessLevel == '1')
-              <th>Company Name</th>
-              @endif
-              <th>Type</th>
-              <th>Purpose</th>
-              <th>Project</th>
-              @if (Auth::user()->accessLevel == '1')
-                <th>Edit</th>
-              @endif
-            </tr>
-          </thead>
-          <tbody>
+          @if($pos->isEmpty())
+          <div class="row col-12">
+            No Purchase Orders
+          </div>
+          @else
 
           @foreach($pos as $po)
-          <tr>
-            <td>{{ $po->id }}</td>
-            @if (Auth::user()->accessLevel == '1')
-              <td>{{ $po->companyName }}</td>
-            @endif
-            <td>{{ $po->poType }}</td>
-            <td>{{ $po->poPurpose }}</td>
-            <td>{{ $po->poProject }}</td>
-            @if (Auth::user()->accessLevel == '1')
-              <th><a href="/po-edit/{{ $po->id }}">edit</a> </th>
-            @endif
-          </tr>
+
+
+          <?php $date = date('d.m.y', strtotime($po->created_at));  ?>
+
+            <p class="date">{{ $date }}</p>
+
+            <div class="row po_entry @if (!$po->poPod ) warning @endif">
+
+              <div class="col-md-3">
+                <div class="vert-align">
+                {{ $po->poProject }}<br />
+                  <a href="/po-edit/{{ $po->id }}">VIEW FULL P/O</a>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 po_number">
+                <div class="vert-align">
+                EM-{{ $po->id }}
+                </div>
+              </div>
+              <div class="col-3 col-md-3">
+                @if (Auth::user()->accessLevel == '1')
+                  <div class="vert-align">
+                    {{ $po->companyName }}
+                  </div>
+                @endif
+              </div>
+              <div class="col-3 col-md-2 add_pod">
+                @if ($po->poPod )
+                  <img src="{{ asset('/images/uploaded_pod.svg') }}" alt="Upload POD">
+                @else
+                  <a href="/po-edit/{{ $po->id }}">
+                    <img src="{{ asset('/images/upload_pod.svg') }}" alt="Upload POD">
+                  </a>
+                @endif
+              </div>
+            </div>
+
+            <hr />
+
           @endforeach
+
+          @endif
 
           </tbody>
         </table>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<?php $title = 'Edit <span>Purchase Order</span>'; ?>
 <div class="container">
   <form class="form-horizontal" role="form" method="POST" action="{{ url('/po-edit/') }}/{{ $po->id }}" enctype="multipart/form-data">
   {!! csrf_field() !!}

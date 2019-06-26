@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<?php $title = 'User Command <span>Console</span>'; ?>
+<div class="container-fluid dashboard">
     <div class="row justify-content-center">
         <div class="col-md-4 col-lg-3 col1">
 
@@ -13,8 +14,26 @@
 
           @if (Auth::user()->accessLevel == '1')
             <div class="blue">
-              <a href="/company-create">
+              <a href="/merchant-create">
                 <span>Create</span><br />Merchant
+              </a>
+            </div>
+
+            <div class="blue">
+              <a href="/merchant-list">
+                <span>Manage</span><br />Merchants
+              </a>
+            </div>
+
+            <div class="blue">
+              <a href="/company-create">
+                <span>Add</span><br />Company
+              </a>
+            </div>
+
+            <div class="blue">
+              <a href="/company-list">
+                <span>Manage</span><br />Companies
               </a>
             </div>
           @endif

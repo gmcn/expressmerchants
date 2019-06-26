@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<?php $title = 'Manage <span>User Accounts</span>'; ?>
+<div class="container-fluid user">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
@@ -14,41 +15,73 @@
             </div>
           @endif
 
-          <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Company ID</th>
-              <th>Phone</th>
-              <th>Access Level</th>
-              <th>Disable</th>
-            </tr>
-          </thead>
-          <tbody>
+
 
 
           @foreach($users as $user)
-          <tr>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->companyId }}</td>
-            <td>{{ $user->phone }}</td>
-            <td>{{ $user->accessLevel }}</td>
-            <td>
+          <div class="row user_entry">
+            <div class="col-lg-3">
+              <div class="user_entry_name clearfix">
+                <div class="vert-align">
+                  <span>{{ $user->name }}</span>
+                </div>
+                <a href="/po-list?search={{ $user->name }}"><img src="{{ asset('/images/view-all-pos.svg') }}" alt="View all POs"></a>
+              </div>
+            </div>
+            <div class="col-lg-2 col-6 user_entry_email">
+              <label for="">Email</label>
+              <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+            </div>
+            <div class="col-lg-1 col-6 user_entry_email">
+              <label for="">Company</label>
+              {{ $user->companyId }}
+            </div>
+            <div class="col-lg-2 col-6 user_entry_email">
+              <label for="">Phone</label>
+              {{ $user->phone }}
+            </div>
+            <div class="col-lg-1 col-6 user_entry_pos">
+              <label for="">P/O’s</label>
+
+              <?php $poquery = DB::table('pos')->where('u_id', '=', $user->id)->get();
+              $poqueryCount = count($poquery)
+               ?>
+
+              {{ $poqueryCount }}
+
+            </div>
+            <div class="col-lg-1 col-6 user_entry_pod">
+              <label for="">POD Needed</label>
+
+              <?php $podquery = DB::table('pos')->where('u_id', '=', $user->id)->where('poPod', "")->get();
+              $podqueryCount = count($podquery)
+               ?>
+
+              {{ $podqueryCount }}
+
+            </div>
+            <div class="col-lg-2 col-6 user_entry_controls">
 
               @if ($user->disabled == 1)
-              disabled
+              <a href="{{ url('delete-user') }}/{{ $user->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">
+                <img src="{{ asset('/images/remove-user.svg') }}" alt="Remove User">
+              </a>
+              <a href="{{ url('enable-user') }}/{{ $user->id }}" onclick="return confirm('Are you sure you wish to enable {{ $user->name }}?')">
+                <img src="{{ asset('/images/enable-user.svg') }}" alt="Remove User">
+              </a>
               @else
-              <a href="{{ url('delete-user') }}/{{ $user->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">x</a>
+              <a href="{{ url('delete-user') }}/{{ $user->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">
+                <img src="{{ asset('/images/remove-user.svg') }}" alt="Remove User">
+              </a>
+              <a href="{{ url('disable-user') }}/{{ $user->id }}" onclick="return confirm('Are you sure you wish to disable {{ $user->name }}?')">
+                <img src="{{ asset('/images/disable-user.svg') }}" alt="Remove User">
+              </a>
               @endif
 
-              </td>
-          </tr>
+            </div>
+          </div>
           @endforeach
 
-          </tbody>
-        </table>
 
         {{ $users->links() }}
       </div>
