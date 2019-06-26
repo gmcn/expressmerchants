@@ -27,9 +27,9 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
 
-      $company = Company::all();
+      $companyList = Company::all();
 
-        return view('auth.register', compact('company'));
+        return view('auth.register', compact('companyList'));
     }
 
     /**
