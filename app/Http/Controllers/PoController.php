@@ -67,11 +67,13 @@ class PoController extends Controller
         ->leftJoin('users', 'pos.u_id', '=', 'users.id')
         ->orWhere('companies.companyName','LIKE',"%$search%")
         ->orWhere('users.name','LIKE',"%$search%")
+        ->orderBy('id', 'desc')
         ->paginate(1000);
       } else {
         $pos = DB::table('pos')
         ->join('companies', 'pos.companyId', '=', 'companies.id')
         ->select('pos.*', 'companies.companyName')
+        ->orderBy('id', 'desc')
         ->paginate(25);
       }
 
@@ -81,11 +83,13 @@ class PoController extends Controller
         ->join('companies', 'pos.companyId', '=', 'companies.id')
         ->select('pos.*', 'companies.companyName')
         ->where('companyId', '=', Auth::user()->companyId)
+        ->orderBy('id', 'desc')
         ->paginate(25);
         // ->get();
       } else {
         $pos = DB::table('pos')
         ->where('u_id', '=', Auth::user()->id)
+        ->orderBy('id', 'desc')
         ->paginate(25);
         // ->get();
       }
@@ -98,11 +102,11 @@ class PoController extends Controller
 
     $po = Po::where('id','=',$id)->firstOrFail();
 
-    if (Auth::user()->accessLevel != '1') {
-      return Redirect::to('/po-list');
-    } else {
+    // if (Auth::user()->accessLevel != '1') {
+    //   return Redirect::to('/po-list');
+    // } else {
       return view('po-edit', compact('po'));
-    }
+    // }
 
   }
 
