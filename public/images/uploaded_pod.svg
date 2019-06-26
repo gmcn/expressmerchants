@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="75.423" viewBox="0 0 56 75.423">
+  <g id="Group_566" data-name="Group 566" transform="translate(-1295.566 -502.788)">
+    <rect id="Rectangle_1803" data-name="Rectangle 1803" width="56" height="75.423" rx="4" transform="translate(1295.566 502.788)" fill="#0d2134"/>
+    <g id="Group_429" data-name="Group 429" transform="translate(1307.876 515.077)">
+      <g id="Rectangle_1510" data-name="Rectangle 1510" fill="none" stroke="#fff" stroke-width="3">
+        <rect width="31.802" height="29.119" rx="4" stroke="none"/>
+        <rect x="1.5" y="1.5" width="28.802" height="26.119" rx="2.5" fill="none"/>
+      </g>
+      <g id="Rectangle_1511" data-name="Rectangle 1511" transform="translate(21.27 4.45)" fill="#fff" stroke="#fff" stroke-width="1">
+        <rect width="5.815" height="3.717" stroke="none"/>
+        <rect x="0.5" y="0.5" width="4.815" height="2.717" fill="none"/>
+      </g>
+      <g id="Ellipse_239" data-name="Ellipse 239" transform="translate(8.259 7.786)" fill="none" stroke="#fff" stroke-width="2">
+        <circle cx="7.435" cy="7.435" r="7.435" stroke="none"/>
+        <circle cx="7.435" cy="7.435" r="6.435" fill="none"/>
+      </g>
+    </g>
+    <text id="POD_UPLOADED" data-name="POD
+UPLOADED" transform="translate(1323.566 559)" fill="#fff" font-size="9" font-family="OpenSans-Bold, Open Sans" font-weight="700" letter-spacing="-0.03em"><tspan x="-9.468" y="0">POD</tspan><tspan x="-23.513" y="8">UPLOADED</tspan></text>
+  </g>
+</svg>
