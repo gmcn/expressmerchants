@@ -27,7 +27,7 @@
               {{ $merchant->merchantAddress1 }},
               {{ $merchant->merchantCounty }},
               {{ $merchant->merchantPostcode }}
-              <a href="https://maps.google.com/?ll={{ $merchant->long }},{{ $merchant->lat }}" target="_blank">View on Google Maps</a>
+              <a href="https://maps.google.com/?ll={{ $merchant->lng }},{{ $merchant->lat }}" target="_blank">View on Google Maps</a>
             </div>
             <div class="col-md-2 user_entry_email">
               <label>Merchant Contact Details</label>

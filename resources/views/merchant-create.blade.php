@@ -163,11 +163,11 @@
         <div class="form-group row">
           <div class="offset-md-3 col-md-6">
             <label for="name" class="col-form-label">{{ __('Longitute') }}</label>
-            <input class="form-control" id="long" name="long" value="" required>
+            <input class="form-control" id="lng" name="lng" value="" required>
 
-            @if ($errors->has('long'))
+            @if ($errors->has('lng'))
             <span class="help-block">
-              <strong>{{ $errors->first('long') }}</strong>
+              <strong>{{ $errors->first('lng') }}</strong>
             </span>
             @endif
           </div>
