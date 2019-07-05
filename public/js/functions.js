@@ -5,8 +5,11 @@
    */
    $(function() {
    	$('.matchheight').matchHeight(options);
+    $('.store').matchHeight(options);
    });
   window.onload = startMatchHeight;
+
+
 
 });
 
@@ -21,3 +24,23 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
+
+$(document).ready(function() {
+  $("input[id='alternate']").click(function() {
+
+      $(".selectMerchant").hide();
+      $(".inputMerchant").show();
+
+      document.getElementById("selectMerchant").disabled = true;
+      document.getElementById("inputMerchant").disabled = false;
+
+  });
+  $("input[id='pre-approved']").click(function() {
+
+      $(".selectMerchant").show();
+      $(".inputMerchant").hide();
+
+      document.getElementById("inputMerchant").disabled = true;
+      document.getElementById("selectMerchant").disabled = false;
+  });
+});
