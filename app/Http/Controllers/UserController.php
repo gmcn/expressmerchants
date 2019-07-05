@@ -27,6 +27,12 @@ class UserController extends Controller
       return view('userlist', compact('users'));
   }
 
+  public function account()
+  {
+
+      return view('account');
+  }
+
   public function removeUser($id)
   {
 
