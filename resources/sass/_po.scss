@@ -54,3 +54,127 @@
     }
   }
 }
+
+.po-create {
+  background: #A71F47;
+  color: rgba(255,255,255,.4);
+  padding: 30px 0;
+  border-radius: 5px;
+  form {
+    @include media-breakpoint-up(md) {
+      border-right: 1px solid #fff;
+    }
+    padding: 0 30px;
+    a {
+      color: #fff;
+      transition: .5s;
+      &:hover {
+        color: #000;
+      }
+    }
+    input {
+      background: none;
+      border-bottom: 1px solid #fff;
+      border-radius: 0;
+      color: #fff;
+    }
+    ::placeholder {
+      color: rgba(255, 255, 255, .5);
+      font-weight: 500;
+    }
+    label.main {
+      width: 100%;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: rgba(13, 33, 52, .3);
+      font-weight: 600;
+    }
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+    }
+    label {
+      span {
+        font-size: 10px;
+      }
+    }
+    button {
+      width: 100%;
+      color: #fff;
+      padding: 15px;
+      text-transform: uppercase;
+      font-size: 12px;
+      background: #F45B5B;
+      font-weight: 500;
+      &:hover {
+        background: #0D2134;
+      }
+    }
+  }
+
+}
+
+.po-created {
+  background: #2B88F1 url(../images/login_bg.jpg) right bottom no-repeat;
+  background-size: cover;
+  color: #fff;
+  border-radius: 5px;
+  label {
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .5);
+    font-weight: 600;
+  }
+  &_instructions {
+    background: #2B88F1;
+    padding: 30px 15px;
+    span {
+      font-size: 25px;
+      font-weight: 600;
+      padding-right: 15px;
+      color: rgba(255, 255, 255, .5);
+    }
+    img {
+      margin-bottom: 15px;
+    }
+    &_id {
+      background: #0D2134;
+      padding: 25px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      font-size: 32px;
+      span {
+        color: #2B88F1;
+        font-size: 32px;
+        padding-right: 0;
+        font-weight: 500;
+      }
+    }
+    .new {
+      width: 100%;
+      background: #0D2134;
+      color: #fff;
+      padding: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .manage {
+      width: 100%;
+      background: #00B4F7;
+      color: #fff;
+      padding: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+  }
+}
