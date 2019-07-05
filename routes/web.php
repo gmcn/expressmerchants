@@ -24,7 +24,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //user routes
-Route::get('/newuser', 'userController@index')->name('newuser');
+Route::get('/account', 'UserController@account');
+Route::get('/newuser', 'UserController@index')->name('newuser');
 Route::get('/userlist', 'UserController@showUserList')->name('userlist');
 Route::get('/delete-user/{id}', 'UserController@removeUser');
 Route::get('/disable-user/{id}', 'UserController@disableUser');
@@ -37,6 +38,8 @@ Route::post('company-create', 'CompanyController@createCompany');
 Route::get('/company-delete/{id}', 'CompanyController@removeCompany');
 
 //merchant routes
+Route::get('merchant-find', 'MerchantController@findMerchant');
+Route::post('merchant-find', 'MerchantController@resultsMerchant');
 Route::get('merchant-list', 'MerchantController@showMerchant');
 Route::get('merchant-create', 'MerchantController@addMerchant');
 Route::post('merchant-create', 'MerchantController@createMerchant');
@@ -46,6 +49,7 @@ Route::get('/merchant-delete/{id}', 'MerchantController@removeMerchant');
 Route::get('po-list', 'PoController@listPo');
 Route::get('po-create', 'PoController@addPo');
 Route::post('po-create', 'PoController@createPo');
+Route::get('po-created', 'PoController@createdPo');
 Route::get('po-edit/{id}', 'PoController@showPo');
 Route::post('po-edit/{id}', 'PoController@editPo');
 
