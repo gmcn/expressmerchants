@@ -7,49 +7,49 @@
         <div class="col-md-4 col-lg-3 col1">
 
           <div class="blue findmerch">
-            <a href="/merchants">
+            <a href="{{ url('/merchant-find') }}">
               <span>Find</span><br />Merchant
             </a>
           </div>
 
           @if (Auth::user()->accessLevel == '1')
             <div class="blue">
-              <a href="/merchant-create">
+              <a href="{{ url('/merchant-create') }}">
                 <span>Create</span><br />Merchant
               </a>
             </div>
 
             <div class="blue">
-              <a href="/merchant-list">
+              <a href="{{ url('/merchant-list') }}">
                 <span>Manage</span><br />Merchants
               </a>
             </div>
 
             <div class="blue">
-              <a href="/company-create">
+              <a href="{{ url('/company-create') }}">
                 <span>Add</span><br />Company
               </a>
             </div>
 
             <div class="blue">
-              <a href="/company-list">
+              <a href="{{ url('/company-list') }}">
                 <span>Manage</span><br />Companies
               </a>
             </div>
           @endif
-
+          {{-- @if (Auth::user()->accessLevel != '1') --}}
           <div class="blue">
-            <a href="/po-create">
+            <a href="{{ url('/po-create') }}">
               <span>Create</span> <br />
               Purchase <br />
               Order Now
             </a>
           </div>
-
+          {{-- @endif --}}
         </div>
         <div class="col-md-4 col-lg-3 col2">
           <div class="red">
-            <a href="/po-list">
+            <a href="{{ url('/po-list') }}">
               <h2><span>Manage</span> <br />
               Purchase <br />
               Orders</h2>
@@ -72,7 +72,7 @@
 
               <div class="row details">
                 <div class="col-6">
-                  <a href="/register">
+                  <a href="{{ url('/account') }}">
                     <span>My User</span><br />Account Details
                   </a>
                 </div>
@@ -83,7 +83,7 @@
               @if (Auth::user()->accessLevel == '1' || Auth::user()->accessLevel == '2')
               <div class="row add">
                 <div class="col-6">
-                  <a href="/register">
+                  <a href="{{ url('/register') }}">
                     <span>Add</span><br /> New <br/>User
                   </a>
                 </div>
@@ -94,7 +94,7 @@
 
               <div class="row manage">
                 <div class="col-6">
-                  <a href="/userlist">
+                  <a href="{{ url('/userlist') }}">
                     <span>Manage</span><br />Users
                   </a>
                 </div>

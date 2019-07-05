@@ -10,101 +10,61 @@
     <title>Express Merchants | <?php echo $title; ?></title>
 
     <!-- Scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfU2hsPF_D_DwXwxr8QEk2NU_RPzBO4YA&libraries=places&callback=initMap"></script>
+
+    <script type="text/javascript" src="{{ asset('js/infobubble-compiled.js') }}"></script>
+	   <script type="text/javascript" src="{{ asset('js/store-locator.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/em-static-ds.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{{ asset('css/storelocator.css') }}"> -->
 </head>
-<body>
+<body onload="initMap()">
     <div class="container-fluid app">
       <header>
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <!-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel"> -->
           <div class="container-fluid">
-              <a class="navbar-brand" href="{{ url('/') }}">
+
+            <div class="row">
+              <div class="col-3 col-md-6 d-flex flex-row">
+                <a class="navbar-brand" href="{{ url('/') }}">
                   <img src="{{ asset('/images/express-merchants-head_blue_logo.svg') }}" alt="Express Merchants">
-
-              </a>
-
+                </a>
                 <h1><?php echo $title; ?></h1>
+              </div>
+              <div class="col-9 col-md-6 nav flex-row-reverse">
+                <span class="navopen" onclick="openNav()">
+                  <img src="{{ asset('/images/nav_icon.svg') }}" alt="You are logged in as an Admin User">
+                </span>
+                <p><span class="companyname">{{ $company->companyName }}</span><br>{{ Auth::user()->name }} </p>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                  @if (Auth::user()->accessLevel == '1')
+                    <a href="{{ url('/') }}">
+                      <img src="{{ asset('/images/admin_user.svg') }}" alt="You are logged in as an Admin User">
+                    </a>
+                  @endif
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Use any element to open the sidenav -->
 
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                      <p class="companyname">{{ $company->companyName }}</p>
-                      <p class="username">{{ Auth::user()->name }}</p>
-
-                        @if (Auth::user()->accessLevel == '1')
-                        Admin
-                        @endif
-                        @if (Auth::user()->accessLevel == '2')
-                        Company Admin
-                        @endif
-                        @if (Auth::user()->accessLevel == '3')
-                        User
-                        @endif
-
-                      <!-- Use any element to open the sidenav -->
-                      <span onclick="openNav()">open</span>
-
-                        <!-- Authentication Links -->
-                        @guest
-                        <!-- No guest access -->
-                        @else
-
-                          <!-- <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              <a href="/po-create" class="dropdown-item">
-                                + PO
-                              </a>
-                              <a href="/po-list" class="dropdown-item">
-                                PO List
-                              </a>
-                                <a href="/register" class="dropdown-item">
-                                  + User
-                                </a>
-                                <a href="/userlist" class="dropdown-item">
-                                  User List
-                                </a>
-                                <a href="/company-create" class="dropdown-item">
-                                  + Company
-                                </a>
-                                <a href="/company-list" class="dropdown-item">
-                                  Company List
-                                </a>
-                                <a href="/merchant-create" class="dropdown-item">
-                                  + Merchant
-                                </a>
-                                <a href="/merchant-list" class="dropdown-item">
-                                  Merchant List
-                                </a>
-
-                            </div>
-                          </li> -->
-                        @endguest
-                    </ul>
-                </div>
+              </div>
             </div>
-        </nav>
+          </div>
+        <!-- </nav> -->
 
       </header>
 
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/home"><img src="{{ asset('/images/control-panel.svg') }}" alt="Control Panel"> Control Panel</a>
-        <a href="/merchants"><img src="{{ asset('/images/merchant.svg') }}" alt="Find Merchants"> Find Merchants</a>
-        <a href="/po-create"><img src="{{ asset('/images/create-po.svg') }}" alt="Create Purchase Order"> Create Purchase Order</a>
-        <a href="/po-list"><img src="{{ asset('/images/manage-po.svg') }}" alt="Manage Purchase Orders"> Manage Purchase Orders</a>
-        <a href="#"><img src="{{ asset('/images/account-details.svg') }}" alt="User Account Details"> User Account Details</a>
+        <a href="{{ url('/home') }}"><img src="{{ asset('/images/control-panel.svg') }}" alt="Control Panel"> Control Panel</a>
+        <a href="{{ url('/merchant-find') }}"><img src="{{ asset('/images/merchant.svg') }}" alt="Find Merchants"> Find Merchants</a>
+        <a href="{{ url('/po-create') }}"><img src="{{ asset('/images/create-po.svg') }}" alt="Create Purchase Order"> Create Purchase Order</a>
+        <a href="{{ url('/po-list') }}"><img src="{{ asset('/images/manage-po.svg') }}" alt="Manage Purchase Orders"> Manage Purchase Orders</a>
+        <a href="{{ url('/account') }}"><img src="{{ asset('/images/account-details.svg') }}" alt="User Account Details"> User Account Details</a>
         <a href="#" onclick="return confirm('Coming Soon')"><img src="{{ asset('/images/get-help.svg') }}" alt="Express Merchants"> Get Help</a>
         <a href="#" onclick="return confirm('Coming Soon')"><img src="{{ asset('/images/user-guide.svg') }}" alt="Express Merchants"> User Guide</a>
         <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

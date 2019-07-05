@@ -25,7 +25,7 @@
                 <div class="vert-align">
                   <span>{{ $user->name }}</span>
                 </div>
-                <a href="/po-list?search={{ $user->name }}"><img src="{{ asset('/images/view-all-pos.svg') }}" alt="View all POs"></a>
+                <a href="{{ url('/po-list') }}?search={{ $user->name }}"><img src="{{ asset('/images/view-all-pos.svg') }}" alt="View all POs"></a>
               </div>
             </div>
             <div class="col-lg-2 col-6 user_entry_email">

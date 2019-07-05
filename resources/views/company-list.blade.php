@@ -15,33 +15,32 @@
           </div>
         @endif
 
-        <table class="table">
-        <thead>
-          <tr>
-            <th>Company Name</th>
-            <th>Company Phone</th>
-            <th>Company Fax</th>
-            <th>Company Contact</th>
-            <th>Company Contact Email</th>
-            <th>Company Address</th>
-          </tr>
-        </thead>
-        <tbody>
-
 
         @foreach($companies as $company)
-        <tr>
-          <td>{{ $company->companyName }}</td>
-          <td>{{ $company->companyPhone }}</td>
-          <td>{{ $company->companyFax }}</td>
-          <td>{{ $company->companyContact }}</td>
-          <td>{{ $company->companyContactEmail }}</td>
-          <td>{{ $company->companyAddress }}</td>
-        </tr>
-        @endforeach
 
-        </tbody>
-      </table>
+        <div class="row user_entry">
+          <div class="col-md-2 user_entry_email">
+            <label class="main">Company Name</label>
+            {{ $company->companyName }}
+          </div>
+          <div class="col-md-2 user_entry_email">
+            <label class="main">Company Phone</label>
+            {{ $company->companyPhone }}
+          </div>
+          <div class="col-md-2 user_entry_email">
+            <label class="main">Company Fax</label>
+            {{ $company->companyFax }}
+          </div>
+          <div class="col-md-2 user_entry_email">
+            <label class="main">Company Contact</label>
+            {{ $company->companyContact }}
+          </div>
+          <div class="col-md-4 user_entry_email">
+            <label class="main">Company Address</label>
+            {{ $company->companyAddress }}
+          </div>
+        </div>
+        @endforeach
 
       {{ $companies->links() }}
     </div>
