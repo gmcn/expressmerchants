@@ -6488,16 +6488,41 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important; } }
-header .navbar-brand {
-  padding-left: 15px; }
-  header .navbar-brand img {
-    margin-top: -1rem; }
+header .navbar-brand img {
+  margin-top: -1rem;
+  margin-left: 0; }
+header h1 {
+  font-weight: 700;
+  padding-top: 10%; }
+  header h1 span {
+    font-weight: 200; }
+  @media (min-width: 768px) {
+    header h1 {
+      font-size: 35px; } }
+  @media (max-width: 991.98px) {
+    header h1 {
+      font-size: 18px; } }
+  @media (max-width: 767.98px) {
+    header h1 {
+      display: none; } }
 header .companyname {
   color: #FF4848;
   font-size: 13px;
   font-weight: 600; }
 header .username {
   font-size: 13px; }
+header .navopen {
+  cursor: pointer; }
+header p {
+  font-size: 13px;
+  font-weight: 300;
+  border-left: 1px solid #fff;
+  padding: 50px 5px 10px 5px; }
+  @media (min-width: 768px) {
+    header p {
+      padding: 50px 50px 10px 15px; } }
+header img {
+  margin-left: 10px; }
 
 /* The side navigation menu */
 .sidenav {
@@ -6682,6 +6707,107 @@ header .username {
   .po_list .list .warning {
     color: #FF4848; }
 
+.po-create {
+  background: #A71F47;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 30px 0;
+  border-radius: 5px; }
+  .po-create form {
+    padding: 0 30px; }
+    @media (min-width: 768px) {
+      .po-create form {
+        border-right: 1px solid #fff; } }
+    .po-create form a {
+      color: #fff;
+      transition: .5s; }
+      .po-create form a:hover {
+        color: #000; }
+    .po-create form input {
+      background: none;
+      border-bottom: 1px solid #fff;
+      border-radius: 0;
+      color: #fff; }
+    .po-create form ::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 500; }
+    .po-create form label.main {
+      width: 100%;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: rgba(13, 33, 52, 0.3);
+      font-weight: 600; }
+    .po-create form .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee; }
+    .po-create form label span {
+      font-size: 10px; }
+    .po-create form button {
+      width: 100%;
+      color: #fff;
+      padding: 15px;
+      text-transform: uppercase;
+      font-size: 12px;
+      background: #F45B5B;
+      font-weight: 500; }
+      .po-create form button:hover {
+        background: #0D2134; }
+
+.po-created {
+  background: #2B88F1 url(../images/login_bg.jpg) right bottom no-repeat;
+  background-size: cover;
+  color: #fff;
+  border-radius: 5px; }
+  .po-created label {
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600; }
+  .po-created_instructions {
+    background: #2B88F1;
+    padding: 30px 15px; }
+    .po-created_instructions span {
+      font-size: 25px;
+      font-weight: 600;
+      padding-right: 15px;
+      color: rgba(255, 255, 255, 0.5); }
+    .po-created_instructions img {
+      margin-bottom: 15px; }
+    .po-created_instructions_id {
+      background: #0D2134;
+      padding: 25px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      font-size: 32px; }
+      .po-created_instructions_id span {
+        color: #2B88F1;
+        font-size: 32px;
+        padding-right: 0;
+        font-weight: 500; }
+    .po-created_instructions .new {
+      width: 100%;
+      background: #0D2134;
+      color: #fff;
+      padding: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 15px;
+      margin-bottom: 15px; }
+    .po-created_instructions .manage {
+      width: 100%;
+      background: #00B4F7;
+      color: #fff;
+      padding: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 15px; }
+
 .user {
   background: #F1F9FF;
   color: #0D2134;
@@ -6765,17 +6891,6 @@ header .username {
   background: #0D2134;
   color: #fff;
   min-height: calc(100vh - 50px); }
-  .app .dashboard h1 {
-    margin-top: 80px;
-    font-weight: 700; }
-    .app .dashboard h1 span {
-      font-weight: 200; }
-    @media (min-width: 768px) {
-      .app .dashboard h1 {
-        font-size: 35px; } }
-    @media (max-width: 991.98px) {
-      .app .dashboard h1 {
-        font-size: 22px; } }
   .app .dashboard h2 {
     font-size: 26px;
     font-weight: 500; }
@@ -6821,12 +6936,15 @@ header .username {
     background: #000;
     color: #fff;
     padding: 30px;
-    margin-bottom: 15px;
-    min-height: 300px; }
+    margin-bottom: 15px; }
+    @media (min-width: 768px) {
+      .app .dashboard .users {
+        min-height: 300px; } }
     .app .dashboard .users .icon {
       text-align: right; }
       .app .dashboard .users .icon img {
-        height: 50px; }
+        height: 50px;
+        max-width: 100%; }
     .app .dashboard .users .details {
       color: #2B88F1;
       border-bottom: 5px solid #2B88F1;
@@ -6887,15 +7005,16 @@ header .username {
       .app ul.pagination .page-link:hover {
         background: #0D2134; }
 
-.vert-align {
-  position: absolute;
-  top: 50%;
-  width: calc(100% - 30px);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%); }
+@media (min-width: 768px) {
+  .vert-align {
+    position: absolute;
+    top: 50%;
+    width: calc(100% - 30px);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); } }
 
 .contactdetails h3 {
   text-transform: uppercase;
@@ -6913,6 +7032,145 @@ header .username {
   @media (min-width: 992px) {
     .contactdetails p.phone {
       font-size: 40px; } }
+
+.map {
+  color: #0D2134; }
+  .map #panel {
+    background: #F1F9FF;
+    border-radius: 5px;
+    height: 800px; }
+    .map #panel li.store {
+      padding: 20px; }
+    .map #panel table {
+      width: 100%;
+      font-size: 16px; }
+    .map #panel a.callnow {
+      background: #0D2134;
+      color: #fff;
+      width: 50%;
+      float: left;
+      padding: 10px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600; }
+    .map #panel a.createpo {
+      background: #A71F47;
+      color: #fff;
+      width: 50%;
+      float: left;
+      padding: 10px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600; }
+  .map #map {
+    border-radius: 5px;
+    height: 800px; }
+  .map form.storelocator-filter {
+    background: #fff;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 30px);
+    border-radius: 5px; }
+  .map .directions-panel {
+    margin-top: 94px !important;
+    background: #fff;
+    padding: 20px !important;
+    border-radius: 5px;
+    padding: 1px; }
+  .map .store-list {
+    padding: 0 30px !important;
+    margin-top: 120px !important; }
+    .map .store-list li {
+      list-style: none;
+      color: #A71F47; }
+
+.storelocator-panel {
+  overflow: auto;
+  background: #F1F9FF; }
+
+.storelocator-panel .store-list {
+  margin: 0;
+  padding: 0; }
+
+.storelocator-panel .store-list li,
+.storelocator-panel .directions-panel {
+  padding: 5px; }
+
+.storelocator-panel .directions-panel {
+  font-size: 0.8em; }
+
+.storelocator-panel .store-list li.store:hover {
+  cursor: pointer;
+  background: #eee; }
+
+.storelocator-panel .store-list li.highlighted,
+.storelocator-panel .store-list li.highlighted:hover {
+  background: #ccf; }
+
+.storelocator-panel .directions {
+  display: none; }
+
+.storelocator-panel .location-search {
+  padding: 5px; }
+
+.storelocator-panel .location-search input {
+  width: 100%; }
+
+.storelocator-panel .location-search h4 {
+  font-size: 1em;
+  margin: 0;
+  padding: 0; }
+
+.storelocator-panel .store-list .no-stores {
+  color: grey; }
+
+.storelocator-panel .store .features {
+  display: none; }
+
+.storelocator-panel .feature-filter {
+  overflow: hidden; }
+
+.storelocator-panel .feature-filter label {
+  display: block;
+  margin: 0 0.4em;
+  float: left; }
+
+li.store {
+  width: 50%;
+  float: left;
+  font-size: 16px; }
+
+.store .title {
+  font-weight: bold; }
+
+.store .address,
+.store .phone,
+.store .web,
+.store .misc {
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  display: block; }
+
+.store .features {
+  overflow: hidden;
+  color: grey;
+  margin: 0;
+  padding: 0;
+  font-size: 70%;
+  max-width: 250px; }
+
+.store .features li {
+  display: inline;
+  float: left;
+  padding-right: 0.8em; }
+
+.store .web a {
+  color: green; }
+
+.store .action {
+  color: #A71F47;
+  margin-right: 0.5em; }
 
 footer {
   color: #0D2134; }

@@ -1,8 +1,25 @@
 header {
   .navbar-brand {
-    padding-left: 15px;
     img {
       margin-top: -1rem;
+      margin-left: 0;
+    }
+  }
+  h1 {
+    // margin-top: 80px;
+    font-weight: 700;
+    padding-top: 10%;
+    span {
+      font-weight: 200;
+    }
+    @include media-breakpoint-up(md) {
+      font-size: 35px;
+    }
+    @include media-breakpoint-down(md) {
+      font-size: 18px;
+    }
+    @include media-breakpoint-down(sm) {
+      display: none;
     }
   }
   .companyname {
@@ -12,6 +29,22 @@ header {
   }
   .username {
     font-size: 13px;
+  }
+  .navopen {
+    cursor: pointer;
+  }
+  p {
+    font-size: 13px;
+    font-weight: 300;
+    border-left: 1px solid #fff;
+    padding: 50px 5px 10px 5px;
+    @include media-breakpoint-up(md) {
+      padding: 50px 50px 10px 15px;
+    }
+
+  }
+  img {
+    margin-left: 10px;
   }
 }
 
