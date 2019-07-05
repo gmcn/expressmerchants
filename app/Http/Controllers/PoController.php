@@ -12,6 +12,7 @@ use Auth;
 use Validator;
 use Mail;
 use App\User;
+use App\Merchant;
 
 class PoController extends Controller
 {
@@ -19,7 +20,9 @@ class PoController extends Controller
   public function addPo()
   {
 
-    return view('po-create');
+    $merchants = Merchant::all();
+
+    return view('po-create', compact('merchants'));
 
   }
 
@@ -33,16 +36,29 @@ class PoController extends Controller
         'poProjectLocation' => 'required|max:255',
         ]);
 
-    Po::create($request->toArray());
+    $creatPO = Po::create($request->toArray());
+
+    $creatPOmechant = Merchant::all()->where('id', $request->input('selectMerchant'))->first();
+
+    $creatPOinputmechant = $request->input('inputMerchant');
+
 
     //email fuction to come, if validation above it met
-    // Mail::send( 'emails.voucher', compact('voucherForm'), function( $message ) use ($registrationForm)
-    //     {
-    //         $message->from('noreply.tti@horseware.com', $name = 'Horseware');
-    //         $message->to( $registrationForm['email'] )->subject( 'Your Horseware Turnout Trade-In Voucher Code;' );
-    //     });
+    Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant'), function( $message ) use ($request)
+        {
+            $message->from('gary@cornellstudios.com', $name = 'Express Merchants');
+            $message->to( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
+            $message->cc( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
+        });
 
-    return Redirect::to('po-list')->with('message', 'PO successfully added' );
+        return Redirect::to('po-created')->with('message', $creatPO->id );
+
+  }
+
+  public function createdPo()
+  {
+
+    return view('po-created');
 
   }
 
@@ -74,24 +90,62 @@ class PoController extends Controller
         ->join('companies', 'pos.companyId', '=', 'companies.id')
         ->select('pos.*', 'companies.companyName')
         ->orderBy('id', 'desc')
-        ->paginate(25);
+        ->paginate(15);
       }
 
 
       } elseif (Auth::user()->accessLevel == '2') {
-        $pos = DB::table('pos')
-        ->join('companies', 'pos.companyId', '=', 'companies.id')
-        ->select('pos.*', 'companies.companyName')
-        ->where('companyId', '=', Auth::user()->companyId)
-        ->orderBy('id', 'desc')
-        ->paginate(25);
-        // ->get();
+
+
+        if ($search != "") {
+          $pos = Po::select('pos.*', 'companies.companyName', 'users.name')
+          ->where('pos.companyId', '=', Auth::user()->companyId)
+          ->where('pos.id','LIKE',"%$search%")
+          ->orwhere('pos.poType','LIKE',"%$search%")
+          ->orwhere('pos.poPurpose','LIKE',"%$search%")
+          ->orwhere('pos.poProject','LIKE',"%$search%")
+          ->orwhere('pos.poProjectLocation','LIKE',"%$search%")
+          ->leftJoin('companies', 'pos.companyId', '=', 'companies.id')
+          ->leftJoin('users', 'pos.u_id', '=', 'users.id')
+          ->orWhere('companies.companyName','LIKE',"%$search%")
+          ->orWhere('users.name','LIKE',"%$search%")
+          ->orderBy('id', 'desc')
+          ->paginate(1000);
+        } else {
+          $pos = DB::table('pos')
+          ->join('companies', 'pos.companyId', '=', 'companies.id')
+          ->select('pos.*', 'companies.companyName')
+          ->where('companyId', '=', Auth::user()->companyId)
+          ->orderBy('id', 'desc')
+          ->paginate(15);
+          // ->get();
+        }
+
       } else {
-        $pos = DB::table('pos')
-        ->where('u_id', '=', Auth::user()->id)
-        ->orderBy('id', 'desc')
-        ->paginate(25);
-        // ->get();
+
+        if ($search != "") {
+          $pos = Po::select('pos.*', 'companies.companyName', 'users.name')
+          ->where('u_id', '=', Auth::user()->id)
+          ->where('pos.id','LIKE',"%$search%")
+          ->orwhere('pos.poType','LIKE',"%$search%")
+          ->orwhere('pos.poPurpose','LIKE',"%$search%")
+          ->orwhere('pos.poProject','LIKE',"%$search%")
+          ->orwhere('pos.poProjectLocation','LIKE',"%$search%")
+          ->leftJoin('companies', 'pos.companyId', '=', 'companies.id')
+          ->leftJoin('users', 'pos.u_id', '=', 'users.id')
+          ->orWhere('companies.companyName','LIKE',"%$search%")
+          ->orWhere('users.name','LIKE',"%$search%")
+          ->orderBy('id', 'desc')
+          ->paginate(1000);
+        } else {
+          $pos = DB::table('pos')
+          ->where('u_id', '=', Auth::user()->id)
+          ->orderBy('id', 'desc')
+          ->paginate(15);
+          // ->get();
+        }
+
+        
       }
 
       return view('po-list', compact('pos', 'search', 'adminusr'));
