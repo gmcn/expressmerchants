@@ -16,12 +16,14 @@
     <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfU2hsPF_D_DwXwxr8QEk2NU_RPzBO4YA&libraries=places&callback=initMap"></script>
 
     <script type="text/javascript" src="{{ asset('js/infobubble-compiled.js') }}"></script>
-	   <script type="text/javascript" src="{{ asset('js/store-locator.min.js') }}"></script>
+	  <script type="text/javascript" src="{{ asset('js/store-locator.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/em-static-ds.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="{{ url('/favicon.ico') }}"/>
+    <link rel="shortcut icon" type="image/ico" href="{{ url('/favicon.ico') }}"/>
     <!-- <link rel="stylesheet" href="{{ asset('css/storelocator.css') }}"> -->
 </head>
 <body onload="initMap()">
@@ -41,15 +43,14 @@
                 <span class="navopen" onclick="openNav()">
                   <img src="{{ asset('/images/nav_icon.svg') }}" alt="You are logged in as an Admin User">
                 </span>
+
+                @if (Auth::user()->accessLevel == '1')
+                  <a href="{{ url('/') }}">
+                    <img src="{{ asset('/images/admin_user.svg') }}" alt="You are logged in as an Admin User">
+                  </a>
+                @endif
+
                 <p><span class="companyname">{{ $company->companyName }}</span><br>{{ Auth::user()->name }} </p>
-
-                  @if (Auth::user()->accessLevel == '1')
-                    <a href="{{ url('/') }}">
-                      <img src="{{ asset('/images/admin_user.svg') }}" alt="You are logged in as an Admin User">
-                    </a>
-                  @endif
-
-                <!-- Use any element to open the sidenav -->
 
               </div>
             </div>
