@@ -27,7 +27,7 @@
 
             <div class="blue">
               <a href="{{ url('/company-create') }}">
-                <span>Add</span><br />Company
+                <span>Create</span><br />Company
               </a>
             </div>
 
@@ -70,52 +70,52 @@
 
             <div class="users">
 
-              <div class="row details">
-                <div class="col-6">
-                  <a href="{{ url('/account') }}">
+              <a href="{{ url('/account') }}">
+                <div class="row details">
+                  <div class="col-6">
                     <span>My User</span><br />Account Details
-                  </a>
+                  </div>
+                  <div class="col-6 icon">
+                    <img src="{{ asset('/images/user-details_icon.svg') }}" alt="Express Merchants">
+                  </div>
                 </div>
-                <div class="col-6 icon">
-                  <img src="{{ asset('/images/user-details_icon.svg') }}" alt="Express Merchants">
-                </div>
-              </div>
+              </a>
               @if (Auth::user()->accessLevel == '1' || Auth::user()->accessLevel == '2')
-              <div class="row add">
-                <div class="col-6">
-                  <a href="{{ url('/register') }}">
+              <a href="{{ url('/register') }}">
+                <div class="row add">
+                  <div class="col-6">
                     <span>Add</span><br /> New <br/>User
-                  </a>
+                  </div>
+                  <div class="col-6 icon">
+                    <img src="{{ asset('/images/add-user_icon.svg') }}" alt="Express Merchants">
+                  </div>
                 </div>
-                <div class="col-6 icon">
-                  <img src="{{ asset('/images/add-user_icon.svg') }}" alt="Express Merchants">
-                </div>
-              </div>
+              </a>
+              <a href="{{ url('/userlist') }}">
+                <div class="row manage">
+                  <div class="col-6">
+                      <span>Manage</span><br />Users
 
-              <div class="row manage">
-                <div class="col-6">
-                  <a href="{{ url('/userlist') }}">
-                    <span>Manage</span><br />Users
-                  </a>
+                  </div>
+                  <div class="col-6 icon">
+                    <img src="{{ asset('/images/manage-user_icon.svg') }}" alt="Express Merchants">
+                  </div>
                 </div>
-                <div class="col-6 icon">
-                  <img src="{{ asset('/images/manage-user_icon.svg') }}" alt="Express Merchants">
-                </div>
-              </div>
+              </a>
               @endif
             </div>
 
 
 
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="blue gethelp">
                 <a href="#" onclick="return confirm('Coming Soon')">
                   <span>Get</span> <br /> Help
                 </a>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="blue userguide">
                 <a href="#" onclick="return confirm('Coming Soon')">
                   <span>User</span> <br /> Guide
