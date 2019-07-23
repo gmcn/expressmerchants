@@ -6540,10 +6540,11 @@ header img {
   background-color: #0D2134;
   overflow-x: hidden;
   /* Disable horizontal scroll */
-  padding-top: 60px;
+  padding-top: 120px;
   /* Place content 60px from the top */
   transition: 0.5s;
-  /* 0.5 second transition effect to slide in the sidenav */ }
+  /* 0.5 second transition effect to slide in the sidenav */
+  box-shadow: 3px 10px 8px 10px #000; }
   .sidenav img {
     margin-right: 25px; }
   .sidenav a {
@@ -6568,9 +6569,9 @@ header img {
   .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px; }
+    left: 0;
+    font-size: 50px;
+    font-weight: 200; }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -6726,7 +6727,8 @@ header img {
       background: none;
       border-bottom: 1px solid #fff;
       border-radius: 0;
-      color: #fff; }
+      color: #fff;
+      max-width: 100%; }
     .po-create form ::placeholder {
       color: rgba(255, 255, 255, 0.5);
       font-weight: 500; }
@@ -6761,6 +6763,12 @@ header img {
   background-size: cover;
   color: #fff;
   border-radius: 5px; }
+  .po-created .instruction a {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.5em;
+    display: block;
+    margin-bottom: 10px; }
   .po-created label {
     width: 100%;
     font-size: 12px;
@@ -6827,8 +6835,6 @@ header img {
       background: none;
       border-bottom: 1px solid #0D2134;
       border-radius: 0 !important;
-      -webkit-appearance: none;
-      -moz-appearance: none;
       font-weight: 500; }
     .user form button {
       background: #0D2134;
@@ -6947,7 +6953,7 @@ header img {
         max-width: 100%; }
     .app .dashboard .users .details {
       color: #2B88F1;
-      border-bottom: 5px solid #2B88F1;
+      border-bottom: 2px solid #2B88F1;
       padding-bottom: 15px;
       margin-bottom: 15px; }
       .app .dashboard .users .details a {
@@ -6955,7 +6961,7 @@ header img {
     .app .dashboard .users .add {
       padding: 25px 0;
       color: #E0C21B;
-      border-bottom: 5px solid #E0C21B;
+      border-bottom: 2px solid #E0C21B;
       padding-bottom: 15px;
       margin-bottom: 15px; }
       .app .dashboard .users .add a {
@@ -6963,7 +6969,7 @@ header img {
     .app .dashboard .users .manage {
       padding: 25px 0;
       color: #FF4848;
-      border-bottom: 5px solid #FF4848;
+      border-bottom: 2px solid #FF4848;
       padding-bottom: 15px;
       margin-bottom: 15px; }
       .app .dashboard .users .manage a {
