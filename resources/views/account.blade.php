@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<?php $title = 'Purchase Order <span>List</span>'; ?>
+<?php $title = 'User Account <span>Details</span>'; ?>
 <div class="container-fluid po_list">
     <div class="row justify-content-center">
       <div class="col-md-5 col-lg-3 contactdetails">

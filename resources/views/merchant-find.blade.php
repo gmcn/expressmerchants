@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<?php $title = 'Merchant <span>List</span>'; ?>
+<?php $title = 'Find Merchant <span>Results</span>'; ?>
 <div class="container-fluid map">
     <div class="row">
 
