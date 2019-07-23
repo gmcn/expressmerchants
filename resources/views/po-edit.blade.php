@@ -72,12 +72,15 @@
         @endif
 
         <div class="form-group">
-          <label class="main">Proof of Delivery</label>
+
           @if ($po->poPod)
+          <label class="main">View Proof of Delivery</label>
           <a href="{{ url('/uploads/') }}/{{ $po->id }}.jpg" target="_blank">View POD</a><br />
           <a href="{{ url('/uploads/') }}/{{ $po->id }}.jpg" download>Download POD</a>
-          @else
+          <label class="main">Update Proof of Delivery</label>
           <input type="file" id="poPod" name="poPod" accept="image/jpeg">
+          @else
+          <label class="main">Proof of Delivery</label>
           @endif
 
 
