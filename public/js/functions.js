@@ -43,4 +43,29 @@ $(document).ready(function() {
       document.getElementById("inputMerchant").disabled = true;
       document.getElementById("selectMerchant").disabled = false;
   });
+
+  $("input[id='van-stock']").click(function() {
+
+      $(".poProject").hide();
+
+      document.getElementById("poProject").required = false;
+
+  });
+
+  $("input[id='ppe']").click(function() {
+
+      $(".poProject").hide();
+
+      document.getElementById("poProject").required = false;
+
+  });
+
+  $("input[id='project']").click(function() {
+
+      $(".poProject").show();
+
+      document.getElementById("poProject").required = true;
+
+  });
+
 });
