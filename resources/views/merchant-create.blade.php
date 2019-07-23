@@ -26,6 +26,20 @@
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/merchant-create') }}">
       {!! csrf_field() !!}
 
+      <div class="form-group{{ $errors->has('merchantId') ? ' has-error' : '' }} row">
+        <div class="offset-md-3 col-md-6">
+          <label for="name" class="col-form-label">{{ __('Merchant ID') }}</label>
+
+          <input type="text" class="form-control" id="merchantId" name="merchantId" value="" required>
+
+          @if ($errors->has('merchantId'))
+          <span class="help-block">
+            <strong>{{ $errors->first('merchantId') }}</strong>
+          </span>
+          @endif
+        </div>
+      </div>
+
         <div class="form-group{{ $errors->has('merchantName') ? ' has-error' : '' }} row">
           <div class="offset-md-3 col-md-6">
             <label for="name" class="col-form-label">{{ __('Merchant Name') }}</label>
@@ -37,6 +51,30 @@
               <strong>{{ $errors->first('merchantName') }}</strong>
             </span>
             @endif
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="offset-md-3 col-md-6">
+
+            <div class="row">
+              <div class="col-lg-3 {{ $errors->has('merchantPlumbing') ? ' has-error' : '' }}">
+                <label for="name" class="col-form-label">{{ __('Plumbing') }}</label>
+                <input type="checkbox" id="merchantPlumbing" name="merchantPlumbing" value="YES">
+              </div>
+              <div class="col-lg-3 {{ $errors->has('merchantElectrical') ? ' has-error' : '' }}">
+                <label for="name" class="col-form-label">{{ __('Electrical') }}</label>
+                <input type="checkbox" id="merchantElectrical" name="merchantElectrical" value="YES">
+              </div>
+              <div class="col-lg-3 {{ $errors->has('merchantBuilders') ? ' has-error' : '' }}">
+                <label for="name" class="col-form-label">{{ __('Builders') }}</label>
+                <input type="checkbox" id="merchantBuilders" name="merchantBuilders" value="YES">
+              </div>
+              <div class="col-lg-3 {{ $errors->has('merchantHire') ? ' has-error' : '' }}">
+                <label for="name" class="col-form-label">{{ __('Hire') }}</label>
+                <input type="checkbox" id="merchantHire" name="merchantHire" value="YES">
+              </div>
+            </div>
           </div>
         </div>
 

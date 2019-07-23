@@ -6,7 +6,7 @@ function EMDataSource() {
   $.extend(this, new storeLocator.StaticDataFeed);
 
   var that = this;
-  $.get('/public/em.csv', function(data) {
+  $.get('/storage/app/public/em.csv', function(data) {
     that.setStores(that.parse_(data));
   });
 }
@@ -17,8 +17,10 @@ function EMDataSource() {
  * @private
  */
 EMDataSource.prototype.FEATURES_ = new storeLocator.FeatureSet(
-  // new storeLocator.Feature('Clothing-YES', 'Clothing'),
-  // new storeLocator.Feature('Rugs-YES', 'Rugs')
+  new storeLocator.Feature('Plumbing-YES', 'Plumbing Supplies'),
+  new storeLocator.Feature('Electrical-YES', 'Electrical Supplies'),
+  new storeLocator.Feature('Builders-YES', 'Builders Supplies'),
+  new storeLocator.Feature('Hire-YES', 'Hire Shop'),
 );
 
 /**
@@ -41,6 +43,10 @@ EMDataSource.prototype.parse_ = function(csv) {
   for (var i = 1, row; row = rows[i]; i++) {
     row = this.toObject_(headings, this.parseRow_(row));
     var features = new storeLocator.FeatureSet;
+    features.add(this.FEATURES_.getById('Plumbing-' + row.Plumbing));
+    features.add(this.FEATURES_.getById('Electrical-' + row.Electrical));
+    features.add(this.FEATURES_.getById('Builders-' + row.Builders));
+    features.add(this.FEATURES_.getById('Hire-' + row.Hire));
 
     var position = new google.maps.LatLng(row.Ycoord, row.Xcoord);
 

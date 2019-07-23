@@ -11,6 +11,9 @@ use Auth;
 use DB;
 use Response;
 
+use App\Exports\MerchantExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class MerchantController extends Controller
 {
 
@@ -37,30 +40,8 @@ class MerchantController extends Controller
 
   public function findMerchant()
   {
-    // $results = Merchant::all();
-    //
-    // $xml = new \XMLWriter();
-    // $xml->openMemory();
-    // $xml->startDocument();
-    // $xml->startElement('markers');
-    // foreach($results as $result) {
-    //     $xml->startElement('marker');
-    //     $xml->writeAttribute('id', $result->id);
-    //     $xml->writeAttribute('name', $result->merchantName);
-    //     $xml->writeAttribute('address', $result->merchantAddress1);
-    //     $xml->writeAttribute('lat', $result->lat);
-    //     $xml->writeAttribute('lng', $result->lng);
-    //     $xml->writeAttribute('distance', $result->distance);
-    //     $xml->endElement();
-    // }
-    // $xml->endElement();
-    // $xml->endDocument();
-    //
-    // $content = $xml->outputMemory();
-    // $xml = null;
-    //
-    // return response($content)->header('Content-Type', 'text/xml');
 
+    Excel::store(new MerchantExport, 'public/em.csv');
 
     return view('merchant-find', compact('results', 'content'));
 
