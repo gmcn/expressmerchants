@@ -1,4 +1,4 @@
-* TEAM */
+  /* TEAM */
 
   Web Designer: Ed Jones
   Contact: ed [at] cornellstudios.com
@@ -11,9 +11,10 @@
   Website: https://www.cornellstudios.com
   From: Ireland/Northern Ireland
 
-/* SITE */
+  /* SITE */
 
+  Version: 0.5
   Site live: 2019/xx/xx
   Last update: 2019/xx/xx
-  Standards: HTML5, CSS3, PHP, mySQL
-  Framewords: Laravel, Bootstrap v4, matchheight.js
+  Standards/Tech: HTML5, CSS3, PHP, mySQL
+  Frameworks: Laravel, Bootstrap v4, matchheight.js
