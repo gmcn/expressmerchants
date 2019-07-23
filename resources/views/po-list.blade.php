@@ -20,6 +20,10 @@
 
           @endif
 
+          @if (Auth::user()->accessLevel == '1')
+            <a href="{{ url('/po-export') }}">Export POs</a>
+          @endif
+
       </div>
         <div class="col-md-7 col-lg-9 list">
 

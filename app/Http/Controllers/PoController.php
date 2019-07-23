@@ -14,8 +14,17 @@ use Mail;
 use App\User;
 use App\Merchant;
 
+use App\Exports\PoExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class PoController extends Controller
 {
+
+  public function export()
+  {
+      Excel::store(new PoExport, 'public/po_export.xlsx');
+      return Excel::download(new PoExport, 'po_export.xlsx');
+  }
 
   public function addPo()
   {
@@ -32,7 +41,7 @@ class PoController extends Controller
     $this->validate($request, [
         'poType' => 'required|max:255',
         'poPurpose' => 'required|max:255',
-        'poProject' => 'required|max:255',
+        // 'poProject' => 'required|max:255',
         'poProjectLocation' => 'required|max:255',
         ]);
 
@@ -51,7 +60,7 @@ class PoController extends Controller
             $message->cc( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
         });
 
-        return Redirect::to('po-created')->with('message', $creatPO->id );
+    return Redirect::to('po-created')->with('message', $creatPO->id )->with('poType', $creatPO->poType );
 
   }
 
@@ -145,7 +154,7 @@ class PoController extends Controller
           // ->get();
         }
 
-        
+
       }
 
       return view('po-list', compact('pos', 'search', 'adminusr'));

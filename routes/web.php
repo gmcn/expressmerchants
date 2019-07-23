@@ -15,10 +15,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-  // Route::get('/', function () {
-  //     return view('welcome');
-  // });
-
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -46,6 +42,7 @@ Route::post('merchant-create', 'MerchantController@createMerchant');
 Route::get('/merchant-delete/{id}', 'MerchantController@removeMerchant');
 
 //purchase order routes
+Route::get('po-export', 'PoController@export');
 Route::get('po-list', 'PoController@listPo');
 Route::get('po-create', 'PoController@addPo');
 Route::post('po-create', 'PoController@createPo');
