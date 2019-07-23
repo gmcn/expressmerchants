@@ -77,10 +77,10 @@
           @endif
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row poProject">
           <div class="col-12">
             <label class="main">Task/Project Number</label>
-            <input class="form-control" id="poProject" name="poProject" value="" placeholder="0000 0000 0000" required>
+            <input class="form-control" id="poProject" name="poProject" value="" placeholder="0000 0000 0000">
 
             @if ($errors->has('poProject'))
             <span class="help-block">
