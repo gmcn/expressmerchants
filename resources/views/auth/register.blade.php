@@ -122,12 +122,12 @@
                         <select class="form-control" name="accessLevel" id="accessLevel">
                           <option value="">Select an access level</option>
                           <option value="2">Company Admin</option>
-                          <option value="3">User</option>
+                          <!-- <option value="3">User</option> -->
                         </select>
 
                         @else
 
-                        <input id="accessLevel" type="text" style="display: none;" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="accessLevel" value="3" required autofocus>
+                        <input id="accessLevel" type="text" style="display: none;" class="form-control{{ $errors->has('accessLevel') ? ' is-invalid' : '' }}" name="accessLevel" value="3" required autofocus>
 
                       @endif
 
