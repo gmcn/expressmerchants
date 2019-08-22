@@ -35,7 +35,7 @@ header {
   }
   p {
     font-size: 13px;
-    font-weight: 300;
+    // font-weight: 300;
     border-left: 1px solid #fff;
     padding: 50px 5px 10px 5px;
     @include media-breakpoint-up(md) {
@@ -55,7 +55,7 @@ header {
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
-  right: 0;
+  right: -10px;
   background-color: #0D2134;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 120px; /* Place content 60px from the top */
