@@ -12,7 +12,7 @@
 
           <label class="main">Supplier Type</label>
           <input type="radio" id="pre-approved" name="poType" value="Pre Approved" checked required>
-          <label for="pre-approved">PRE-APPROVED <span>(NORMAL)</label><br>
+          <label for="pre-approved">PRE-APPROVED SUPPLIER <span>(NORMAL)</label><br>
           <input type="radio" id="alternate" name="poType" value="alternate" required>
           <label for="Alternate">ALTERNATIVE SUPPLIER <span>(UNLISTED)</span></label>
 
@@ -67,8 +67,8 @@
           <label for="van-stock">Van Stock</label>
           </div>
           <div class="col-4">
-            <input type="radio" id="ppe" name="poPurpose" value="Project" required>
-            <label for="ppe">PPE</label>
+            <input type="radio" id="ppm" name="poPurpose" value="Project" required>
+            <label for="ppm">PPM</label>
           </div>
           @if ($errors->has('popurpose'))
           <span class="help-block">
@@ -80,7 +80,7 @@
         <div class="form-group row poProject">
           <div class="col-12">
             <label class="main">Task/Project Number</label>
-            <input class="form-control" id="poProject" name="poProject" value="" placeholder="0000 0000 0000">
+            <input class="form-control" id="poProject" name="poProject" value="" placeholder="Input project number">
 
             @if ($errors->has('poProject'))
             <span class="help-block">
@@ -110,7 +110,7 @@
         <div class="form-group row">
           <div class="col-12">
             <label>Job Location</label>
-            <input class="form-control" id="poProjectLocation" name="poProjectLocation" value="" placeholder="Example, Swords, Dublin" required>
+            <input class="form-control" id="poProjectLocation" name="poProjectLocation" value="" placeholder="Input project location" required>
           </div>
 
 

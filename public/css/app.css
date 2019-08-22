@@ -6709,7 +6709,7 @@ header img {
 
 .po-create {
   background: #A71F47;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.8);
   padding: 30px 0;
   border-radius: 5px; }
   .po-create form {
@@ -6735,7 +6735,7 @@ header img {
       width: 100%;
       font-size: 12px;
       text-transform: uppercase;
-      color: rgba(13, 33, 52, 0.3);
+      color: rgba(255, 255, 255, 0.8);
       font-weight: 600; }
     .po-create form .checkmark {
       position: absolute;

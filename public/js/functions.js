@@ -52,7 +52,7 @@ $(document).ready(function() {
 
   });
 
-  $("input[id='ppe']").click(function() {
+  $("input[id='ppm']").click(function() {
 
       $(".poProject").hide();
 
