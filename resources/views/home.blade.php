@@ -7,6 +7,9 @@
         <div class="col-md-4 col-lg-3 col1">
 
           <div class="blue findmerch">
+            <div class="hash">
+              #
+            </div>
             <a href="{{ url('/merchant-find') }}">
               <span>Find</span><br />Merchant
             </a>
@@ -14,31 +17,46 @@
 
           @if (Auth::user()->accessLevel == '1')
             <div class="blue">
+              <div class="hash">
+                #
+              </div>
               <a href="{{ url('/merchant-create') }}">
                 <span>Create</span><br />Merchant
               </a>
             </div>
 
             <div class="blue">
+              <div class="hash">
+                #
+              </div>
               <a href="{{ url('/merchant-list') }}">
                 <span>Manage</span><br />Merchants
               </a>
             </div>
 
             <div class="blue">
+              <div class="hash">
+                #
+              </div>
               <a href="{{ url('/company-create') }}">
                 <span>Create</span><br />Company
               </a>
             </div>
 
             <div class="blue">
+              <div class="hash">
+                #
+              </div>
               <a href="{{ url('/company-list') }}">
                 <span>Manage</span><br />Companies
               </a>
             </div>
           @endif
           {{-- @if (Auth::user()->accessLevel != '1') --}}
-          <div class="blue">
+          <div class="navy">
+            <div class="hash">
+              #
+            </div>
             <a href="{{ url('/po-create') }}">
               <span>Create</span> <br />
               Purchase <br />
@@ -49,12 +67,15 @@
         </div>
         <div class="col-md-4 col-lg-3 col2">
           <div class="red">
+            <div class="hash">
+              #
+            </div>
             <a href="{{ url('/po-list') }}">
               <h2><span>Manage</span> <br />
               Purchase <br />
               Orders</h2>
             </a>
-            <p>{{ $countresult }} Uploads Required</p>
+            <p><strong>{{ $countresult }}</strong> Uploads Required</p>
           </div>
         </div>
         <div class="col-md-4 col-lg-3 col3 d-none d-lg-block">
