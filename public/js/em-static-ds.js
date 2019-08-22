@@ -54,7 +54,7 @@ EMDataSource.prototype.parse_ = function(csv) {
   	//var web = this.join_([row.Web_address], ', ');
   	//var web = this.join_([row.Web_address], ', ');
     var locality = this.join_([row.Locality, row.Postcode]);
-    var links = (['<a class="callnow" href="tel:',row.Telephone,'">Call Now</a><a class="createpo" href="po-create/?id=',row.uuid,'">Create Now</a><div class="clearfix></div>"']);
+    var links = (['<a class="callnow" href="tel:',row.Telephone,'">Call Now</a><a class="createpo" href="po-create/?id=',row.uuid,'">Create P/O</a><div class="clearfix></div>"']);
 
     // var websiteT = this.join_([row.Web_address], ', ');
 
