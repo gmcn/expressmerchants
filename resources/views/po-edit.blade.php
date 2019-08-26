@@ -81,6 +81,15 @@
           <input type="file" id="poPod" name="poPod" accept="image/jpeg">
           @else
           <label class="main">Proof of Delivery</label>
+
+
+
+          <div class="upload-btn-wrapper">
+            <button class="btn">Upload a file</button>
+            <input type="file" id="poPod" name="poPod" accept="image/jpeg">
+          </div>
+
+
           @endif
 
 

@@ -16,7 +16,8 @@
       top: 0;
       right: 30px;
       font-size: 22px;
-      color: #FF4848;
+      // color: #FF4848;
+      color: #FF0000;
       font-weight: 700;
     }
     .date {
@@ -35,6 +36,7 @@
       padding-bottom: 15px;
       .po_number {
         font-size: 30px;
+        letter-spacing: 3px;
       }
       .add_pod {
         text-align: right;
@@ -50,7 +52,8 @@
       width: 100%;
     }
     .warning {
-      color: #FF4848;
+      // color: #FF4848;
+      color: #FF0000;
     }
   }
 }
@@ -121,8 +124,9 @@
 }
 
 .po-created {
-  background: #2B88F1 url(../images/login_bg.jpg) right bottom no-repeat;
+  background: #2B88F1 url(../images/login_bg.jpg) no-repeat;
   background-size: cover;
+  background-position: 50% 70%;
   color: #fff;
   border-radius: 5px;
   .instruction {
@@ -145,6 +149,7 @@
     background: #2B88F1;
     padding: 30px 15px;
     span {
+      vertical-align: top;
       font-size: 25px;
       font-weight: 600;
       padding-right: 15px;
@@ -152,6 +157,7 @@
     }
     img {
       margin-bottom: 15px;
+      padding-top: 5px;
     }
     &_id {
       background: #0D2134;
@@ -159,11 +165,13 @@
       border-radius: 5px;
       margin-bottom: 25px;
       font-size: 32px;
+      letter-spacing: 5px;
       span {
         color: #2B88F1;
         font-size: 32px;
         padding-right: 0;
         font-weight: 500;
+        letter-spacing: 5px;
       }
     }
     .new {
@@ -186,6 +194,21 @@
       font-weight: 500;
       text-transform: uppercase;
       margin-bottom: 15px;
+    }
+  }
+  .tagline {
+    h2 {
+      position: absolute;
+      top: 50px;
+      right: 40px;
+      span {
+        font-weight: 200;
+      }
+    }
+    img {
+      position: absolute;
+      bottom: 50px;
+      right: 240px;
     }
   }
 }

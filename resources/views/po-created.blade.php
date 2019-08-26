@@ -6,14 +6,15 @@
   <div class="row">
     <div class="col-md-5 col-lg-3 po-created_instructions">
       <label>Purchase Order Number For Merchant</label>
+
       <p class="po-created_instructions_id">
         @if (session('message'))
            <span>EM-</span>{{ session('message') }}
+           <a href="{{ url('/po-edit') }}/{{ session('message') }}"><img src="{{ asset('/images/add-pod_icon.svg') }}" alt="add POD"></a>
         @endif
-
       </p>
 
-      <label>What we do next</label>
+      <label>What to do next</label>
 
 
 
@@ -22,8 +23,8 @@
           <span>#01</span>
           @if (session('poType') == 'alternate')
             <img src="{{ asset('/images/alt_po.svg') }}" alt="You must phone this number to have payment issued over the phone via credit card. Please quote the above P/O number to the merchant.">
+            <p>Call this number for credit card payment, please quote above Purchase Number to merchant.</p>
             <a href="tel:028 3835 1388">028 3835 1388</a>
-            <p>You must phone this number to have payment issued over the phone via credit card. Please quote the above P/O number to the merchant.</p>
           @else
             <img src="{{ asset('/images/present_po.svg') }}" alt="Give this number to the merchant when collecting the goods">
             <p>You must give this number to the merchant when collecting the goods.</p>
@@ -36,7 +37,7 @@
 
         <div class="col-6 instruction">
           <span>#02</span> <img src="{{ asset('/images/present_pod.svg') }}" alt="Give this number to the merchant when collecting the goods">
-          <p>Once the goods are collected you must insist a Proof of delivery Docket or receipt is issued and uploaded to this P/O via photo.</p>
+          <p>Once the goods are collected you must insist a Proof Of Delivery Docket or receipt is issued and uploaded to this P/O as a photo.</p>
         </div>
 
         <div class="col-12">
@@ -51,11 +52,14 @@
 
 
     </div>
-    <div class="col-md-5">
-
+    <div class="col-md-7 col-lg-9 tagline">
+              <h2><span>the right products <br>
+              the first time</span> <br>
+              one invoice.</h2>
+              <img src="//localhost:3000/images/em_logomark.svg" alt="">
     </div>
   </div>
-
+  </div>
 </div>
 
 
