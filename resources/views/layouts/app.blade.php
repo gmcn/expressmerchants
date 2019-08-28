@@ -24,6 +24,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/ico" href="{{ url('/favicon.ico') }}"/>
     <link rel="shortcut icon" type="image/ico" href="{{ url('/favicon.ico') }}"/>
+    <link rel="apple-touch-icon" sizes="128x128" href="{{ url('/favicon.ico') }}">
     <!-- <link rel="stylesheet" href="{{ asset('css/storelocator.css') }}"> -->
 </head>
 <body onload="initMap()">
@@ -45,7 +46,7 @@
                 </span>
 
                 @if (Auth::user()->accessLevel == '1')
-                  <a href="{{ url('/') }}">
+                  <a class="d-none d-md-block" href="{{ url('/') }}">
                     <img src="{{ asset('/images/admin_user.svg') }}" alt="You are logged in as an Admin User">
                   </a>
                 @endif
