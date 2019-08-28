@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Company;
 use Redirect;
 use Auth;
 use DB;
@@ -20,11 +21,15 @@ class UserController extends Controller
       $users = DB::table('users')->paginate(25);
 
     } elseif (Auth::user()->accessLevel == '2') {
+
+
       $users = User::where('companyId','=', Auth::user()->companyId)->paginate(25);
+
+
     } else {
       return Redirect::to('/');
     }
-      return view('userlist', compact('users'));
+      return view('userlist', compact('users', 'compName'));
   }
 
   public function account()
