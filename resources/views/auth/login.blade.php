@@ -79,7 +79,7 @@
 
           <p><strong>Call us today to see how we can help your business.</strong></p>
 
-          <a href="tel:028 3835 1388">028 3835 1388</a>
+          <a href="tel:+442838446170">+44 (0)28 3844 6170</a>
 
         </div>
     </div>
