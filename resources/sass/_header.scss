@@ -1,8 +1,22 @@
 header {
   .navbar-brand {
     img {
-      margin-top: -1rem;
+
       margin-left: 0;
+      @include media-breakpoint-down(md) {
+        margin-top: -50px;
+      }
+      @include media-breakpoint-up(md) {
+        margin-top: -1rem;
+      }
+    }
+  }
+  .nav {
+    img {
+      @include media-breakpoint-down(md) {
+        margin-top: -30px;
+        width: 60px;
+      }
     }
   }
   h1 {
