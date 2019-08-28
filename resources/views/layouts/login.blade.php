@@ -14,8 +14,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" type="image/ico" href="{{ url('/favicon.ico') }}"/>
-    <link rel="shortcut icon" type="image/ico" href="{{ url('/favicon.ico') }}"/>
+    <link rel="icon" type="image/ico" href="{{ url('/favicon.ico') }}"/>
+    <link rel="shortcut" type="image/ico" href="{{ url('/favicon.ico') }}"/>
+    <link rel="apple-touch-icon" sizes="128x128" href="{{ url('/favicon.ico') }}">
 </head>
 <body class="login">
     <div>
