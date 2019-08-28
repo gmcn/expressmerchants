@@ -34,7 +34,16 @@
             </div>
             <div class="col-lg-1 col-6 user_entry_email">
               <label for="">Company</label>
-              {{ $user->companyId }}
+
+              <?php
+
+              $compName = DB::table('companies')->where('id', $user->companyId )->first();
+
+               ?>
+
+              {{ $compName->companyName }}
+
+
             </div>
             <div class="col-lg-2 col-6 user_entry_email">
               <label for="">Phone</label>
