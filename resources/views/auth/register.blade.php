@@ -126,6 +126,7 @@
                           <select class="form-control" name="accessLevel" id="accessLevel">
                             <option value="">Select an access level</option>
                             <option value="2">Company Admin</option>
+                            <option value="3">Company User</option>
                             <!-- <option value="3">User</option> -->
                           </select>
 
@@ -182,6 +183,14 @@
 
             <label for="name" class="col-form-label">{{ __('Company Name') }}</label>
             <p class="company"><img src="{{ asset('/images/company-icon_navy.svg') }}" alt="User Account Details"> {{ $company->companyName }}</p>
+
+            @if (session('message'))
+              <div class="flash-message">
+                NEW USER<br />
+                SUCCESSFULLY<br />
+                ADDED.
+              </div>
+            @endif
 
             <button type="submit" class="btn btn-primary">
                 {{ __('Add User') }}
