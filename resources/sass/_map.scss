@@ -133,8 +133,11 @@
 }
 
 li.store {
-  width: 50%;
-  float: left;
+  @include media-breakpoint-up(md) {
+    width: 50%;
+    float: left;
+  }
+  margin-bottom: 15px;
   font-size: 16px;
 }
 
