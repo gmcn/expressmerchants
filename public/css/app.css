@@ -6489,8 +6489,17 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered td {
     border: 1px solid #ddd !important; } }
 header .navbar-brand img {
-  margin-top: -1rem;
   margin-left: 0; }
+  @media (max-width: 991.98px) {
+    header .navbar-brand img {
+      margin-top: -50px; } }
+  @media (min-width: 768px) {
+    header .navbar-brand img {
+      margin-top: -1rem; } }
+@media (max-width: 991.98px) {
+  header .nav img {
+    margin-top: -30px;
+    width: 60px; } }
 header h1 {
   font-weight: 700;
   padding-top: 10%; }
@@ -6711,7 +6720,7 @@ header img {
 .po-create {
   background: #A71F47;
   color: rgba(255, 255, 255, 0.8);
-  padding: 30px 0;
+  padding: 30px 15px;
   border-radius: 5px; }
   .po-create form {
     padding: 0 30px; }
@@ -6732,12 +6741,6 @@ header img {
     .po-create form ::placeholder {
       color: rgba(255, 255, 255, 0.5);
       font-weight: 500; }
-    .po-create form label.main {
-      width: 100%;
-      font-size: 12px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 600; }
     .po-create form .checkmark {
       position: absolute;
       top: 0;
@@ -6757,6 +6760,16 @@ header img {
       font-weight: 500; }
       .po-create form button:hover {
         background: #0D2134; }
+  .po-create .textarea {
+    padding: 0 15px; }
+    .po-create .textarea textarea {
+      height: 500px; }
+  .po-create label.main {
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600; }
 
 .po-created {
   background: #2B88F1 url(../images/login_bg.jpg) no-repeat;
@@ -7284,9 +7297,12 @@ header img {
   float: left; }
 
 li.store {
-  width: 50%;
-  float: left;
+  margin-bottom: 15px;
   font-size: 16px; }
+  @media (min-width: 768px) {
+    li.store {
+      width: 50%;
+      float: left; } }
 
 .store .title {
   font-weight: bold; }
