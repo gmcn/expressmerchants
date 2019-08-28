@@ -48,15 +48,50 @@
     <tbody>
 				<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              Purchase Order Number:
+              PURCHASE ORDER NUMBER:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
               EM-{{ $creatPO->id }}
           </td>
       </tr>
+
+			<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
+						USER:
+				</td>
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
+
+
+						{{ $poUser->name }}
+
+				</td>
+			</tr>
+
+			<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
+						COMPANY:
+				</td>
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
+
+					{{ $poCompany->companyName }}
+
+
+				</td>
+			</tr>
+
+			<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
+						ORDER PURPOSE:
+				</td>
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
+						{{ $creatPO->poPurpose }}
+				</td>
+			</tr>
+
+
       <tr style="border-bottom:1px solid #bfc1c3">
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              Purchase Order Type:
+              SUPPLIER TYPE:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
               {{ $creatPO->poType }}
@@ -64,7 +99,7 @@
       </tr>
       <tr style="border-bottom:1px solid #bfc1c3">
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              Purchase Order Selected Merchant:
+              SELECTED MERCHANT:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c!important;text-decoration:none;font-family:sans-serif;font-size:16px;font-weight:bold">
 
@@ -79,7 +114,7 @@
       </tr>
       <tr style="border-bottom:1px solid #bfc1c3">
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              Purchase Order Project:
+              TASK/PROJECT NUMBER:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;padding:15px 0">
               {{ $creatPO->poProject }}
@@ -87,7 +122,7 @@
       </tr>
       <tr style="border-bottom:1px solid #bfc1c3">
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:19px;padding:15px 0">
-              Purchase Order Location:
+              JOB LOCATION:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:19px;font-weight:bold;padding:15px 0">
               {{ $creatPO->poProjectLocation }}

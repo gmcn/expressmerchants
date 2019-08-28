@@ -12,11 +12,12 @@
           <div class="form-group row">
             <div class="col-6">
               <label class="main">Name</label>
-              {{ Auth::user()->name }}
+              {{ $po->name }}
+
             </div>
             <div class="col-6">
               <label class="main">Company Name</label>
-              {{ $company->companyName }}
+              {{ $po->companyName }}
             </div>
           </div>
 
@@ -30,12 +31,27 @@
 
         </div>
 
+
         <div class="form-group">
           <label class="main">Supplier Type</label>
           {{ $po->poType }}
           <input type="text" class="form-control d-none" id="poPurpose" name="poPurpose" value="{{ $po->poPurpose }}">
-
         </div>
+
+
+        @if ($po->merchantName)
+          <div class="form-group">
+            <label class="main">Selected Merchant</label>
+            {{ $po->merchantName }}
+            <input type="text" class="form-control d-none" id="selectMerchant" name="selectMerchant" value="{{ $po->merchantName }}">
+          </div>
+        @else
+          <div class="form-group">
+            <label class="main">Selected Merchant</label>
+            {{ $po->inputMerchant }}
+            <input type="text" class="form-control d-none" id="inputMerchant" name="inputMerchant" value="{{ $po->inputMerchant }}">
+          </div>
+        @endif
 
         <div class="form-group">
           <label class="main">Task/Project</label>
@@ -80,14 +96,9 @@
           <label class="main">Update Proof of Delivery</label>
           <input type="file" id="poPod" name="poPod" accept="image/jpeg">
           @else
+
           <label class="main">Proof of Delivery</label>
-
-
-
-          <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
             <input type="file" id="poPod" name="poPod" accept="image/jpeg">
-          </div>
 
 
           @endif
@@ -120,11 +131,15 @@
           <button type="submit" class="btn btn-default">Update</button>
         </div>
 
-      </form>
-    </div>
-    <div class="col-md-5">
 
     </div>
+    <div class="col-md-6 col-lg-7 textarea">
+      <label class="main">Material Brief</label>
+      {{ $po->poMaterials }}
+      <input class="form-control d-none" type="textarea" name="poMaterials" id="poMaterials" value="{{ $po->poMaterials }}">
+
+    </div>
+    </form>
 </div>
 
 

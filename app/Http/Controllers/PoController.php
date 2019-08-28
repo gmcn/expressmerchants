@@ -12,6 +12,7 @@ use Auth;
 use Validator;
 use Mail;
 use App\User;
+use App\Company;
 use App\Merchant;
 
 use App\Exports\PoExport;
@@ -47,17 +48,23 @@ class PoController extends Controller
 
     $creatPO = Po::create($request->toArray());
 
+    $poUser = User::all()->where('id', $request->input('u_id'))->first();
+    $poCompany = Company::all()->where('id', $request->input('companyId'))->first();
+
+    $poAdminCompany = User::select('email')->where('companyId', $request->input('companyId'))->where('accessLevel', '2')->first();
+
     $creatPOmechant = Merchant::all()->where('id', $request->input('selectMerchant'))->first();
 
     $creatPOinputmechant = $request->input('inputMerchant');
 
 
-    //email fuction to come, if validation above it met
-    Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant'), function( $message ) use ($request)
+    //email function to come, if validation above it met
+    Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant', 'poUser', 'poCompany', 'poAdminCompany'), function( $message ) use ($request, $poAdminCompany)
         {
             $message->from('gary@cornellstudios.com', $name = 'Express Merchants');
-            $message->to( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
-            $message->cc( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
+            $message->to( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
+            $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
+            $message->bcc( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
         });
 
     return Redirect::to('po-created')->with('message', $creatPO->id )->with('poType', $creatPO->poType );
@@ -163,7 +170,13 @@ class PoController extends Controller
   public function showPo($id)
   {
 
-    $po = Po::where('id','=',$id)->firstOrFail();
+    // $po = Po::where('id','=',$id)->firstOrFail();
+
+    $po = Po::select('pos.*', 'companies.companyName', 'users.name', 'merchants.merchantName')
+    ->leftJoin('companies', 'pos.companyId', '=', 'companies.id')
+    ->leftJoin('merchants', 'pos.selectMerchant', '=', 'merchants.id')
+    ->leftJoin('users', 'pos.u_id', '=', 'users.id')
+    ->where('pos.id','=',$id)->firstOrFail();
 
     // if (Auth::user()->accessLevel != '1') {
     //   return Redirect::to('/po-list');

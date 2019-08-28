@@ -52,7 +52,7 @@
 
 
     </div>
-    <div class="col-md-7 col-lg-9 tagline">
+    <div class="col-md-7 col-lg-9 tagline d-none d-md-block">
               <h2><span>the right products <br>
               the first time</span> <br>
               one invoice.</h2>

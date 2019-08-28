@@ -4,7 +4,7 @@
 <?php $title = 'Create <span>Purchase Order</span>'; ?>
 <div class="container-fluid po-create">
   <div class="row">
-    <div class="col-md-5 col-lg-4">
+    <div class="col-md-5 col-lg-4 matchheight">
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/po-create') }}">
       {!! csrf_field() !!}
 
@@ -107,6 +107,7 @@
           </div>
         </div>
 
+
         <div class="form-group row">
           <div class="col-12">
             <label>Job Location</label>
@@ -121,15 +122,24 @@
           @endif
         </div>
 
+        <div class="form-group row d-block d-sm-block d-md-none">
+          <div class="col-12">
+            <label class="main">Material Brief</label>
+            <textarea class="form-control" cols="50" name="poMaterials" id="poMaterials" value=""></textarea>
+          </div>
+        </div>
+
         <div class="form-group custom-search-form">
           <button type="submit" class="btn btn-default">Submit & Generate PO</button>
         </div>
 
-      </form>
-    </div>
-    <div class="col-md-5">
 
     </div>
+    <div class="col-md-6 col-lg-7 textarea matchheight d-none d-md-block d-lg-block">
+      <label class="main">Material Brief</label>
+      <textarea class="form-control" cols="50" name="poMaterials" id="poMaterials" placeholder="Add materials" value=""></textarea>
+    </div>
+    </form>
   </div>
 
 </div>
