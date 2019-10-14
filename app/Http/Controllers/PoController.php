@@ -49,6 +49,7 @@ class PoController extends Controller
     $creatPO = Po::create($request->toArray());
 
     $poUser = User::all()->where('id', $request->input('u_id'))->first();
+
     $poCompany = Company::all()->where('id', $request->input('companyId'))->first();
 
     $poAdminCompany = User::select('email')->where('companyId', $request->input('companyId'))->where('accessLevel', '2')->first();
@@ -63,7 +64,12 @@ class PoController extends Controller
         {
             $message->from('gary@cornellstudios.com', $name = 'Express Merchants');
             $message->to( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
-            $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
+
+              if ($poAdminCompany) {
+                  $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
+              }
+
+
             $message->bcc( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
         });
 
@@ -78,7 +84,7 @@ class PoController extends Controller
 
   }
 
-  public function listPo(Request $search)
+  public function listPo_bkup(Request $search)
   {
 
     $adminusr = User::where('accessLevel', '2')->where('companyId', Auth::user()->companyId)->first();
@@ -167,6 +173,133 @@ class PoController extends Controller
       return view('po-list', compact('pos', 'search', 'adminusr'));
   }
 
+  public function listPo(Request $request)
+  {
+
+    $adminusr = User::where('accessLevel', '2')->where('companyId', Auth::user()->companyId)->first();
+
+        // Sets the parameters from the get request to the variables.
+        $u_id = \Request::get('u_id');
+        $poPod = \Request::get('poPod');
+        $poId = \Request::get('poId');
+        $company_id = \Request::get('company_id');
+        $poLocation = \Request::get('poLocation');
+        $date = \Request::get('date');
+
+        $query = Po::query();
+
+        // $pos = DB::table('pos')
+        // ->join('companies', 'pos.companyId', '=', 'companies.id')
+        // ->select('pos.*', 'companies.companyName')
+        // ->orderBy('id', 'desc')
+        // ->paginate(15);
+
+        if (Auth::user()->accessLevel == '1') {
+
+
+          $users = User::all();
+          $companies = Company::all();
+
+
+          if ($u_id) {
+            $query->where('u_id', '=', $u_id);
+          }
+
+          if ($poId) {
+            $query->where('id', '=', $poId);
+          }
+
+          if($date) {
+            $query->where('created_at', 'LIKE', "%$date%");
+          }
+
+          if ($company_id) {
+            $query->where('companyId', '=', $company_id);
+          }
+
+          if ($poPod) {
+            $query->where('poPod', '=', "");
+          }
+
+          if ($poLocation) {
+            $query->where('poProjectLocation', 'LIKE', "%$poLocation%");
+          }
+
+        }
+
+        if (Auth::user()->accessLevel == '2') {
+
+
+          $users = User::where('companyId', Auth::user()->companyId)->get();
+
+
+
+          if ($u_id) {
+            $query->where('u_id', '=', $u_id);
+          }
+
+          if ($poId) {
+            $query->where('id', '=', $poId);
+          }
+
+          if($date) {
+            $query->where('created_at', 'LIKE', "%$date%");
+          }
+
+          if ($poPod) {
+            $query->where('poPod', '=', "");
+          }
+
+          if ($poLocation) {
+            $query->where('poProjectLocation', 'LIKE', "%$poLocation%");
+          }
+
+          $query->where('companyId', '=', Auth::user()->companyId);
+
+
+        }
+
+        if (Auth::user()->accessLevel == '3') {
+
+          if ($u_id) {
+            $query->where('u_id', '=', $u_id);
+          }
+
+          if ($poId) {
+            $query->where('id', '=', $poId);
+          }
+
+          if($date) {
+            $query->where('created_at', 'LIKE', "%$date%");
+          }
+
+          if ($poPod) {
+            $query->where('poPod', '=', "");
+
+          }
+
+          if ($poLocation) {
+            $query->where('poProjectLocation', 'LIKE', "%$poLocation%");
+          }
+
+          $query->where('companyId', '=', Auth::user()->companyId);
+          $query->where('u_id', '=', Auth::user()->id);
+
+          // $query->where('poInvoice', '=', "");
+          // $query->where('poPod', '=', "");
+          // $query->where('poCompanyPo', '=', "");
+
+
+        }
+
+        $query->orderBy('id', 'desc');
+
+        $pos = $query->paginate(50);
+
+      return view('po-list', compact('pos', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poLocation', 'users', 'companies', 'adminusr'));
+
+  }
+
   public function showPo($id)
   {
 
@@ -189,6 +322,10 @@ class PoController extends Controller
   public function editPo($id, Request $request)
   {
 
+    $this->validate($request, [
+        'poPod' => 'file|max:6000',
+        ]);
+
     $editPo = Po::findOrFail($id);
     $input = $request->all();
 
@@ -204,7 +341,7 @@ class PoController extends Controller
     $editPo->fill($input)->save();
 
     return Redirect::to('/po-list')
-    ->with('message', 'Po successfully edited');
+    ->with('message', 'P/O successfully edited');
 
   }
 
