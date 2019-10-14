@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
     $this->validate($request, [
         'companyName' => 'required|max:255',
-        'companyPhone' => 'required|max:255',
+        'companyPhone' => 'required|max:12',
         'companyContact' => 'required|max:255',
         'companyContactEmail' => 'required|email|max:255',
         'companyAddress' => 'required|max:255'
@@ -57,6 +57,56 @@ class CompanyController extends Controller
       }
 
 
+  }
+
+
+  public function detailsCompany($id)
+  {
+
+    $companyedit = Company::where('id','=',$id)->firstOrFail();
+
+
+      return view('company-edit', compact('companyedit'));
+
+  }
+
+  public function editCompany($id, Request $request)
+  {
+
+    $this->validate($request, [
+        'companyName' => 'required|max:255',
+        'companyPhone' => 'required|max:12',
+        'companyContact' => 'required|max:255',
+        'companyContactEmail' => 'required|email|max:255',
+        'companyAddress' => 'required|max:255'
+      ]);
+
+    $editCompany = Company::findOrFail($id);
+    $input = $request->all();
+
+    $editCompany->fill($input)->save();
+
+    return Redirect::to("/company-edit/$id")
+    ->with('message', 'Company successfully edited');
+
+  }
+
+  public function disableCompany($id)
+  {
+
+      Company::where('id', $id)
+      ->update(['disabled' => '1']);
+
+      return Redirect::to('company-list')->with('message', 'Company disabled');
+  }
+
+  public function enableCompany($id)
+  {
+
+      Company::where('id', $id)
+      ->update(['disabled' => '']);
+
+      return Redirect::to('company-list')->with('message', 'Company enabled');
   }
 
   public function removeCompany($id)
