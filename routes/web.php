@@ -27,11 +27,18 @@ Route::get('/delete-user/{id}', 'UserController@removeUser');
 Route::get('/disable-user/{id}', 'UserController@disableUser');
 Route::get('/enable-user/{id}', 'UserController@enableUser');
 
+Route::get('users/{id}', 'UserController@edit');
+Route::post('users/{id}', 'UserController@update');
+
 //company routes
 Route::get('company-list', 'CompanyController@showCompany');
 Route::get('company-create', 'CompanyController@addCompany');
 Route::post('company-create', 'CompanyController@createCompany');
 Route::get('/company-delete/{id}', 'CompanyController@removeCompany');
+Route::get('/company-edit/{id}', 'CompanyController@detailsCompany');
+Route::post('company-edit/{id}', 'CompanyController@editCompany');
+Route::get('/company-disable/{id}', 'CompanyController@disableCompany');
+Route::get('/company-enable/{id}', 'CompanyController@enableCompany');
 
 //merchant routes
 Route::get('merchant-find', 'MerchantController@findMerchant');
@@ -40,6 +47,8 @@ Route::get('merchant-list', 'MerchantController@showMerchant');
 Route::get('merchant-create', 'MerchantController@addMerchant');
 Route::post('merchant-create', 'MerchantController@createMerchant');
 Route::get('/merchant-delete/{id}', 'MerchantController@removeMerchant');
+Route::get('/merchant-edit/{id}', 'MerchantController@detailsMerchant');
+Route::post('merchant-edit/{id}', 'MerchantController@editMerchant');
 
 //purchase order routes
 Route::get('po-export', 'PoController@export');
