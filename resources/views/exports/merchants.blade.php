@@ -15,6 +15,15 @@
         <th>Electrical</th>
         <th>Builders</th>
         <th>Hire</th>
+        <th>Decorating</th>
+        <th>Flooring</th>
+        <th>Auto</th>
+        <th>Aggregate</th>
+        <th>Roofing</th>
+        <th>Fixings</th>
+        <th>Ironmongery</th>
+        <th>Tyres</th>
+        <th>Health</th>
         <th>Display_wd</th>
         <th>Ycoord</th>
         <th>Xcoord</th>
@@ -39,6 +48,15 @@
             <td>{{ $merchant->merchantElectrical }}</td>
             <td>{{ $merchant->merchantBuilders }}</td>
             <td>{{ $merchant->merchantHire }}</td>
+            <td>{{ $merchant->merchantDecorating }}</td>
+            <td>{{ $merchant->merchantFlooring }}</td>
+            <td>{{ $merchant->merchantAuto }}</td>
+            <td>{{ $merchant->merchantAggregate }}</td>
+            <td>{{ $merchant->merchantRoofing }}</td>
+            <td>{{ $merchant->merchantFixings }}</td>
+            <td>{{ $merchant->merchantIronmongery }}</td>
+            <td>{{ $merchant->merchantTyres }}</td>
+            <td>{{ $merchant->merchantHealth }}</td>
 
             <td>1.5</td>
             <td>{{ $merchant->lng }}</td>

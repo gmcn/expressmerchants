@@ -112,6 +112,14 @@
 
           </td>
       </tr>
+			<tr style="border-bottom:1px solid #bfc1c3">
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
+              P/O Value:
+          </td>
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;padding:15px 0">
+              {{ $creatPO->poValue }}
+          </td>
+      </tr>
       <tr style="border-bottom:1px solid #bfc1c3">
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
               TASK/PROJECT NUMBER:
