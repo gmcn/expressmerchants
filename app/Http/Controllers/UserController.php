@@ -9,6 +9,7 @@ use App\Company;
 use Redirect;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Hash;
 use App\Po;
 
 class UserController extends Controller
@@ -65,4 +66,65 @@ class UserController extends Controller
 
       return Redirect::to('userlist')->with('message', 'User enabled');
   }
+
+
+
+  public function edit($id)
+    {
+
+
+
+
+
+        if (Auth::user()->accessLevel == '1') {
+          // $users = User::all();
+          $user = User::where('id','=',$id)->firstOrFail();
+
+        } elseif (Auth::user()->accessLevel == '2') {
+
+
+          $user = User::where('id','=',$id)->where('companyId','=', Auth::user()->companyId)->firstOrFail();
+
+
+        } else {
+
+          return Redirect::to('/');
+
+        }
+
+
+        return view('auth.edit', compact('user'));
+    }
+
+  public function update($id, Request $request)
+  {
+      $this->validate(request(), [
+          'name' => 'required',
+          'email' => 'required|email',
+          // 'password' => 'required|min:6|confirmed'
+      ]);
+
+      $editUser = User::findOrFail($id);
+
+      $newPassword = $request->get('password');
+
+      if(empty($newPassword)){
+        $input = $request->except('password');
+      } else {
+
+        $request['password'] = Hash::make($request['password']);
+        $input = $request->all();
+
+      }
+
+
+
+      $editUser->fill($input)->save();
+
+      return Redirect::to("/users/$id")
+      ->with('message', 'User successfully edited');
+  }
+
+
+
 }
