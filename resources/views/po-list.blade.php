@@ -21,8 +21,75 @@
           @endif
 
           @if (Auth::user()->accessLevel == '1')
-            <a href="{{ url('/po-export') }}">Export POs</a>
+            <a class="btn btn-primary" href="{{ url('/po-export') }}">Export POs</a>
           @endif
+
+          <hr />
+
+
+          <p>
+            <a class="filter" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Filter
+
+                @if ($date || $u_id || $company_id || $poPod)
+                  <span><a class="clear" href="{{ url('/po-list') }}">  (clear filter)</a></span>
+                  @else
+                @endif
+
+
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <!-- <div class="card card-body"> -->
+              <form method="GET" class="filter">
+                @if (Auth::user()->accessLevel != '3')
+                <div class="form-group">
+                  <h3>User</h3>
+                  <select class="form-control" name="u_id" id="userSearch">
+                    <option value="">Select a User</option>
+                    @foreach($users as $user)
+                      <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                @endif
+                @if (Auth::user()->accessLevel == '1')
+                <div class="form-group">
+                  <h3>Company</h3>
+                  <select class="form-control" name="company_id" id="companySearch">
+                    <option value="">Select a Company</option>
+                    @foreach($companies as $company)
+                      <option value="{{ $company->id }}">{{ $company->companyName }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                @endif
+
+                <div class="form-group">
+                  <h3>PO Number</h3>
+                  <input class="form-control" type="number" name="poId" placeholder="PO Number" value="{{ $poId }}">
+                </div>
+
+                <div class="form-group">
+                  <h3>Location</h3>
+                  <input class="form-control" type="text" name="poLocation" placeholder="Location" value="{{ $poLocation }}">
+                </div>
+
+                <div class="form-group">
+                  <h3>Date</h3>
+                  <input class="form-control" type="date" name="date" value="{{ $date }}">
+                </div>
+
+                <div class="form-group">
+                  <h3>POD Empty</h3>
+                  <input class="" type="checkbox" name="poPod" value="1"> Yes<br />
+                </div>
+                <button> Apply Filter</button>
+              </form>
+            <!-- </div> -->
+          </div>
+
+
 
       </div>
         <div class="col-md-7 col-lg-9 list">
@@ -36,16 +103,9 @@
             </div>
           @endif
 
-          <form>
-            <input name="search" type="text" class="form-control" placeholder="Search POs...." value="{{ $search }}">
-            @if ($search)
-            <a class="clearsearch" href="{{ url('/po-list') }}">x</a>
-            @endif
-          </form>
-
           @if($pos->isEmpty())
-          <div class="row col-12">
-            No Purchase Orders
+          <div class="row col-12 list_nopos">
+            <h2>No Purchase Orders <span>To View</span></h2>
           </div>
           @else
 
@@ -56,8 +116,7 @@
 
             <p class="date">{{ $date }}</p>
 
-            <div class="row po_entry @if (!$po->poPod ) warning @endif">
-
+            <div class="row po_entry @if ( !$po->poPod ) alert-error @elseif( !$po->poCompanyPo ) alert-warning @endif">
               <div class="col-md-3">
                 <div class="vert-align">
                 {{ $po->poProject }}<br />

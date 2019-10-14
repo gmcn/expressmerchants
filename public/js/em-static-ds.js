@@ -21,6 +21,15 @@ EMDataSource.prototype.FEATURES_ = new storeLocator.FeatureSet(
   new storeLocator.Feature('Electrical-YES', 'Electrical Supplies'),
   new storeLocator.Feature('Builders-YES', 'Builders Supplies'),
   new storeLocator.Feature('Hire-YES', 'Hire Shop'),
+  new storeLocator.Feature('Decorating-YES', 'Painting & Decorating'),
+  new storeLocator.Feature('Flooring-YES', 'Flooring Suppliers'),
+  // new storeLocator.Feature('Auto-YES', 'Auto Parts'),
+  new storeLocator.Feature('Aggregate-YES', 'Aggregate Suppliers'),
+  new storeLocator.Feature('Roofing-YES', 'Roofing Suppliers'),
+  new storeLocator.Feature('Fixings-YES', 'Fixings & Fasteners'),
+  new storeLocator.Feature('Ironmongery-YES', 'Ironmongery & Hardware'),
+  // new storeLocator.Feature('Tyres-YES', 'Tyres'),
+  new storeLocator.Feature('Health-YES', 'Health & Safety Suppliers'),
 );
 
 /**
@@ -47,6 +56,16 @@ EMDataSource.prototype.parse_ = function(csv) {
     features.add(this.FEATURES_.getById('Electrical-' + row.Electrical));
     features.add(this.FEATURES_.getById('Builders-' + row.Builders));
     features.add(this.FEATURES_.getById('Hire-' + row.Hire));
+    features.add(this.FEATURES_.getById('Decorating-' + row.Decorating));
+    features.add(this.FEATURES_.getById('Flooring-' + row.Flooring));
+    // features.add(this.FEATURES_.getById('Auto-' + row.Auto));
+    features.add(this.FEATURES_.getById('Aggregate-' + row.Aggregate));
+    features.add(this.FEATURES_.getById('Roofing-' + row.Roofing));
+    features.add(this.FEATURES_.getById('Fixings-' + row.Fixings));
+    features.add(this.FEATURES_.getById('Ironmongery-' + row.Ironmongery));
+    // features.add(this.FEATURES_.getById('Tyres-' + row.Tyres));
+    features.add(this.FEATURES_.getById('Health-' + row.Health));
+
 
     var position = new google.maps.LatLng(row.Ycoord, row.Xcoord);
 

@@ -9,8 +9,6 @@
    });
   window.onload = startMatchHeight;
 
-
-
 });
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
@@ -42,6 +40,22 @@ $(document).ready(function() {
 
       document.getElementById("inputMerchant").disabled = true;
       document.getElementById("selectMerchant").disabled = false;
+  });
+
+  $("input[id='reactive']").click(function() {
+
+      $(".poProject").show();
+
+      document.getElementById("poProject").required = true;
+
+  });
+
+  $("input[id='overhead']").click(function() {
+
+      $(".poProject").hide();
+
+      document.getElementById("poProject").required = false;
+
   });
 
   $("input[id='van-stock']").click(function() {

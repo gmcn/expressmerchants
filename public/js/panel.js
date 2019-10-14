@@ -45,7 +45,7 @@ storeLocator.Panel = function(el, opt_options) {
   this.el_.addClass('storelocator-panel');
   this.settings_ = $.extend({
       'locationSearch': true,
-      'locationSearchLabel': 'Where are you?',
+      'locationSearchLabel': 'Where are you??',
       'featureFilter': true,
       'directions': true,
       'view': null

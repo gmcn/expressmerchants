@@ -4,7 +4,22 @@
 <?php $title = 'Create <span>Purchase Order</span>'; ?>
 <div class="container-fluid po-create">
   <div class="row">
+
+    @if(Auth::user()->disabled == '1' || $company->disabled == '1')
+
+    <div class="col-md-5 col-lg-4 po-create_suspended">
+      <h2>Your ability to create Purchase Orders has been <span>temporarily suspended</span></h2>
+
+      <a href="{{ url('/po-list') }}">Manage your existing Purchase Orders</a>
+
+    </div>
+
+    @else
+
     <div class="col-md-5 col-lg-4 matchheight">
+
+
+
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/po-create') }}">
       {!! csrf_field() !!}
 
@@ -63,22 +78,44 @@
             <label for="project">Project</label>
           </div>
           <div class="col-4">
-          <input type="radio" id="van-stock" name="poPurpose" value="Van Stock" required>
-          <label for="van-stock">Van Stock</label>
+            <input type="radio" id="reactive" name="poPurpose" value="Reactive" required>
+            <label for="reactive">Reactive</label>
+          </div>
+          <div class="col-4">
+            <input type="radio" id="overhead" name="poPurpose" value="Overhead" required>
+            <label for="overhead">Overhead</label>
+          </div>
+          <div class="col-4">
+            <input type="radio" id="van-stock" name="poPurpose" value="Van Stock" required>
+            <label for="van-stock">Van Stock</label>
           </div>
           <div class="col-4">
             <input type="radio" id="ppm" name="poPurpose" value="Project" required>
             <label for="ppm">PPM</label>
           </div>
+
           @if ($errors->has('popurpose'))
           <span class="help-block">
             <strong>{{ $errors->first('poPurpose') }}</strong>
           </span>
           @endif
+          
         </div>
 
-        <div class="form-group row poProject">
-          <div class="col-12">
+        <div class="form-group row ">
+
+          <div class="col-md-6">
+            <label class="main">P/O Value</label>
+            <input class="form-control" id="poValue" name="poValue" value="" placeholder="Input P/O Value">
+
+            @if ($errors->has('poValue'))
+            <span class="help-block">
+              <strong>{{ $errors->first('poValue') }}</strong>
+            </span>
+            @endif
+          </div>
+
+          <div class="col-md-6 poProject">
             <label class="main">Task/Project Number</label>
             <input class="form-control" id="poProject" name="poProject" value="" placeholder="Input project number">
 
@@ -88,6 +125,7 @@
             </span>
             @endif
           </div>
+
         </div>
 
         <div class="form-group row">
@@ -140,6 +178,9 @@
       <textarea class="form-control" cols="50" name="poMaterials" id="poMaterials" placeholder="Add materials" value=""></textarea>
     </div>
     </form>
+
+    @endif
+
   </div>
 
 </div>

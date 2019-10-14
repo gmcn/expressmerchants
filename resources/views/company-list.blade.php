@@ -35,9 +35,30 @@
             <label class="main">Company Contact</label>
             {{ $company->companyContact }}
           </div>
-          <div class="col-md-4 user_entry_email">
+          <div class="col-md-2 user_entry_email">
             <label class="main">Company Address</label>
             {{ $company->companyAddress }}
+          </div>
+          <div class="col-md-2 user_entry_email">
+
+
+
+            <a href="{{ url('company-edit') }}/{{ $company->id }}">
+              <img src="{{ asset('/images/edit.svg') }}" alt="Edit Company">
+            </a>
+
+            @if ($company->disabled == 1)
+            <a href="{{ url('company-enable') }}/{{ $company->id }}">
+              <img src="{{ asset('/images/enable-company.svg') }}" alt="Disable Company">
+            </a>
+            @else
+            <a href="{{ url('company-disable') }}/{{ $company->id }}">
+              <img src="{{ asset('/images/disable-company.svg') }}" alt="Disable Company">
+            </a>
+            @endif
+
+
+
           </div>
         </div>
         @endforeach

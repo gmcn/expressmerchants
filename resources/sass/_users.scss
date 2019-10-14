@@ -18,6 +18,15 @@
         border-right: 1px solid rgba(13, 33, 52, .3);
       }
       &_details {
+        .flash-message {
+          font-weight: 600;
+          font-size: 25px;
+          a {
+            font-size: 16px;
+            display: block;
+            margin-top: 25px;
+          }
+        }
         padding: 0 30px;
         img {
           width: 25px;
@@ -51,6 +60,7 @@
     }
     button {
       background: #0D2134;
+      color: #fff;
       border: #0D2134;
       text-transform: uppercase;
       font-weight: 500;
@@ -58,6 +68,11 @@
     }
   }
   .user_entry {
+    @include media-breakpoint-down(md) {
+      border-bottom: 1px solid #000;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
     &_name {
       background: #1F5384;
       padding: 5px 5px 5px 15px;
@@ -101,9 +116,14 @@
       padding: 15px;
       color: #000;
       margin-bottom: 15px;
+      word-wrap: break-word;
+      a {
+        display: block;
+      }
       img {
         float: right;
         height: 100%;
+        margin-left: 15px;
       }
     }
     label {
@@ -116,9 +136,9 @@
     &_controls {
       img {
         float: right;
-        max-width: 50%;
+        width: 65px;
         margin-left: 10px;
-        height: calc(100% - 15px);
+        max-height: 100%;
       }
     }
   }

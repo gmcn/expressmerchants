@@ -23,7 +23,7 @@
       <p><?php echo date('d.m.y') ?></p>
 
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7 col-lg-9 form">
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/company-create') }}">
       {!! csrf_field() !!}
         <div class="form-group{{ $errors->has('companyName') ? ' has-error' : '' }} row">

@@ -43,6 +43,9 @@
                 <a href="{{ url('merchant-delete') }}/{{ $merchant->id }}" onclick="return confirm('This action cannot be undone, are you sure you want to remove {{ $merchant->merchantName }}?')">
                   <img src="{{ asset('/images/remove.svg') }}" alt="Remove Merchant">
                 </a>
+                <a href="{{ url('merchant-edit') }}/{{ $merchant->id }}">
+                  <img src="{{ asset('/images/edit.svg') }}" alt="Edit Company">
+                </a>
               @endif
             </div>
           </div>

@@ -70,7 +70,7 @@
                       @if (Auth::check())
 
                         @if (Auth::user()->accessLevel == 1)
-                        <label for="name" class="col-form-label">{{ __('Company') }}</label>
+                        <label for="company" class="col-form-label">{{ __('Company') }}</label>
                         <select class="form-control{{ $errors->has('companyId') ? ' is-invalid' : '' }}" name="companyId" required>
                           <option value="">Select a company</option>
                           @foreach($companyList as $companies)

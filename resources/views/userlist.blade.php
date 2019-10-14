@@ -16,23 +16,21 @@
           @endif
 
 
-
-
           @foreach($users as $user)
           <div class="row user_entry">
-            <div class="col-lg-3">
+            <div class="col-6 col-md-5 col-lg-3">
               <div class="user_entry_name clearfix">
                 <div class="vert-align">
                   <span>{{ $user->name }}</span>
                 </div>
-                <a href="{{ url('/po-list') }}?search={{ $user->name }}"><img src="{{ asset('/images/view-all-pos.svg') }}" alt="View all POs"></a>
+                <a href="{{ url('/po-list') }}?u_id={{ $user->id }}"><img src="{{ asset('/images/view-all-pos.svg') }}" alt="View all POs"></a>
               </div>
             </div>
-            <div class="col-lg-2 col-6 user_entry_email">
+            <div class="col-6 col-lg-2 user_entry_email">
               <label for="">Email</label>
               <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
             </div>
-            <div class="col-lg-1 col-6 user_entry_email">
+            <div class="col-4 col-lg-1 col-xl-2 user_entry_email">
               <label for="">Company</label>
 
               <?php
@@ -45,11 +43,11 @@
 
 
             </div>
-            <div class="col-lg-2 col-6 user_entry_email">
+            <div class="col-4 col-lg-1 user_entry_email">
               <label for="">Phone</label>
               {{ $user->phone }}
             </div>
-            <div class="col-lg-1 col-6 user_entry_pos">
+            <div class="col-4 col-lg-1 user_entry_pos">
               <label for="">P/O’s</label>
 
               <?php $poquery = DB::table('pos')->where('u_id', '=', $user->id)->get();
@@ -59,7 +57,7 @@
               {{ $poqueryCount }}
 
             </div>
-            <div class="col-lg-1 col-6 user_entry_pod">
+            <div class="col-6 col-lg-1 user_entry_pod">
               <label for="">POD Needed</label>
 
               <?php $podquery = DB::table('pos')->where('u_id', '=', $user->id)->where('poPod', "")->get();
@@ -69,21 +67,28 @@
               {{ $podqueryCount }}
 
             </div>
-            <div class="col-lg-2 col-6 user_entry_controls">
+            <div class="col-6 col-lg-3 col-xl-2 user_entry_controls">
 
               @if ($user->disabled == 1)
-              <a href="{{ url('delete-user') }}/{{ $user->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">
+
+              <!-- <a href="{{ url('delete-user') }}/{{ $user->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">
                 <img src="{{ asset('/images/remove-user.svg') }}" alt="Remove User">
-              </a>
+              </a> -->
               <a href="{{ url('enable-user') }}/{{ $user->id }}" onclick="return confirm('Are you sure you wish to enable {{ $user->name }}?')">
-                <img src="{{ asset('/images/enable-user.svg') }}" alt="Remove User">
+                <img src="{{ asset('/images/enable-user.svg') }}" alt="Enable User">
+              </a>
+              <a href="{{ url('users') }}/{{ $user->id }}">
+                <img src="{{ asset('/images/edit.svg') }}" alt="Edit User">
               </a>
               @else
-              <a href="{{ url('delete-user') }}/{{ $user->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">
+              <!-- <a href="{{ url('delete-user') }}/{{ $user->id }}" onclick="return confirm('This action cannot be undone, are you sure?')">
                 <img src="{{ asset('/images/remove-user.svg') }}" alt="Remove User">
-              </a>
+              </a> -->
               <a href="{{ url('disable-user') }}/{{ $user->id }}" onclick="return confirm('Are you sure you wish to disable {{ $user->name }}?')">
-                <img src="{{ asset('/images/disable-user.svg') }}" alt="Remove User">
+                <img src="{{ asset('/images/disable-user.svg') }}" alt="Disable User">
+              </a>
+              <a href="{{ url('users') }}/{{ $user->id }}">
+                <img src="{{ asset('/images/edit.svg') }}" alt="Edit User">
               </a>
               @endif
 

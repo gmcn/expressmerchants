@@ -10,8 +10,8 @@
     <title>Express Merchants | <?php echo $title; ?></title>
 
     <!-- Scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfU2hsPF_D_DwXwxr8QEk2NU_RPzBO4YA&libraries=places&callback=initMap"></script>
 
@@ -97,7 +97,25 @@
 
     </footer>
     <!-- Scripts -->
+    <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/functions.js') }}" defer></script>
     <script src="{{ asset('js/jquery.matchHeight.js') }}" defer></script>
+
+    <script>
+    $("#selectMerchant").select2( {
+    	placeholder: "Select a merchant",
+    	allowClear: true
+    	} );
+
+    $("#userSearch").select2( {
+    	placeholder: "Select a User",
+    	allowClear: true
+    	} );
+
+    $("#companySearch").select2( {
+    	placeholder: "Select a Company",
+    	allowClear: true
+    	} );
+    </script>
   </body>
 </html>

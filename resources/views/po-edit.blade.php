@@ -72,10 +72,21 @@
           <input class="form-control d-none" id="poProjectLocation" name="poProjectLocation" value="{{ $po->poProjectLocation }}">
         </div>
 
+        <div class="form-group">
+          <label class="main">P/O Value</label>
+          <input class="form-control" id="poValue" name="poValue" value="{{ $po->poValue }}" placeholder="Add P/O Value">
+
+          @if ($errors->has('poInvoice'))
+          <span class="help-block">
+            <strong>{{ $errors->first('poValue') }}</strong>
+          </span>
+          @endif
+        </div>
+
         @if(Auth::user()->accessLevel == 1)
 
           <div class="form-group">
-            <label class="main">Merchant Invoice</label>
+            <label class="main">Merchant Invoice #</label>
             <input class="form-control" id="poInvoice" name="poInvoice" value="{{ $po->poInvoice }}" placeholder="Add Merchant Invoice #">
 
             @if ($errors->has('poInvoice'))
@@ -87,12 +98,24 @@
 
         @endif
 
+
+        @if(Auth::user()->accessLevel == 2 && $po->poInvoice)
+
+            <div class="form-group">
+              <label class="main">Merchant Invoice #</label>
+              {{ $po->poInvoice }}
+            </div>
+
+        @endif
+
+
         <div class="form-group">
 
           @if ($po->poPod)
           <label class="main">View Proof of Delivery</label>
           <a href="{{ url('/uploads/') }}/{{ $po->id }}.jpg" target="_blank">View POD</a><br />
           <a href="{{ url('/uploads/') }}/{{ $po->id }}.jpg" download>Download POD</a>
+          <br /><br />
           <label class="main">Update Proof of Delivery</label>
           <input type="file" id="poPod" name="poPod" accept="image/jpeg">
           @else
@@ -112,11 +135,11 @@
           @endif
         </div>
 
-        @if(Auth::user()->accessLevel == 1)
+        @if(Auth::user()->accessLevel == 1 || Auth::user()->accessLevel == 2)
 
           <div class="form-group">
-            <label class="main">3rd Party/Company Invoice</label>
-            <input class="form-control" id="poCompanyPo" name="poCompanyPo" value="{{ $po->poCompanyPo }}" placeholder="Add Company Po #">
+            <label class="main">Company P/O</label>
+            <input class="form-control" id="poCompanyPo" name="poCompanyPo" value="{{ $po->poCompanyPo }}" placeholder="Add Company P/O #">
 
             @if ($errors->has('poCompanyPo'))
             <span class="help-block">
