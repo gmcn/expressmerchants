@@ -8,6 +8,7 @@ use App\Merchant;
 use Redirect;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use Validator;
 use DB;
 use Response;
 
@@ -31,6 +32,18 @@ class MerchantController extends Controller
 
   public function createMerchant(Request $request)
   {
+
+    $this->validate($request, [
+        'merchantName' => 'required|max:255',
+        'merchantId' => 'required|max:255',
+        'merchantAddress1' => 'required|max:255',
+        'merchantAddress2' => 'required|max:255',
+        'merchantCounty' => 'required|max:255',
+        'merchantPostcode' => 'required|max:10',
+        'merchantPhone' => 'required|max:15',
+        'lng' => 'required|max:12',
+        'lat' => 'required|max:12',
+        ]);
 
     Merchant::create($request->toArray());
 
@@ -67,6 +80,41 @@ class MerchantController extends Controller
         return view('merchant-list', compact('merchants'));
       }
 
+
+  }
+
+  public function detailsMerchant($id)
+  {
+
+    $merchants = Merchant::where('id','=',$id)->firstOrFail();
+
+
+      return view('merchant-edit', compact('merchants'));
+
+  }
+
+  public function editMerchant($id, Request $request)
+  {
+
+    $this->validate($request, [
+        'merchantName' => 'required|max:255',
+        'merchantId' => 'required|max:255',
+        'merchantAddress1' => 'required|max:255',
+        'merchantAddress2' => 'required|max:255',
+        'merchantCounty' => 'required|max:255',
+        'merchantPostcode' => 'required|max:10',
+        'merchantPhone' => 'required|max:15',
+        'lng' => 'required|max:12',
+        'lat' => 'required|max:12',
+        ]);
+
+    $editMerchant = Merchant::findOrFail($id);
+    $input = $request->all();
+
+    $editMerchant->fill($input)->save();
+
+    return Redirect::to("/merchant-edit/$id")
+    ->with('message', 'Merchant successfully edited');
 
   }
 
