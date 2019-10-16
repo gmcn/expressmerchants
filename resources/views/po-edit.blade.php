@@ -43,7 +43,6 @@
           <div class="form-group">
             <label class="main">Selected Merchant</label>
             {{ $po->merchantName }}
-            <input type="text" class="form-control d-none" id="selectMerchant" name="selectMerchant" value="{{ $po->merchantName }}">
           </div>
         @else
           <div class="form-group">
