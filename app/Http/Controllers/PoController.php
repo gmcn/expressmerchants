@@ -63,11 +63,23 @@ class PoController extends Controller
     Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant', 'poUser', 'poCompany', 'poAdminCompany'), function( $message ) use ($request, $poAdminCompany)
         {
             $message->from('gary@cornellstudios.com', $name = 'Express Merchants');
-            $message->to( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
 
-              if ($poAdminCompany) {
-                  $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
-              }
+
+            if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
+
+              $message->to( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
+
+            } else {
+
+              $message->to( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
+
+            }
+
+            if ($poAdminCompany) {
+
+              $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
+
+            }
 
 
             $message->bcc( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
