@@ -54,8 +54,11 @@
             <select class="form-control{{ $errors->has('companyId') ? ' is-invalid' : '' }}" name="selectMerchant" id="selectMerchant">
               <option value="">Select a merchant</option>
               @foreach($merchants as $merchant)
-                <option value="{{ $merchant->id }}"
-                  @if (empty($_GET['id'])) @else @if ($merchant->id == $newid) selected  @endif @endif>{{ $merchant->merchantName }}, {{ $merchant->merchantCounty }} {{ $merchant->merchantPostcode }}</option>
+                <option value="{{ $merchant->id }}" @if (empty($_GET['id'])) @else @if ($merchant->id == $newid) selected  @endif @endif>
+
+                  {{ $merchant->merchantName }}, {{ $merchant->merchantCounty }} {{ $merchant->merchantPostcode }}
+
+                </option>
               @endforeach
             </select>
           </div>
@@ -99,7 +102,7 @@
             <strong>{{ $errors->first('poPurpose') }}</strong>
           </span>
           @endif
-          
+
         </div>
 
         <div class="form-group row ">
