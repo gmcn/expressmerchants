@@ -62,7 +62,7 @@ class PoController extends Controller
     //email function to come, if validation above it met
     Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant', 'poUser', 'poCompany', 'poAdminCompany'), function( $message ) use ($request, $poAdminCompany)
         {
-            $message->from('gary@cornellstudios.com', $name = 'Express Merchants');
+            $message->from('katie@express-merchants.co.uk', $name = 'Express Merchants');
 
 
             if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
