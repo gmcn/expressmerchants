@@ -186,12 +186,12 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Contact Email</label>
                 <input class="form-control" id="merchantContactEmail" name="merchantContactEmail" value="{{ $merchants->merchantContactEmail }}">
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group row">
                 <div class="offset-md-3 col-md-8">

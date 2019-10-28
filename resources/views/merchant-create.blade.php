@@ -285,7 +285,7 @@
           </div>
         </div>
 
-        <div class="form-group row">
+        <!-- <div class="form-group row">
           <div class="offset-md-3 col-md-6">
             <label for="name" class="col-form-label">{{ __('Merchant Contact Email') }}</label>
             <input class="form-control" id="merchantContactEmail" name="merchantContactEmail" value="" required>
@@ -296,7 +296,7 @@
             </span>
             @endif
           </div>
-        </div>
+        </div> -->
 
         <div class="form-group row">
           <div class="offset-md-3 col-md-6">
