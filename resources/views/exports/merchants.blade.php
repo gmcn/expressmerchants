@@ -3,7 +3,7 @@
     <tr>
         <th>uuid</th>
         <th>Fcilty_nam</th>
-
+        <th>Merchant_id</th>
         <th>Shp_num_an</th>
         <th>Shp_centre</th>
         <th>Street_add</th>
@@ -35,7 +35,7 @@
         <tr>
             <td>{{ $merchant->id }}</td>
             <td>{{ $merchant->merchantName }}</td>
-
+            <td>{{ $merchant->merchantId }}</td>
             <td>{{ $merchant->merchantAddress1 }}</td>
             <td>{{ $merchant->merchantAddress2 }}</td>
             <td>{{ $merchant->merchantCounty }}</td>
