@@ -31,6 +31,7 @@ $(document).ready(function() {
 
       document.getElementById("selectMerchant").disabled = true;
       document.getElementById("inputMerchant").disabled = false;
+      document.getElementById("inputMerchant").required = true;
 
   });
   $("input[id='pre-approved']").click(function() {
@@ -40,6 +41,7 @@ $(document).ready(function() {
 
       document.getElementById("inputMerchant").disabled = true;
       document.getElementById("selectMerchant").disabled = false;
+      document.getElementById("inputMerchant").required = false;
   });
 
   $("input[id='reactive']").click(function() {
