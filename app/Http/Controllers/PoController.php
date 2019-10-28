@@ -71,7 +71,7 @@ class PoController extends Controller
 
             } else {
 
-              $message->to( 'Katie@cs-ireland.co.uk' )->subject( 'A Purchase Order has been created' );
+              $message->to( 'katie@express-merchants.co.uk' )->subject( 'A Purchase Order has been created' );
 
             }
 
