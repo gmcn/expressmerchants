@@ -24,7 +24,7 @@
           @if (session('poType') == 'alternate')
             <img src="{{ asset('/images/alt_po.svg') }}" alt="You must phone this number to have payment issued over the phone via credit card. Please quote the above P/O number to the merchant.">
             <p>Call this number for credit card payment, please quote above Purchase Number to merchant.</p>
-            <a href="tel:028 3835 1388">028 3835 1388</a>
+            <a href="tel:+442838446170">028 3844 6170</a>
           @else
             <img src="{{ asset('/images/present_po.svg') }}" alt="Give this number to the merchant when collecting the goods">
             <p>You must give this number to the merchant when collecting the goods.</p>
