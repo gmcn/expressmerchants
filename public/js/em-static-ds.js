@@ -68,12 +68,12 @@ EMDataSource.prototype.parse_ = function(csv) {
 
 
     var position = new google.maps.LatLng(row.Ycoord, row.Xcoord);
-
+    var merchID = this.join_(['<strong>MarchantID</strong>: ', row.Merchant_id], '');
     var shop = this.join_([row.Shp_num_an, row.Shp_centre]);
   	//var web = this.join_([row.Web_address], ', ');
   	//var web = this.join_([row.Web_address], ', ');
     var locality = this.join_([row.Locality, row.Postcode]);
-    var links = (['<a class="callnow" href="tel:',row.Telephone,'">Call Now</a><a class="createpo" href="po-create/?id=',row.uuid,'">Create P/O</a><div class="clearfix></div>"']);
+    var links = this.join_(['<a class="callnow" href="tel:',row.Telephone,'">Call Now</a><a class="createpo" href="po-create/?id=',row.uuid,'">Create P/O</a><div class="clearfix></div>"'], '');
 
     // var websiteT = this.join_([row.Web_address], ', ');
 
@@ -92,8 +92,8 @@ EMDataSource.prototype.parse_ = function(csv) {
 
     var store = new storeLocator.Store(row.uuid, position, features, {
 		title: row.Fcilty_nam,
-		address: this.join_([shop, row.Street_add, locality, row.Country, row.Telephone, weba], '<br>'),
-		web: links
+		address: this.join_([merchID, shop, row.Street_add, locality, row.Country, row.Telephone, weba], '<br />'),
+		web: this.join_([links], '')
     });
     stores.push(store);
   }
