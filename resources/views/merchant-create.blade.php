@@ -143,7 +143,7 @@
           <div class="offset-md-3 col-md-6">
             <label for="name" class="col-form-label">{{ __('Merchant Address 2') }}</label>
 
-            <input class="form-control" id="merchantAddress2" name="merchantAddress2" value="" required>
+            <input class="form-control" id="merchantAddress2" name="merchantAddress2" value="">
 
             @if ($errors->has('merchantAddress2'))
             <span class="help-block">
@@ -275,7 +275,7 @@
         <div class="form-group row">
           <div class="offset-md-3 col-md-6">
             <label for="name" class="col-form-label">{{ __('Merchant Contact Name') }}</label>
-            <input class="form-control" id="merchantContactName" name="merchantContactName" value="" required>
+            <input class="form-control" id="merchantContactName" name="merchantContactName" value="">
 
             @if ($errors->has('merchantContactName'))
             <span class="help-block">
@@ -296,12 +296,12 @@
             </span>
             @endif
           </div>
-        </div> -->
+        </div>
 
         <div class="form-group row">
           <div class="offset-md-3 col-md-6">
             <label for="name" class="col-form-label">{{ __('Merchant Contact Phone #') }}</label>
-            <input class="form-control" id="merchantContactPhone" name="merchantContactPhone" value="" required>
+            <input class="form-control" id="merchantContactPhone" name="merchantContactPhone" value="">
 
             @if ($errors->has('merchantContactPhone'))
             <span class="help-block">
@@ -309,7 +309,7 @@
             </span>
             @endif
           </div>
-        </div>
+        </div>-->
 
 
 
@@ -318,7 +318,6 @@
           <button type="submit" class="btn btn-primary">Submit </button>
           </div>
         </div>
-
       </form>
     </div>
   </div>
