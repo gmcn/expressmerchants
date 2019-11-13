@@ -8,6 +8,8 @@ app/storage/
 public/assets
 public/uploads
 /vendor
+/_live
+/_dev
 .env
 .env.*.php
 .env.php
