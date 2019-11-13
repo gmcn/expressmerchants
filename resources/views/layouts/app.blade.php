@@ -116,6 +116,11 @@
     	placeholder: "Select a Company",
     	allowClear: true
     	} );
+
+    $("#merchantSearch").select2( {
+    	placeholder: "Select a Merchant",
+    	allowClear: true
+    	} );
     </script>
   </body>
 </html>

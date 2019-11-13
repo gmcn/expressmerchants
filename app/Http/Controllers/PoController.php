@@ -62,7 +62,17 @@ class PoController extends Controller
     //email function to come, if validation above it met
     Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant', 'poUser', 'poCompany', 'poAdminCompany'), function( $message ) use ($request, $poAdminCompany)
         {
+
+          if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
+
+            $message->from('gary@cornellstudios.com', $name = 'Express Merchants');
+
+          } else {
+
             $message->from('katie@express-merchants.co.uk', $name = 'Express Merchants');
+
+          }
+
 
 
             if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
@@ -195,6 +205,7 @@ class PoController extends Controller
         $poPod = \Request::get('poPod');
         $poId = \Request::get('poId');
         $company_id = \Request::get('company_id');
+        $merchant_id = \Request::get('merchant_id');
         $poLocation = \Request::get('poLocation');
         $date = \Request::get('date');
 
@@ -211,6 +222,7 @@ class PoController extends Controller
 
           $users = User::all();
           $companies = Company::all();
+          $merchants = Merchant::all();
 
 
           if ($u_id) {
@@ -227,6 +239,10 @@ class PoController extends Controller
 
           if ($company_id) {
             $query->where('companyId', '=', $company_id);
+          }
+
+          if ($merchant_id) {
+            $query->where('selectMerchant', '=', $merchant_id);
           }
 
           if ($poPod) {
@@ -308,7 +324,7 @@ class PoController extends Controller
 
         $pos = $query->paginate(50);
 
-      return view('po-list', compact('pos', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poLocation', 'users', 'companies', 'adminusr'));
+      return view('po-list', compact('pos', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poLocation', 'users', 'companies', 'merchants', 'adminusr'));
 
   }
 

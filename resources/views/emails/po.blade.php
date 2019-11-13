@@ -51,7 +51,7 @@
               PURCHASE ORDER NUMBER:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
-              EM-{{ $creatPO->id }}
+              EM-{{ $creatPO->id }} <a href="https://express-merchants.co.uk/public/po-edit/{{ $creatPO->id }}"><img src="https://express-merchants.co.uk/public/images/add-pod_icon.svg" alt="View PO Details"></a>	
           </td>
       </tr>
 

@@ -53,6 +53,7 @@
                   </select>
                 </div>
                 @endif
+
                 @if (Auth::user()->accessLevel == '1')
                 <div class="form-group">
                   <h3>Company</h3>
@@ -60,6 +61,18 @@
                     <option value="">Select a Company</option>
                     @foreach($companies as $company)
                       <option value="{{ $company->id }}">{{ $company->companyName }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                @endif
+
+                @if (Auth::user()->accessLevel == '1')
+                <div class="form-group">
+                  <h3>Merchant</h3>
+                  <select class="form-control" name="merchant_id" id="merchantSearch">
+                    <option value="">Select a Merchant</option>
+                    @foreach($merchants as $merchant)
+                      <option value="{{ $merchant->id }}">{{ $merchant->merchantName }}</option>
                     @endforeach
                   </select>
                 </div>
