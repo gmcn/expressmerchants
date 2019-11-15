@@ -6765,6 +6765,19 @@ header img {
       color: #fff; }
       .po-create_suspended a:hover {
         color: #000; }
+  .po-create_selectCompany {
+    margin-bottom: 15px; }
+    .po-create_selectCompany form {
+      border-right: 0 !important; }
+    .po-create_selectCompany button {
+      width: 100%;
+      margin-top: 15px;
+      color: #fff;
+      padding: 15px;
+      text-transform: uppercase;
+      font-size: 12px;
+      background: #F45B5B;
+      font-weight: 500; }
   @media (min-width: 768px) {
     .po-create form {
       border-right: 1px solid #fff;
@@ -6900,6 +6913,13 @@ header img {
     color: #0D2134;
     padding: 50px 30px;
     border-radius: 5px; }
+    .user .form_search {
+      margin-bottom: 25px; }
+      .user .form_search label {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: rgba(13, 33, 52, 0.3);
+        font-weight: 600; }
     @media (min-width: 768px) {
       .user .form_wrapper {
         border-right: 1px solid rgba(13, 33, 52, 0.3); } }
@@ -7530,6 +7550,8 @@ a.filter:after {
   background: #0D2134;
   color: #fff;
   min-height: calc(100vh - 50px); }
+  .app_brand {
+    padding: 0; }
   .app .dashboard h2 {
     font-size: 26px;
     font-weight: 500; }

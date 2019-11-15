@@ -27,12 +27,35 @@ class PoController extends Controller
       return Excel::download(new PoExport, 'po_export.xlsx');
   }
 
-  public function addPo()
+  public function addPo(Request $request)
   {
-
+    $companies = Company::all();
+    // $users = User::all();
     $merchants = Merchant::all();
 
-    return view('po-create', compact('merchants'));
+    $companyId = \Request::get('companyId');
+
+    if (Auth::user()->accessLevel == '1') {
+
+      if ($companyId) {
+        $users = User::select('users.*', 'companies.companyName')
+        ->leftJoin('companies', 'users.companyId', '=', 'companies.id')
+        ->where('companyId', '=', $companyId)
+        ->get();
+      } else {
+        $users = User::select('users.*', 'companies.companyName')
+        ->leftJoin('companies', 'users.companyId', '=', 'companies.id')
+        ->get();
+      }
+
+    } else {
+
+      $users = User::where('companyId', Auth::user()->companyId)
+      ->get();
+
+    }
+
+    return view('po-create', compact('merchants', 'companies', 'users'));
 
   }
 
@@ -339,11 +362,14 @@ class PoController extends Controller
     ->leftJoin('users', 'pos.u_id', '=', 'users.id')
     ->where('pos.id','=',$id)->firstOrFail();
 
-    // if (Auth::user()->accessLevel != '1') {
-    //   return Redirect::to('/po-list');
-    // } else {
+    if (Auth::user()->accessLevel == '1') {
       return view('po-edit', compact('po'));
-    // }
+    } elseif (Auth::user()->companyId != $po->companyId) {
+      return Redirect::to('/po-list')
+      ->with('message', "Ah ah ah! You didn't say the magic word!");
+    } else {
+      return view('po-edit', compact('po'));
+    }
 
   }
 

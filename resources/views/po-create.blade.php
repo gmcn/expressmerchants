@@ -16,12 +16,77 @@
 
     @else
 
-    <div class="col-md-5 col-lg-4 matchheight">
+    <div class="col-md-6 col-lg-5 col-xl-4 matchheight">
+
+        <div class="row">
+          <div class="col-12 po-create_selectCompany">
+
+
+            <?php
+            if(empty($_GET['companyId'])) {
+
+              $companyId = "";
+
+            } else {
+              $companyId = $_GET['companyId'];
+            }
+            ?>
+
+            <?php
+            if(empty($_GET['id'])) {
+
+            } else {
+              $merchantid = $_GET['id'];
+            }
+            ?>
+
+
+            @if (Auth::user()->accessLevel == '1')
+
+            <form class="form-horizontal" role="form" method="GET">
+
+              <label class="main">Select Company (Super Admin Only)</label>
+
+              <select style="display: none;" class="form-control{{ $errors->has('companyId') ? ' is-invalid' : '' }}" name="id" id="id">
+                <option value="">Select a merchant</option>
+                @foreach($merchants as $merchant)
+                  <option value="{{ $merchant->id }}" @if (empty($_GET['id'])) @else @if ($merchant->id == $merchantid) selected  @endif @endif>
+
+                    {{ $merchant->merchantName }}, {{ $merchant->merchantCounty }} {{ $merchant->merchantPostcode }}
+
+                  </option>
+                @endforeach
+              </select>
+
+              <select class="form-control" name="companyId" id="companyId">
+                <option value="">Select a Company</option>
+                @foreach($companies as $company)
+
+                <option value="{{ $company->id }}" @if (empty($_GET['companyId'])) @else @if ($company->id == $companyId) selected  @endif @endif>{{ $company->companyName }}</option>
+
+                @endforeach
+              </select>
+
+
+              <button class="btn btn-default" type="submit">Select Company</button>
+
+            </form>
+
+            @endif
+
+
+
+          </div>
+        </div>
+
+
 
 
 
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/po-create') }}">
       {!! csrf_field() !!}
+
+
 
         <div class="form-group{{ $errors->has('poType') ? ' has-error' : '' }}">
 
@@ -38,15 +103,7 @@
           @endif
         </div>
 
-        <?php
-        if(empty($_GET['id'])) {
 
-        } else {
-          $id = $_GET['id'];
-          $newid = str_replace(',', '', $id);
-        }
-        // echo $newid;
-        ?>
 
         <div class="form-group row selectMerchant">
           <div class="col-12">
@@ -54,7 +111,7 @@
             <select class="form-control{{ $errors->has('companyId') ? ' is-invalid' : '' }}" name="selectMerchant" id="selectMerchant">
               <option value="">Select a merchant</option>
               @foreach($merchants as $merchant)
-                <option value="{{ $merchant->id }}" @if (empty($_GET['id'])) @else @if ($merchant->id == $newid) selected  @endif @endif>
+                <option value="{{ $merchant->id }}" @if (empty($_GET['id'])) @else @if ($merchant->id == $merchantid) selected  @endif @endif>
 
                   {{ $merchant->merchantName }}, {{ $merchant->merchantCounty }} {{ $merchant->merchantPostcode }}
 
@@ -132,18 +189,58 @@
         </div>
 
         <div class="form-group row">
-          <div class="col-6">
-            <label class="main">User Name</label>
-            {{ Auth::user()->name }}
 
-            <input type="text" class="form-control d-none" id="u_id" name="u_id" placeholder="u_id" value="{{ Auth::user()->id }}">
-
-          </div>
-          <div class="col-6">
+          <div class="col-6 @if (Auth::user()->accessLevel == '1') d-none @endif">
             <label class="main">Company Name</label>
+
+
+            @if (Auth::user()->accessLevel == '1')
+
+
+              <input type="text" class="form-control d-none" id="companyId" name="companyId" placeholder="companyId" value="{{ $companyId }}">
+
+            @else
+
             {{ $company->companyName }}
 
-            <input type="text" class="form-control d-none" id="companyId" name="companyId" placeholder="companyId" value="{{ Auth::user()->companyId }}">
+              <input type="text" class="form-control d-none" id="companyId" name="companyId" placeholder="companyId" value="{{ Auth::user()->companyId }}">
+
+            @endif
+
+
+
+          </div>
+
+          <div class="col-6">
+            <label class="main">User Name</label>
+
+            @if (Auth::user()->accessLevel == '1')
+
+              <select class="form-control" name="u_id" id="u_id">
+                <option value="">Select a User</option>
+                @foreach($users as $user)
+                  <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->companyName }})</option>
+                @endforeach
+              </select>
+
+            @elseif (Auth::user()->accessLevel == '2')
+
+            <select class="form-control" name="u_id" id="u_id">
+              <option value="">Select a User</option>
+              @foreach($users as $user)
+                <option value="{{ $user->id }}">{{ $user->name }}</option>
+              @endforeach
+            </select>
+
+            @else
+
+            {{ Auth::user()->name }}
+
+              <input type="text" class="form-control d-none" id="u_id" name="u_id" placeholder="u_id" value="{{ Auth::user()->id }}">
+
+            @endif
+
+
 
           </div>
         </div>
@@ -176,7 +273,7 @@
 
 
     </div>
-    <div class="col-md-6 col-lg-7 textarea matchheight d-none d-md-block d-lg-block">
+    <div class="col-md-6 col-lg-6 col-xl-7 textarea matchheight d-none d-md-block d-lg-block">
       <label class="main">Material Brief</label>
       <textarea class="form-control" cols="50" name="poMaterials" id="poMaterials" placeholder="Add materials" value=""></textarea>
     </div>

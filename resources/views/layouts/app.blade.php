@@ -34,7 +34,7 @@
           <div class="container-fluid">
 
             <div class="row">
-              <div class="col-3 col-md-6 d-flex flex-row">
+              <div class="col-3 col-md-6 app_brand d-flex flex-row">
                 <a class="navbar-brand" href="{{ url('/') }}">
                   <img src="{{ asset('/images/express-merchants-head_blue_logo.svg') }}" alt="Express Merchants">
                 </a>
@@ -119,6 +119,16 @@
 
     $("#merchantSearch").select2( {
     	placeholder: "Select a Merchant",
+    	allowClear: true
+    	} );
+
+    $("#u_id").select2( {
+    	placeholder: "Select a User",
+    	allowClear: true
+    	} );
+
+    $("#companyId").select2( {
+    	placeholder: "Select a Company",
     	allowClear: true
     	} );
     </script>
