@@ -590,6 +590,10 @@ a.filter {
   color: #fff;
   min-height: calc(100vh - 50px);
 
+  &_brand {
+    padding: 0;
+  }
+
   .dashboard {
 
     h2 {
