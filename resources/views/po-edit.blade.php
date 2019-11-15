@@ -3,7 +3,9 @@
 @section('content')
 <?php $title = 'Edit <span>Purchase Order</span>'; ?>
 <div class="container-fluid po-create">
+
   <div class="row">
+
     <div class="col-md-5 col-lg-4">
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/po-edit/') }}/{{ $po->id }}" enctype="multipart/form-data">
       {!! csrf_field() !!}
