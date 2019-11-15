@@ -68,16 +68,34 @@ class MerchantController extends Controller
 
   }
 
-  public function showMerchant()
+  public function showMerchant(Request $search)
   {
 
-      $merchants = DB::table('merchants')->paginate(25);
+      $search = \Request::get('search');
+
+
+          if ($search != "") {
+            $merchants = DB::table('merchants')
+            ->where('merchantName','LIKE',"%$search%")
+            ->orwhere('merchantId','LIKE',"%$search%")
+            ->orwhere('merchantAddress1','LIKE',"%$search%")
+            ->orwhere('merchantAddress2','LIKE',"%$search%")
+            ->orwhere('merchantPostcode','LIKE',"%$search%")
+            ->orwhere('merchantEmail','LIKE',"%$search%")
+            ->orderBy('merchantName', 'asc')
+            ->paginate(1000);
+          } else {
+            $merchants = DB::table('merchants')->paginate(25);
+          }
+
+
+
       // Merchant::all()->paginate(25);
 
       if (Auth::user()->accessLevel != '1') {
         return Redirect::to('/');
       } else {
-        return view('merchant-list', compact('merchants'));
+        return view('merchant-list', compact('merchants', 'search'));
       }
 
 
