@@ -37,16 +37,16 @@ class PoController extends Controller
 
     if (Auth::user()->accessLevel == '1') {
 
-      if ($companyId) {
+      // if ($companyId) {
         $users = User::select('users.*', 'companies.companyName')
         ->leftJoin('companies', 'users.companyId', '=', 'companies.id')
         ->where('companyId', '=', $companyId)
         ->get();
-      } else {
-        $users = User::select('users.*', 'companies.companyName')
-        ->leftJoin('companies', 'users.companyId', '=', 'companies.id')
-        ->get();
-      }
+      // } else {
+      //   $users = User::select('users.*', 'companies.companyName')
+      //   ->leftJoin('companies', 'users.companyId', '=', 'companies.id')
+      //   ->get();
+      // }
 
     } else {
 
