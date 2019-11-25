@@ -229,6 +229,7 @@ class PoController extends Controller
         $poId = \Request::get('poId');
         $company_id = \Request::get('company_id');
         $merchant_id = \Request::get('merchant_id');
+        $poProject = \Request::get('poProject');
         $poLocation = \Request::get('poLocation');
         $date = \Request::get('date');
 
@@ -272,6 +273,10 @@ class PoController extends Controller
             $query->where('poPod', '=', "");
           }
 
+          if ($poProject) {
+            $query->where('poProject', '=', "$poProject");
+          }
+
           if ($poLocation) {
             $query->where('poProjectLocation', 'LIKE', "%$poLocation%");
           }
@@ -295,6 +300,10 @@ class PoController extends Controller
 
           if($date) {
             $query->where('created_at', 'LIKE', "%$date%");
+          }
+
+          if ($poProject) {
+            $query->where('poProject', '=', "$poProject");
           }
 
           if ($poPod) {
@@ -347,7 +356,7 @@ class PoController extends Controller
 
         $pos = $query->paginate(50);
 
-      return view('po-list', compact('pos', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poLocation', 'users', 'companies', 'merchants', 'adminusr'));
+      return view('po-list', compact('pos', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poProject', 'poLocation', 'users', 'companies', 'merchants', 'adminusr'));
 
   }
 

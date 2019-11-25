@@ -84,6 +84,11 @@
                 </div>
 
                 <div class="form-group">
+                  <h3>Task/Project #</h3>
+                  <input class="form-control" type="text" name="poProject" placeholder="Task/Project #" value="{{ $poProject }}">
+                </div>
+
+                <div class="form-group">
                   <h3>Location</h3>
                   <input class="form-control" type="text" name="poLocation" placeholder="Location" value="{{ $poLocation }}">
                 </div>
