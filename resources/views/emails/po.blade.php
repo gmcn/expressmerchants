@@ -1,7 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,25 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--<![endif]-->
 
-    <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
-    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-    * {
-      font-family: 'Open Sans', sans-serif;
-    }
-    </style>
-
-	<!--[if gte mso 15]>
-	<style type="text/css">
-		table { font-size:1px; line-height:0; mso-margin-top-alt:1px;mso-line-height-rule: exactly; }
-		* { mso-line-height-rule: exactly; }
-	</style>
-	<![endif]-->
-
 </head>
-<body style="; margin:0; padding:0; min-width: 100%; -webkit-text-size-adjust:none; -ms-text-size-adjust:none;">
-
-
+<body style="margin:0; padding:0; min-width: 100%;">
 
 	<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
 	      <tbody><tr>
@@ -47,19 +29,19 @@
 	<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse">
     <tbody>
 				<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              PURCHASE ORDER NUMBER:
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+              Purchase Order Number:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
-              <a href="https://express-merchants.co.uk/public/po-edit/{{ $creatPO->id }}">EM-{{ $creatPO->id }}</a>	
+              <a href="https://express-merchants.co.uk/public/po-edit/{{ $creatPO->id }}">EM-{{ $creatPO->id }}</a>
           </td>
       </tr>
 
 			<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
-				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-						USER:
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+						User:
 				</td>
-				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;">
 
 
 						{{ $poUser->name }}
@@ -68,10 +50,10 @@
 			</tr>
 
 			<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
-				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-						COMPANY:
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+						Company:
 				</td>
-				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;">
 
 					{{ $poCompany->companyName }}
 
@@ -80,26 +62,26 @@
 			</tr>
 
 			<tr style="border-top:1px solid #bfc1c3;border-bottom:1px solid #bfc1c3">
-				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-						ORDER PURPOSE:
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+						Order Purpose:
 				</td>
-				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
+				<td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;">
 						{{ $creatPO->poPurpose }}
 				</td>
 			</tr>
 
 
       <tr style="border-bottom:1px solid #bfc1c3">
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              SUPPLIER TYPE:
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+              Supplier Typre:
           </td>
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;text-transform:uppercase">
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;">
               {{ $creatPO->poType }}
           </td>
       </tr>
       <tr style="border-bottom:1px solid #bfc1c3">
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              SELECTED MERCHANT:
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+              Selected Merchant:
           </td>
           <td style="border-collapse:collapse;color:#0b0c0c!important;text-decoration:none;font-family:sans-serif;font-size:16px;font-weight:bold">
 
@@ -113,26 +95,26 @@
           </td>
       </tr>
 			<tr style="border-bottom:1px solid #bfc1c3">
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              P/O Value:
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+              Purchase Order Value:
           </td>
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;padding:15px 0">
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;">
               {{ $creatPO->poValue }}
           </td>
       </tr>
       <tr style="border-bottom:1px solid #bfc1c3">
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px 0">
-              TASK/PROJECT NUMBER:
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+              Tash/Project Number:
           </td>
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;padding:15px 0">
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;">
               {{ $creatPO->poProject }}
           </td>
       </tr>
       <tr style="border-bottom:1px solid #bfc1c3">
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:19px;padding:15px 0">
-              JOB LOCATION:
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;padding:15px">
+              Job Location:
           </td>
-          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:19px;font-weight:bold;padding:15px 0">
+          <td style="border-collapse:collapse;color:#0b0c0c;font-family:sans-serif;font-size:16px;font-weight:bold;">
               {{ $creatPO->poProjectLocation }}
           </td>
       </tr>
