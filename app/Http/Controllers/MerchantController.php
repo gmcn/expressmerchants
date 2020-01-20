@@ -41,6 +41,7 @@ class MerchantController extends Controller
         'merchantCounty' => 'required|max:255',
         'merchantPostcode' => 'required|max:10',
         'merchantPhone' => 'required|max:22',
+        'merchantEmail' => 'required|max:255',
         'lng' => 'required|max:12',
         'lat' => 'required|max:12',
         ]);
@@ -121,7 +122,8 @@ class MerchantController extends Controller
         'merchantAddress2' => 'required|max:255',
         'merchantCounty' => 'required|max:255',
         'merchantPostcode' => 'required|max:10',
-        'merchantPhone' => 'required|max:15',
+        'merchantPhone' => 'required|max:22',
+        'merchantEmail' => 'required|max:255',
         'lng' => 'required|max:12',
         'lat' => 'required|max:12',
         ]);

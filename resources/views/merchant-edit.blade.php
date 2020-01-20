@@ -31,15 +31,25 @@
 
               <div class="form-group row">
                 <div class="offset-md-3 col-md-8">
-                <label class="main">Merchant Name</label>
-                <input type="text" class="form-control" id="merchantName" name="merchantName" placeholder="merchantName" value="{{ $merchants->merchantName }}" required>
-              </div>
+                  <label class="main">Merchant Name</label>
+                  <input type="text" class="form-control" id="merchantName" name="merchantName" placeholder="merchantName" value="{{ $merchants->merchantName }}" required />
+                  @if ($errors->has('merchantName'))
+                  <span class="help-block">
+                    <strong>{{ $errors->first('merchantName') }}</strong>
+                  </span>
+                  @endif
+                </div>
             </div>
 
               <div class="form-group row">
                 <div class="offset-md-3 col-md-8">
                   <label class="main">Merchant ID</label>
                   <input type="text" class="form-control" id="merchantId" name="merchantId" placeholder="merchantId" value="{{ $merchants->merchantId }}" required>
+                  @if ($errors->has('merchantId'))
+                  <span class="help-block">
+                    <strong>{{ $errors->first('merchantId') }}</strong>
+                  </span>
+                  @endif
                 </div>
               </div>
             </div>
@@ -49,6 +59,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Address 1</label>
                 <input type="text" class="form-control" id="merchantAddress1" name="merchantAddress1" value="{{ $merchants->merchantAddress1 }}" required>
+                @if ($errors->has('merchantAddress1'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantAddress1') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -56,6 +71,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Address 2</label>
                 <input class="form-control" id="merchantAddress2" name="merchantAddress2" value="{{ $merchants->merchantAddress2 }}" required>
+                @if ($errors->has('merchantAddress2'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantAddress2') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -63,6 +83,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant County</label>
                 <input class="form-control" id="merchantCounty" name="merchantCounty" value="{{ $merchants->merchantCounty }}" required>
+                @if ($errors->has('merchantCounty'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantCounty') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -70,13 +95,23 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Postcode</label>
                 <input class="form-control" id="merchantPostcode" name="merchantPostcode" value="{{ $merchants->merchantPostcode }}" required>
-              </div>
+                @if ($errors->has('merchantPostcode'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantPostcode') }}</strong>
+                </span>
+                @endif
+                </div>
             </div>
 
             <div class="form-group row">
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Phone</label>
                 <input class="form-control" id="merchantPhone" name="merchantPhone" value="{{ $merchants->merchantPhone }}" required>
+                @if ($errors->has('merchantPhone'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantPhone') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -84,6 +119,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Fax</label>
                 <input class="form-control" id="merchantFax" name="merchantFax" value="{{ $merchants->merchantFax }}">
+                @if ($errors->has('merchantFax'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantFax') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -91,6 +131,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Email</label>
                 <input class="form-control" id="merchantEmail" name="merchantEmail" value="{{ $merchants->merchantEmail }}">
+                @if ($errors->has('merchantEmail'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantEmail') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -98,6 +143,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Web</label>
                 <input class="form-control" id="merchantWeb" name="merchantWeb" value="{{ $merchants->merchantWeb }}">
+                @if ($errors->has('merchantWeb'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantWeb') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -171,11 +221,21 @@
               <div class="offset-md-3 col-md-3">
                 <label class="main">Merchant Lng</label>
                 <input class="form-control" id="lng" name="lng" value="{{ $merchants->lng }}" required>
+                @if ($errors->has('lng'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('lng') }}</strong>
+                </span>
+                @endif
               </div>
 
               <div class="col-md-3">
                 <label class="main">Merchant Lat</label>
                 <input class="form-control" id="lat" name="lat" value="{{ $merchants->lat }}" required>
+                @if ($errors->has('lat'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('lat') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -183,6 +243,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">Merchant Contact Name</label>
                 <input class="form-control" id="merchantContactName" name="merchantContactName" value="{{ $merchants->merchantContactName }}">
+                @if ($errors->has('merchantContactName'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantContactName') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -197,6 +262,11 @@
                 <div class="offset-md-3 col-md-8">
                 <label class="main">merchant Contact Phone</label>
                 <input class="form-control" id="merchantContactPhone" name="merchantContactPhone" value="{{ $merchants->merchantContactPhone }}">
+                @if ($errors->has('merchantContactPhone'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('merchantContactPhone') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
