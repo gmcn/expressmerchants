@@ -88,7 +88,7 @@ class PoController extends Controller
 
           if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
 
-            $message->from('gary@cornellstudios.com', $name = 'Express Merchants');
+            $message->from('gary@cornellstudios.com', $name = 'Express Merchants | Local');
 
           } else {
 
@@ -100,7 +100,7 @@ class PoController extends Controller
 
             if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
 
-              $message->to( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
+              $message->to( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created | Local' );
 
             } else {
 
