@@ -260,12 +260,16 @@
           @endif
         </div>
 
+        @if (strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile') || strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'android'))
         <div class="form-group row d-block d-sm-block d-md-none">
           <div class="col-12">
             <label class="main">Material Brief</label>
-            <textarea class="form-control" cols="50" name="poMaterials" id="poMaterials" value=""></textarea>
+            <textarea class="form-control" cols="20" name="poMaterials" id="poMaterials" placeholder="Add materials" value=""></textarea>
           </div>
         </div>
+        @endif
+
+
 
         <div class="form-group custom-search-form">
           <button type="submit" class="btn btn-default">Submit & Generate PO</button>
@@ -273,10 +277,16 @@
 
 
     </div>
-    <div class="col-md-6 col-lg-6 col-xl-7 textarea matchheight d-none d-md-block d-lg-block">
-      <label class="main">Material Brief</label>
-      <textarea class="form-control" cols="50" name="poMaterials" id="poMaterials" placeholder="Add materials" value=""></textarea>
-    </div>
+
+    @if (strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile') || strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'android'))
+
+    @else
+      <div class="col-md-6 col-lg-6 col-xl-7 textarea matchheight d-none d-md-block d-lg-block">
+        <label class="main">Material Brief</label>
+        <textarea class="form-control" cols="50" name="poMaterials" id="poMaterials" placeholder="Add materials" value=""></textarea>
+      </div>
+    @endif
+
     </form>
 
     @endif
