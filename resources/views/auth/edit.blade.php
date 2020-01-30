@@ -28,7 +28,7 @@
         <div class="row">
 
           <div class="col-md-8 form_wrapper">
-            <form method="post" action="{{ url('/users/') }}/{{ $user->id }}">
+            <form method="post" action="{{ url('/users/') }}/{{ $user->id }}" autocomplete="off">
                 {{ csrf_field() }}
 
                 <div class="form-group row">
