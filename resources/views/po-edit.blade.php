@@ -151,9 +151,44 @@
 
         @endif
 
+        @if ($po->poCancelled)
+
+        @else
+          <div class="form-group">
+            <label class="main">Cancel?</label>
+            <input type="checkbox" class="form-control" id="poCancelled" name="poCancelled" value="1">
+
+            @if ($errors->has('poCompanyPo'))
+            <span class="help-block">
+              <strong>{{ $errors->first('poCancelled') }}</strong>
+            </span>
+            @endif
+          </div>
+
+
+          <div style="display: none;">
+            <label class="main">Cancelled By</label>
+            <input class="form-control" id="poCancelledBy" name="poCancelledBy" value="{{ Auth::user()->name }}">
+
+            @if ($errors->has('poCancelledBy'))
+            <span class="help-block">
+              <strong>{{ $errors->first('poCancelledBy') }}</strong>
+            </span>
+            @endif
+          </div>
+
+        @endif
+
+        @if ($po->poCancelled)
+        <div class="alert alert-danger" role="alert">
+          This P/O has been cancelled by <strong>{{ $po->poCancelledBy }}</strong> and cannot be edited/updated
+        </div>
+        @else
         <div class="form-group custom-search-form">
           <button type="submit" class="btn btn-default">Update</button>
         </div>
+        @endif
+
 
 
     </div>

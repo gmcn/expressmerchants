@@ -144,10 +144,17 @@
 
             <p class="date">{{ $date }}</p>
 
-            <div class="row po_entry @if ( !$po->poPod ) alert-error @elseif( !$po->poCompanyPo ) alert-warning @endif">
+
+
+            <div class="row po_entry @if ($po->poCancelled) alert-dark @elseif ( !$po->poPod ) alert-error @elseif( !$po->poCompanyPo ) alert-warning @endif">
               <div class="col-md-3">
                 <div class="vert-align">
-                {{ $po->poProject }}<br />
+                  @if ($po->poCancelled)
+                    Cancelled
+                    @else
+                    {{ $po->poProject }}
+                    @endif
+                    <br />
                   <a href="{{ url('/po-edit') }}/{{ $po->id }}">VIEW FULL P/O</a>
                 </div>
               </div>
@@ -164,7 +171,9 @@
                 @endif
               </div>
               <div class="col-3 col-md-2 add_pod">
-                @if ($po->poPod )
+                @if ($po->poCancelled)
+                  <img src="{{ asset('/images/cancelled_pod.svg') }}" alt="Cancelled POD">
+                @elseif ($po->poPod )
                   <img src="{{ asset('/images/uploaded_pod.svg') }}" alt="Uploaded POD">
                 @else
                   <a href="{{ url('/po-edit') }}/{{ $po->id }}">

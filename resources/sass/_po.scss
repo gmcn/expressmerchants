@@ -95,11 +95,14 @@
       width: 100%;
     }
     .alert-error {
-      // color: #FF4848;
       color: #FF0000;
     }
+    .alert-dark {
+      background-color: #e2e3e5;
+      color: #8a8e90;
+      border-bottom: 1px solid #e2e3e5;
+    }
     .alert-warning {
-      // color: #FF4848;
       color: #ffbf00;
     }
   }

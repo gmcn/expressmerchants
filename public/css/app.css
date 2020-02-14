@@ -6746,6 +6746,10 @@ header img {
     width: 100%; }
   .po_list .list .alert-error {
     color: #FF0000; }
+  .po_list .list .alert-dark {
+    background-color: #e2e3e5;
+    color: #8a8e90;
+    border-bottom: 1px solid #e2e3e5; }
   .po_list .list .alert-warning {
     color: #ffbf00; }
 
