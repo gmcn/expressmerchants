@@ -14,24 +14,79 @@ use App\Po;
 
 class UserController extends Controller
 {
-  public function showUserList()
+  public function showUserList(Request $search)
   {
 
+    $search = \Request::get('search');
+
+
     if (Auth::user()->accessLevel == '1') {
-      // $users = User::all();
-      $users = DB::table('users')->paginate(25);
+
+
+
+      if ($search != "") {
+        $users = User::select('users.*', 'companies.companyName')
+
+        ->where('name','LIKE',"%$search%")
+        ->leftJoin('companies', 'users.companyId', '=', 'companies.id')
+        ->orwhere('companyName','LIKE',"%$search%")
+        ->orwhere('email','LIKE',"%$search%")
+        ->orderBy('name', 'asc')
+        ->paginate(1000);
+
+
+      } else {
+        // $users = User::all();
+        $users = DB::table('users')->paginate(25);
+      }
+
 
     } elseif (Auth::user()->accessLevel == '2') {
 
 
-      $users = User::where('companyId','=', Auth::user()->companyId)->paginate(25);
+      if ($search != "") {
+        $users = DB::table('users')
+        ->where('companyId','=', Auth::user()->companyId)
+        ->where('name','LIKE',"%$search%")
+        ->orwhere('email','LIKE',"%$search%")
+        ->orderBy('name', 'asc')
+        ->orderBy('name', 'asc')
+        ->paginate(1000);
+      } else {
+        // show users that have the same companyID as loggedin user
+        $users = User::where('companyId','=', Auth::user()->companyId)->paginate(25);
+      }
+
+
+
 
 
     } else {
       return Redirect::to('/');
     }
-      return view('userlist', compact('users', 'compName'));
+      return view('userlist', compact('users', 'compName', 'search'));
   }
+
+
+  public function searchUser(Request $search)
+  {
+
+
+
+
+
+      // Merchant::all()->paginate(25);
+
+      if (Auth::user()->accessLevel != '1') {
+        return Redirect::to('/');
+      } else {
+        return view('userlist', compact('merchants', 'search'));
+      }
+
+
+  }
+
+
 
   public function account()
   {
