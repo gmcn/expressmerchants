@@ -73,28 +73,56 @@
           <input class="form-control d-none" id="poProjectLocation" name="poProjectLocation" value="{{ $po->poProjectLocation }}">
         </div>
 
-        <div class="form-group">
-          <label class="main">P/O Value</label>
-          <input class="form-control" id="poValue" name="poValue" value="{{ $po->poValue }}" placeholder="Add P/O Value">
+        <div class="form-group row">
+          <div class="col-md-6">
+            <label class="main">P/O Value</label>
+            <input class="form-control" id="poValue" name="poValue" value="{{ $po->poValue }}" placeholder="Add P/O Value">
 
-          @if ($errors->has('poInvoice'))
-          <span class="help-block">
-            <strong>{{ $errors->first('poValue') }}</strong>
-          </span>
+            @if ($errors->has('poValue'))
+            <span class="help-block">
+              <strong>{{ $errors->first('poValue') }}</strong>
+            </span>
+            @endif
+          </div>
+
+          @if(Auth::user()->accessLevel == 1)
+          <div class="col-md-6">
+            <label class="main">Cost Sheet</label>
+            <input class="form-control" id="poCostSheet" name="poCostSheet" value="{{ $po->poCostSheet }}" placeholder="Add Cost Sheet">
+
+            @if ($errors->has('poCostSheet'))
+            <span class="help-block">
+              <strong>{{ $errors->first('poCostSheet') }}</strong>
+            </span>
+            @endif
+          </div>
           @endif
+
         </div>
 
         @if(Auth::user()->accessLevel == 1)
 
-          <div class="form-group">
-            <label class="main">Merchant Invoice #</label>
-            <input class="form-control" id="poInvoice" name="poInvoice" value="{{ $po->poInvoice }}" placeholder="Add Merchant Invoice #">
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label class="main">Merchant Invoice #</label>
+              <input class="form-control" id="poInvoice" name="poInvoice" value="{{ $po->poInvoice }}" placeholder="Add Merchant Invoice #">
 
-            @if ($errors->has('poInvoice'))
-            <span class="help-block">
-              <strong>{{ $errors->first('poInvoice') }}</strong>
-            </span>
-            @endif
+              @if ($errors->has('poInvoice'))
+              <span class="help-block">
+                <strong>{{ $errors->first('poInvoice') }}</strong>
+              </span>
+              @endif
+            </div>
+            <div class="col-md-6">
+              <label class="main">EM Invoice #</label>
+              <input class="form-control" id="poEMInvoice" name="poEMInvoice" value="{{ $po->poEMInvoice }}" placeholder="Add EM Invoice #">
+
+              @if ($errors->has('poEMInvoice'))
+              <span class="help-block">
+                <strong>{{ $errors->first('poEMInvoice') }}</strong>
+              </span>
+              @endif
+            </div>
           </div>
 
         @endif

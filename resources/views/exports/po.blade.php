@@ -7,6 +7,11 @@
         <th>Job Type</th>
         <th>Supplier Name</th>
         <th>PO Value</th>
+
+        @if (Auth::user()->accessLevel == 1)
+        <th>PO Cost Sheet</th>
+        @endif
+
         <th>Material Brief</th>
         <th>Job Location</th>
         <th>Job Number</th>
@@ -27,6 +32,11 @@
             <td>{{ $poExport->poPurpose }}</td>
             <td>{{ $poExport->merchantName }} {{ $poExport->inputMerchant }}</td>
             <td>{{ $poExport->poValue }}</td>
+
+            @if (Auth::user()->accessLevel == 1)
+            <td>{{ $poExport->poCostSheet }}</td>
+            @endif
+
             <td>{{ $poExport->poMaterials }}</td>
             <td>{{ $poExport->poProjectLocation }}</td>
             <td>{{ $poExport->poProject }}</td>
