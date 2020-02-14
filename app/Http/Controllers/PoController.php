@@ -368,7 +368,7 @@ class PoController extends Controller
 
         $query->orderBy('id', 'desc');
 
-        $pos = $query->paginate(50);
+        $pos = $query->paginate(100);
 
       return view('po-list', compact('pos', 'dateTo', 'dateFrom', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poProject', 'poLocation', 'users', 'companies', 'merchants', 'adminusr'));
 
