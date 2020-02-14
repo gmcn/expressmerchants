@@ -231,6 +231,8 @@ class PoController extends Controller
         $merchant_id = \Request::get('merchant_id');
         $poProject = \Request::get('poProject');
         $poLocation = \Request::get('poLocation');
+        $dateFrom = \Request::get('dateFrom');
+        $dateTo = \Request::get('dateTo');
         $date = \Request::get('date');
 
         $query = Po::query();
@@ -255,6 +257,10 @@ class PoController extends Controller
 
           if ($poId) {
             $query->where('id', '=', $poId);
+          }
+
+          if($dateFrom && $dateTo) {
+            $query->whereBetween('created_at', [$dateFrom, $dateTo]);
           }
 
           if($date) {
@@ -298,6 +304,10 @@ class PoController extends Controller
             $query->where('id', '=', $poId);
           }
 
+          if($dateFrom && $dateTo) {
+            $query->whereBetween('created_at', [$dateFrom, $dateTo]);
+          }
+
           if($date) {
             $query->where('created_at', 'LIKE', "%$date%");
           }
@@ -329,6 +339,10 @@ class PoController extends Controller
             $query->where('id', '=', $poId);
           }
 
+          if($dateFrom && $dateTo) {
+            $query->whereBetween('created_at', [$dateFrom, $dateTo]);
+          }
+
           if($date) {
             $query->where('created_at', 'LIKE', "%$date%");
           }
@@ -356,7 +370,7 @@ class PoController extends Controller
 
         $pos = $query->paginate(50);
 
-      return view('po-list', compact('pos', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poProject', 'poLocation', 'users', 'companies', 'merchants', 'adminusr'));
+      return view('po-list', compact('pos', 'dateTo', 'dateFrom', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poProject', 'poLocation', 'users', 'companies', 'merchants', 'adminusr'));
 
   }
 
