@@ -11,7 +11,10 @@
         <th>Job Location</th>
         <th>Job Number</th>
         <th>POD Uploaded</th>
-        <th>Date</th>
+        <th>PO Note</th>
+        <th>PO Cancelled</th>
+        <th>PO Cancelled by</th>
+        <th>Date Created</th>
     </tr>
     </thead>
     <tbody>
@@ -34,6 +37,13 @@
               No
               @endif
             </td>
+            <td>{{ $poExport->poNote }}</td>
+            <td>
+              @if ($poExport->poCancelled)
+              Yes
+              @endif
+            </td>
+            <td>{{ $poExport->poCancelledBy }}</td>
             <td>{{ $poExport->created_at }}</td>
         </tr>
 

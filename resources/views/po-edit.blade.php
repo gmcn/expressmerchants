@@ -151,6 +151,44 @@
 
         @endif
 
+        @if (!$po->poNote)
+          <p>
+          <a class="main" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Click here to add a note
+          </a>
+          </p>
+
+          <div class="collapse form-group" id="collapseExample">
+            <!-- <div class="card card-body"> -->
+              <input class="form-control" id="poNote" name="poNote" value="" placeholder="Add a P/O note">
+            <!-- </div> -->
+            @if ($errors->has('poNote'))
+            <span class="help-block">
+              <strong>{{ $errors->first('poNote') }}</strong>
+            </span>
+            @endif
+          </div>
+        @else
+          <p>
+          <a class="main" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Click here to view/add a note
+          </a>
+        </p>
+
+        <div class="collapse form-group" id="collapseExample">
+          <!-- <div class="card card-body"> -->
+            <input class="form-control" id="poNote" name="poNote" value="{{ $po->poNote }}">
+          <!-- </div> -->
+          @if ($errors->has('poNote'))
+          <span class="help-block">
+            <strong>{{ $errors->first('poNote') }}</strong>
+          </span>
+          @endif
+        </div>
+        @endif
+
+
+
         @if ($po->poCancelled)
 
         @else
