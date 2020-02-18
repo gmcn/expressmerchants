@@ -16,8 +16,6 @@
 
       <label>What to do next</label>
 
-
-
       <div class="row">
         <div class="col-6 instruction">
           <span>#01</span>
