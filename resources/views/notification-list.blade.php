@@ -19,19 +19,11 @@
         @foreach($notifications as $notification)
 
         <div class="row user_entry">
-          <div class="col-md-4 user_entry_email">
+          <div class="col-md-5 user_entry_email">
             <label class="main">Title</label>
             {{ $notification->title }}
           </div>
-          <div class="col-md-2 user_entry_email">
-            <label class="main">Active</label>
-            @if ($notification->active)
-             Yes
-            @else
-             No
-            @endif
-          </div>
-          <div class="col-md-3 user_entry_email">
+          <div class="col-md-4 user_entry_email">
             <label class="main">Created Date</label>
             {{ $notification->created_at }}
           </div>

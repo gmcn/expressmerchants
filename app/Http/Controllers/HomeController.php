@@ -38,7 +38,7 @@ class HomeController extends Controller
 
       $countresult = count($count);
 
-      $notification = Notification::where('active','=',1)->orderBy('id', 'desc')->first();
+      $notification = Notification::orderBy('id', 'desc')->first();
 
       return view('home', compact('countresult', 'notification'));
     }
