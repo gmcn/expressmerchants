@@ -272,7 +272,7 @@
 
 
         <div class="form-group custom-search-form">
-          <button type="submit" class="btn btn-default">Submit & Generate PO</button>
+          <button id="poSubmit" type="submit" class="btn btn-default">Submit & Generate PO</button>
         </div>
 
 

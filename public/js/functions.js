@@ -23,6 +23,11 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
 
+$('#poSubmit').click(function() {
+    $(this).html("Please Wait...");
+    $(this).addClass("disabled");
+});
+
 $(document).ready(function() {
   $("input[id='alternate']").click(function() {
 

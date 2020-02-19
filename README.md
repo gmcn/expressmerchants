@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file.
 - Feature to add a notification that will appear on the dashboard
 - Feature to view all notifications and edit
 - Date range filter on Purchase Order list
--
+- On P/O create, the submit button will change to 'please wait' to avoid multiple pressed if delay completing
 
 ### Changed
 - Amount of results shown when filtering Purchase Orders
