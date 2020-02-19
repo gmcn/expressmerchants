@@ -179,7 +179,7 @@
 
         @endif
 
-        @if (!$po->poNote)
+        @if (!$po->poNotes)
           <p>
           <a class="main" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Click here to add a note
@@ -188,11 +188,11 @@
 
           <div class="collapse form-group" id="collapseExample">
             <!-- <div class="card card-body"> -->
-              <input class="form-control" id="poNote" name="poNote" value="" placeholder="Add a P/O note">
+              <input class="form-control" id="poNotes" name="poNotes" value="" placeholder="Add a P/O note">
             <!-- </div> -->
-            @if ($errors->has('poNote'))
+            @if ($errors->has('poNotes'))
             <span class="help-block">
-              <strong>{{ $errors->first('poNote') }}</strong>
+              <strong>{{ $errors->first('poNotes') }}</strong>
             </span>
             @endif
           </div>
@@ -205,11 +205,11 @@
 
         <div class="collapse form-group" id="collapseExample">
           <!-- <div class="card card-body"> -->
-            <input class="form-control" id="poNote" name="poNote" value="{{ $po->poNote }}">
+            <input class="form-control" id="poNotes" name="poNotes" value="{{ $po->poNotes }}">
           <!-- </div> -->
-          @if ($errors->has('poNote'))
+          @if ($errors->has('poNotes'))
           <span class="help-block">
-            <strong>{{ $errors->first('poNote') }}</strong>
+            <strong>{{ $errors->first('poNotes') }}</strong>
           </span>
           @endif
         </div>
