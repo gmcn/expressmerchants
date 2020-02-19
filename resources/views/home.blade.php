@@ -51,6 +51,15 @@
                 <span>Manage</span><br />Companies
               </a>
             </div>
+
+            <div class="blue">
+              <div class="hash">
+                #
+              </div>
+              <a href="{{ url('/notification-create') }}">
+                <span>Create</span><br />Notification
+              </a>
+            </div>
           @endif
           {{-- @if (Auth::user()->accessLevel != '1') --}}
           <div class="navy">
@@ -80,9 +89,21 @@
         </div>
         <div class="col-md-4 col-lg-3 col3 d-none d-lg-block">
           <div class="blue">
+
+
+              @if ($notification)
+
+              <h2>{{ $notification->title }}</h2>
+              <p>{{ $notification->content }}</p>
+
+              @else
+
               <h2><span>the right products <br />
               the first time</span> <br />
               one invoice.</h2>
+
+              @endif
+
               <img src="{{ asset('/images/em_logomark.svg') }}" alt="">
           </div>
         </div>

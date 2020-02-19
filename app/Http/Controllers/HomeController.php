@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\Po;
+use App\Notification;
 
 class HomeController extends Controller
 {
@@ -37,7 +38,9 @@ class HomeController extends Controller
 
       $countresult = count($count);
 
-      return view('home', compact('countresult'));
+      $notification = Notification::where('active','=',1)->orderBy('id', 'desc')->first();
+
+      return view('home', compact('countresult', 'notification'));
     }
 
 

@@ -60,4 +60,13 @@ Route::get('po-created', 'PoController@createdPo');
 Route::get('po-edit/{id}', 'PoController@showPo');
 Route::post('po-edit/{id}', 'PoController@editPo');
 
+//notification routes
+Route::get('notification-create', 'NotificationController@addNotification');
+Route::post('notification-create', 'NotificationController@createNotification');
+
+Route::get('notification-list', 'NotificationController@showNotification');
+
+Route::get('notification-edit/{id}', 'NotificationController@detailsNotification');
+Route::post('notification-edit/{id}', 'NotificationController@editNotification');
+
 });

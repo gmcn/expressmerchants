@@ -67,8 +67,13 @@
         <a href="{{ url('/po-create') }}"><img src="{{ asset('/images/create-po.svg') }}" alt="Create Purchase Order"> Create Purchase Order</a>
         <a href="{{ url('/po-list') }}"><img src="{{ asset('/images/manage-po.svg') }}" alt="Manage Purchase Orders"> Manage Purchase Orders</a>
         <a href="{{ url('/account') }}"><img src="{{ asset('/images/account-details.svg') }}" alt="User Account Details"> User Account Details</a>
-        <a href="#" onclick="return confirm('Coming Soon')"><img src="{{ asset('/images/get-help.svg') }}" alt="Express Merchants"> Get Help</a>
-        <a href="#" onclick="return confirm('Coming Soon')"><img src="{{ asset('/images/user-guide.svg') }}" alt="Express Merchants"> User Guide</a>
+
+        @if (Auth::user()->accessLevel == '1')
+        <a href="{{ url('/notification-list') }}"><img src="{{ asset('/images/bell.svg') }}" alt="Manage Notifications"> Manage Notifications</a>
+        @endif
+
+        <a href="#" onclick="return confirm('User Guide Coming Soon')"><img src="{{ asset('/images/user-guide.svg') }}" alt="Express Merchants"> User Guide</a>
+        <a href="#" onclick="return confirm('Get Help Coming Soon')"><img src="{{ asset('/images/get-help.svg') }}" alt="Express Merchants"> Get Help</a>
         <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
              {{ __('Logout') }} <img src="{{ asset('/images/account-details.svg') }}" alt="Express Merchants">
         </a>
