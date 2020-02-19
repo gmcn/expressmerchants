@@ -10,7 +10,7 @@
         <form class="form_search">
           <label>Search Merchants</label>
           <input name="search" type="text" class="form-control" placeholder="Search by Id, Name, Address or email " value="{{ $search }}">
-          @if ($search) <a href="/merchant-list">clear search</a> @endif
+          @if ($search) <a href="{{ url('merchant-list') }}">clear search</a> @endif
         </form>
 
         @if (session('message'))
