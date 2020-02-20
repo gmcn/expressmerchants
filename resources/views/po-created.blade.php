@@ -14,7 +14,24 @@
         @endif
       </p>
 
+      @if ($selectedMerchant)
+
+      <label>Merchant Number</label>
+
+        <p class="po-created_merchant_id">
+
+          {{ $selectedMerchant->merchantId }}
+
+        </p>
+
+      @endif
+
       <label>What to do next</label>
+
+
+
+
+
 
       <div class="row">
         <div class="col-6 instruction">

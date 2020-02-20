@@ -285,6 +285,17 @@
       margin-bottom: 15px;
     }
   }
+  &_merchant {
+    &_id {
+      background: #BD1F4A;
+      padding: 15px 25px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 300;
+    }
+  }
   .tagline {
     h2 {
       position: absolute;

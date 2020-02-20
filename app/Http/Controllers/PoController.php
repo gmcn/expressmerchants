@@ -118,14 +118,18 @@ class PoController extends Controller
             $message->bcc( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
         });
 
-    return Redirect::to('po-created')->with('message', $creatPO->id )->with('poType', $creatPO->poType );
+    return Redirect::to('po-created')->with('message', $creatPO->id )->with('selectMerchant', $creatPO->selectMerchant )->with('poType', $creatPO->poType );
 
   }
 
   public function createdPo()
   {
 
-    return view('po-created');
+    $selectedMerchantId = session('selectMerchant');
+
+    $selectedMerchant = Merchant::where('id', '=', $selectedMerchantId)->first();
+
+    return view('po-created', compact('selectedMerchant'));
 
   }
 

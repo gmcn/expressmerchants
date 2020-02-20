@@ -3,9 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Merchant ID showing on Purchase Order Confirmation page
 - Sending second confirmation email based on company contact email
 - Filtered CSV exports
+
+## [1.3.1] - 20-02-2020
+### Added
+- Merchant ID showing on Purchase Order Confirmation page
 
 ## [1.3] - 19-02-2020
 ### Added

@@ -6892,6 +6892,14 @@ header img {
       font-weight: 500;
       text-transform: uppercase;
       margin-bottom: 15px; }
+  .po-created_merchant_id {
+    background: #BD1F4A;
+    padding: 15px 25px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 300; }
   .po-created .tagline h2 {
     position: absolute;
     top: 50px;
