@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 - Sending second confirmation email based on company contact email
 - Filtered CSV exports
 
+## [1.3.2] - 20-02-2020
+### Fixed
+- Pagination error when filtering Purchase Orders
+
 ## [1.3.1] - 20-02-2020
 ### Added
 - Merchant ID showing on Purchase Order Confirmation page

@@ -372,7 +372,19 @@ class PoController extends Controller
 
         $query->orderBy('id', 'desc');
 
-        $pos = $query->paginate(100);
+        if ($u_id || $poId || $company_id || $merchant_id || $poProject || $poLocation || $dateFrom || $dateTo || $date) {
+
+          $pos = $query->paginate(10000);
+
+          } else {
+
+            $pos = $query->paginate(50);
+
+          }
+
+
+
+
 
       return view('po-list', compact('pos', 'dateTo', 'dateFrom', 'date', 'company_id', 'u_id', 'poId', 'poPod', 'poProject', 'poLocation', 'users', 'companies', 'merchants', 'adminusr'));
 
