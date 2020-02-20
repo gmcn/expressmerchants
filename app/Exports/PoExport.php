@@ -31,9 +31,9 @@ class PoExport implements FromView
 
         return view('exports.po', [
             'poExports' => Po::select('pos.*', 'merchants.merchantName', 'users.name')
-            ->where('companyId', Auth::user()->companyId)
             ->leftJoin('merchants', 'pos.selectMerchant', '=', 'merchants.id')
             ->leftJoin('users', 'pos.u_id', '=', 'users.id')
+            ->where('pos.companyId', '=', Auth::user()->companyId)
             ->get()
         ]);
 
@@ -42,7 +42,11 @@ class PoExport implements FromView
       if (Auth::user()->accessLevel == '3') {
 
         return view('exports.po', [
-            'poExports' => Po::where('u_id', '=', Auth::user()->id)->where('created_at', 'LIKE', "%$date%")->get()
+            'poExports' => Po::select('pos.*', 'merchants.merchantName', 'users.name')
+            ->leftJoin('merchants', 'pos.selectMerchant', '=', 'merchants.id')
+            ->leftJoin('users', 'pos.u_id', '=', 'users.id')
+            ->where('u_id', '=', Auth::user()->id)
+            ->get()
         ]);
 
       }

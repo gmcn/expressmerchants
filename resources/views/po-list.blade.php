@@ -21,8 +21,10 @@
           @endif
 
           @if (Auth::user()->accessLevel == '1')
-            <a class="btn btn-primary" href="{{ url('/po-export') }}">Export POs</a>
+
           @endif
+
+          <a class="btn btn-primary" href="{{ url('/po-export') }}">Export POs</a>
 
           <hr />
 

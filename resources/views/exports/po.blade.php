@@ -53,7 +53,13 @@
               Yes
               @endif
             </td>
-            <td>{{ $poExport->poCancelledBy }}</td>
+
+            <td>
+              @if ($poExport->poCancelled)
+              {{ $poExport->poCancelledBy }}
+              @endif
+            </td>
+
             <td>{{ $poExport->created_at }}</td>
         </tr>
 

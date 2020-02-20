@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
           <div class="container-fluid">
               <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('/images/express-merchants-head_logo.svg') }}" alt="Express Merchants v1.3.2">
+                <img src="{{ asset('/images/express-merchants-head_logo.svg') }}" alt="Express Merchants v1.3.3">
               </a>
           </div>
         </nav>
