@@ -137,6 +137,15 @@
 
         @endif
 
+        @if(Auth::user()->accessLevel == 2 && $po->poEMInvoice)
+
+            <div class="form-group">
+              <label class="main">EM Invoice #</label>
+              {{ $po->poEMInvoice }}
+            </div>
+
+        @endif
+
 
         <div class="form-group">
 
