@@ -67,6 +67,12 @@
                 @endforeach
               </select>
 
+              @if ($errors->has('companyId'))
+              <span class="help-block">
+                <strong>{{ $errors->first('companyId') }}</strong>
+              </span>
+              @endif
+
 
               <button class="btn btn-default" type="submit">Select Company</button>
 
@@ -240,7 +246,11 @@
 
             @endif
 
-
+            @if ($errors->has('u_id'))
+            <span class="help-block">
+              <strong>{{ $errors->first('u_id') }}</strong>
+            </span>
+            @endif
 
           </div>
         </div>

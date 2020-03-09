@@ -63,6 +63,8 @@ class PoController extends Controller
   {
 
     $this->validate($request, [
+        'companyId' => 'required',
+        'u_id' => 'required',
         'poType' => 'required|max:255',
         'poPurpose' => 'required|max:255',
         // 'poProject' => 'required|max:255',
@@ -75,7 +77,7 @@ class PoController extends Controller
 
     $poCompany = Company::all()->where('id', $request->input('companyId'))->first();
 
-    $poAdminCompany = User::select('email')->where('companyId', $request->input('companyId'))->where('accessLevel', '2')->first();
+    $poAdminCompany = User::select('email')->where('companyId', $request->input('companyId'))->where('accessLevel', '2')->get();
 
     $creatPOmechant = Merchant::all()->where('id', $request->input('selectMerchant'))->first();
 
@@ -88,7 +90,7 @@ class PoController extends Controller
 
           if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
 
-            $message->from('gary@cornellstudios.com', $name = 'Express Merchants | Local');
+            $message->from('garymcnally@gmail.com', $name = 'Express Merchants | Local');
 
           } else {
 
@@ -100,7 +102,7 @@ class PoController extends Controller
 
             if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
 
-              $message->to( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created | Local' );
+              $message->to( 'garymcnally@gmail.com' )->subject( 'A Purchase Order has been created | Local' );
 
             } else {
 
@@ -110,7 +112,11 @@ class PoController extends Controller
 
             if ($poAdminCompany) {
 
-              $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
+              foreach ($poAdminCompany as $poAdminComp) {
+                $message->cc( $poAdminComp->email )->subject( 'A Purchase Order has been created' );
+              }
+
+              // $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
 
             }
 
