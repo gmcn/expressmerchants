@@ -5,14 +5,15 @@
 <div class="container-fluid po-created">
   <div class="row">
     <div class="col-md-5 col-lg-3 po-created_instructions">
+
+      @if (session('message'))
       <label>Purchase Order Number For Merchant</label>
 
       <p class="po-created_instructions_id">
-        @if (session('message'))
-           <span>EM-</span>{{ session('message') }}
-           <a href="{{ url('/po-edit') }}/{{ session('message') }}"><img src="{{ asset('/images/add-pod_icon.svg') }}" alt="add POD"></a>
-        @endif
+         <span>EM-</span>{{ session('message') }}
+         <a href="{{ url('/po-edit') }}/{{ session('message') }}"><img src="{{ asset('/images/add-pod_icon.svg') }}" alt="add POD"></a>
       </p>
+      @endif
 
       @if ($selectedMerchant)
 
@@ -26,11 +27,15 @@
 
       @endif
 
+      <label>Time Stamp</label>
+
+        <p class="po-created_merchant_id">
+
+          <?php echo date('H:i d/m/Y '); ?>
+
+        </p>
+
       <label>What to do next</label>
-
-
-
-
 
 
       <div class="row">
