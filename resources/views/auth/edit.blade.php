@@ -78,6 +78,34 @@
                 <div class="form-group row">
                   <div class="offset-md-3 col-md-8">
 
+                    @if (Auth::user()->accessLevel == 1)
+
+                      <label for="name" class="col-form-label">{{ __('Access Level') }}</label>
+
+                      <select class="form-control" name="accessLevel" id="accessLevel" required>
+                        <option value="">Select an access level</option>
+                        <option value="1" @if ($user->accessLevel == 1) selected @endif>Super Admin</option>
+                        <option value="2" @if ($user->accessLevel == 2) selected @endif>Company Admin</option>
+                        <option value="3" @if ($user->accessLevel == 3) selected @endif>Company User</option>
+                      </select>
+
+                    @endif
+
+
+
+
+
+                    @if ($errors->has('accessLevel'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('accessLevel') }}</strong>
+                    </span>
+                    @endif
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="offset-md-3 col-md-8">
+
                     <label for="password" class="col-form-label">{{ __('Password') }}</label>
 
 
@@ -109,7 +137,7 @@
 
                 <input class="d-none" type="text" id="companyId" name="companyId" value="{{ $user->companyId }}" />
 
-                <input class="d-none" type="text" id="accessLevel" name="accessLevel" value="{{ $user->accessLevel }}" />
+                <!-- <input class="d-none" type="text" id="accessLevel" name="accessLevel" value="{{ $user->accessLevel }}" /> -->
 
                 <input class="d-none" type="text" id="disabled" name="disabled" value="{{ $user->disabled }}"  />
 
@@ -130,7 +158,7 @@
                 USER <br />
                 SUCCESSFULLY<br />
                 UPDATED.
-                <a href="{{ url('/merchant-list/') }}"> < Back to Merchant List</a>
+                <a href="{{ url('/userlist/') }}"> < Back to User List</a>
               </div>
             @endif
 
