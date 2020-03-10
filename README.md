@@ -3,8 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Sending second confirmation email based on company contact email
 - Filtered CSV exports
+
+## [1.3.6] - 10-03-2020
+### Added
+- Sending second confirmation email to company contact email
+- Time stamp attached to created P/O confirmation page
+- Allow admin level user to edit other users permission level 
 
 ## [1.3.5] - 09-03-2020
 ### Changed
