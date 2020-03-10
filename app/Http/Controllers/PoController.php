@@ -75,7 +75,7 @@ class PoController extends Controller
 
     $poUser = User::all()->where('id', $request->input('u_id'))->first();
 
-    $poCompany = Company::all()->where('id', $request->input('companyId'))->first();
+    $poCompany = Company::select('companyContactEmail')->where('id', $request->input('companyId'))->first();
 
     $poAdminCompany = User::select('email')->where('companyId', $request->input('companyId'))->where('accessLevel', '2')->get();
 
@@ -85,7 +85,7 @@ class PoController extends Controller
 
 
     //email function to come, if validation above it met
-    Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant', 'poUser', 'poCompany', 'poAdminCompany'), function( $message ) use ($request, $poAdminCompany)
+    Mail::send( 'emails.po', compact('creatPO', 'creatPOmechant', 'creatPOinputmechant', 'poUser', 'poCompany', 'poAdminCompany'), function( $message ) use ($request, $poAdminCompany, $poCompany)
         {
 
           if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
@@ -98,30 +98,32 @@ class PoController extends Controller
 
           }
 
+          if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
 
+            $message->to( 'garymcnally@gmail.com' )->subject( 'A Purchase Order has been created | Local' );
 
-            if($_SERVER["REMOTE_ADDR"]=='127.0.0.1') {
+          } else {
 
-              $message->to( 'garymcnally@gmail.com' )->subject( 'A Purchase Order has been created | Local' );
+            $message->to( 'katie@express-merchants.co.uk' )->subject( 'A Purchase Order has been created' );
 
-            } else {
+          }
 
-              $message->to( 'katie@express-merchants.co.uk' )->subject( 'A Purchase Order has been created' );
+          if ($poAdminCompany) {
 
+            foreach ($poAdminCompany as $poAdminComp) {
+              $message->cc( $poAdminComp->email )->subject( 'A Purchase Order has been created' );
             }
 
-            if ($poAdminCompany) {
+          }
 
-              foreach ($poAdminCompany as $poAdminComp) {
-                $message->cc( $poAdminComp->email )->subject( 'A Purchase Order has been created' );
-              }
+          if ($poCompany) {
 
-              // $message->cc( $poAdminCompany->email )->subject( 'A Purchase Order has been created' );
+            $message->cc( $poCompany->companyContactEmail )->subject( 'A Purchase Order has been created' );
 
-            }
+          }
 
+          $message->bcc( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
 
-            $message->bcc( 'gary@cornellstudios.com' )->subject( 'A Purchase Order has been created' );
         });
 
     return Redirect::to('po-created')->with('message', $creatPO->id )->with('selectMerchant', $creatPO->selectMerchant )->with('poType', $creatPO->poType );
