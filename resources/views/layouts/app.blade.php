@@ -36,7 +36,7 @@
             <div class="row">
               <div class="col-3 col-md-6 app_brand d-flex flex-row">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                  <img src="{{ asset('/images/express-merchants-head_blue_logo.svg') }}" alt="Express Merchants v1.3.5">
+                  <img src="{{ asset('/images/express-merchants-head_blue_logo.svg') }}" alt="Express Merchants v1.3.6" title="Express Merchants v1.3.6">
                 </a>
                 <h1><?php echo $title; ?></h1>
               </div>
