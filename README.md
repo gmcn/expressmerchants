@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 ## [1.3.7] - 11-03-2020
 ### Added
 - Job and finance statuses added to P/O edit for SA to assign
--- Two new DB columns in pos table added for the above
+ - Two new DB columns in pos table added for the above
 
 ### Removed
 - Single date filter option, no need for this with the ability to search using date range
