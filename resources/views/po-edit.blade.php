@@ -188,6 +188,55 @@
 
         @endif
 
+        @if(Auth::user()->accessLevel == 1)
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name" class="col-form-label">{{ __('Job Status') }}</label>
+
+              <select class="form-control" name="poJobStatus" id="poJobStatus">
+                <option value="">Select an job status</option>
+                <option value="1" @if ($po->poJobStatus == 1) selected @endif>New Purchase</option>
+                <option value="2" @if ($po->poJobStatus == 2) selected @endif>100% Complete</option>
+              </select>
+
+              @if ($errors->has('poJobStatus'))
+              <span class="help-block">
+                <strong>{{ $errors->first('poJobStatus') }}</strong>
+              </span>
+              @endif
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name" class="col-form-label">{{ __('Finance Status') }}</label>
+
+              <select class="form-control" name="poFinanceStatus" id="poFinanceStatus">
+                <option value="">Select a finance status</option>
+                <option value="1" @if ($po->poFinanceStatus == 1) selected @endif>No Action Required</option>
+                <option value="2" @if ($po->poFinanceStatus == 2) selected @endif>Pending Invoice</option>
+                <option value="3" @if ($po->poFinanceStatus == 3) selected @endif>Awaiting Payments</option>
+                <option value="4" @if ($po->poFinanceStatus == 4) selected @endif>100% Paid</option>
+              </select>
+
+              @if ($errors->has('poFinanceStatus'))
+              <span class="help-block">
+                <strong>{{ $errors->first('poFinanceStatus') }}</strong>
+              </span>
+              @endif
+            </div>
+          </div>
+        </div>
+
+
+
+        @endif
+
+
+
+
         @if (!$po->poNotes)
           <p>
           <a class="main" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

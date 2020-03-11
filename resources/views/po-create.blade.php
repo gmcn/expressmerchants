@@ -279,6 +279,9 @@
         </div>
         @endif
 
+        <input type="text" class="form-control d-none" id="poJobStatus" name="poJobStatus" value="1">
+        <input type="text" class="form-control d-none" id="poFinanceStatus" name="poFinanceStatus" value="1">
+
 
 
         <div class="form-group custom-search-form">

@@ -76,6 +76,34 @@
                 </div>
                 @endif
 
+                @if (Auth::user()->accessLevel == '1')
+
+                  <div class="form-group">
+                    <h3>Job Status</h3>
+
+                    <select class="form-control" name="poJobStatus" id="poJobStatus">
+                      <option value="">Select an job status</option>
+                      <option value="1">New Purchase</option>
+                      <option value="2">100% Complete</option>
+                    </select>
+
+                  </div>
+
+                  <div class="form-group">
+                    <h3>Finance Status</h3>
+
+                    <select class="form-control" name="poFinanceStatus" id="poFinanceStatus">
+                      <option value="">Select a finance status</option>
+                      <option value="1">No Action Required</option>
+                      <option value="2">Pending Invoice</option>
+                      <option value="3">Awaiting Payments</option>
+                      <option value="4">100% Paid</option>
+                    </select>
+
+                  </div>
+
+                @endif
+
                 <div class="form-group">
                   <h3>PO Number</h3>
                   <input class="form-control" type="number" name="poId" placeholder="PO Number" value="{{ $poId }}">
@@ -101,10 +129,10 @@
                   <input class="form-control" type="date" name="dateTo" value="{{ $dateTo }}">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <h3>Date</h3>
                   <input class="form-control" type="date" name="date" value="{{ $date }}">
-                </div>
+                </div> -->
 
                 <div class="form-group">
                   <h3>POD Empty</h3>
@@ -161,10 +189,18 @@
                 EM-{{ $po->id }}
                 </div>
               </div>
-              <div class="col-3 col-md-3">
+              <div class="col-3 col-md-3 po_status">
                 @if (Auth::user()->accessLevel == '1')
                   <div class="vert-align">
-                    {{ $po->companyName }}
+
+                    @if ($po->poJobStatus)
+                      Job Status: @if ($po->poJobStatus == 1) New Purchase @endif @if ($po->poJobStatus == 2) 100% Complete @endif <br />
+                    @endif
+
+                    @if ($po->poFinanceStatus)
+                      Finance Status: @if ($po->poFinanceStatus == 1) No Action Required @endif @if ($po->poFinanceStatus == 2) Pending Invoice @endif @if ($po->poFinanceStatus == 3) Awaiting Payments @endif @if ($po->poFinanceStatus == 4) 100% Paid @endif
+                    @endif
+
                   </div>
                 @endif
               </div>

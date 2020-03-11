@@ -5,11 +5,19 @@ All notable changes to this project will be documented in this file.
 
 - Filtered CSV exports
 
+## [1.3.7] - 11-03-2020
+### Added
+- Job and finance statuses added to P/O edit for SA to assign
+-- Two new DB columns in pos table added for the above
+
+### Removed
+- Single date filter option, no need for this with the ability to search using date range
+
 ## [1.3.6] - 10-03-2020
 ### Added
 - Sending second confirmation email to company contact email
 - Time stamp attached to created P/O confirmation page
-- Allow admin level user to edit other users permission level 
+- Allow admin level user to edit other users permission level
 
 ## [1.3.5] - 09-03-2020
 ### Changed

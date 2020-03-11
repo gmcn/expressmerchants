@@ -239,6 +239,8 @@ class PoController extends Controller
         $u_id = \Request::get('u_id');
         $poPod = \Request::get('poPod');
         $poId = \Request::get('poId');
+        $poJobStatus = \Request::get('poJobStatus');
+        $poFinanceStatus = \Request::get('poFinanceStatus');
         $company_id = \Request::get('company_id');
         $merchant_id = \Request::get('merchant_id');
         $poProject = \Request::get('poProject');
@@ -289,6 +291,14 @@ class PoController extends Controller
 
           if ($poPod) {
             $query->where('poPod', '=', "");
+          }
+
+          if ($poJobStatus) {
+            $query->where('poJobStatus', '=', $poJobStatus);
+          }
+
+          if ($poFinanceStatus) {
+            $query->where('poFinanceStatus', '=', $poFinanceStatus);
           }
 
           if ($poProject) {

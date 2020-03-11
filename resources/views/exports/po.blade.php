@@ -16,6 +16,12 @@
         <th>Job Location</th>
         <th>Job Number</th>
         <th>POD Uploaded</th>
+        @if (Auth::user()->accessLevel == 1)
+        <th>PO Job Status</th>
+        @endif
+        @if (Auth::user()->accessLevel == 1)
+        <th>PO Finance Status</th>
+        @endif
         <th>PO Note</th>
         <th>PO Cancelled</th>
         <th>PO Cancelled by</th>
@@ -47,6 +53,24 @@
               No
               @endif
             </td>
+
+
+            @if (Auth::user()->accessLevel == 1)
+            <th>
+              @if ($poExport->poJobStatus == 1) New Purchase @endif
+              @if ($poExport->poJobStatus == 2) 100% Complete @endif
+            </th>
+            @endif
+
+            @if (Auth::user()->accessLevel == 1)
+            <th>
+              @if ($poExport->poFinanceStatus == 1) No Action Required @endif
+              @if ($poExport->poFinanceStatus == 2) Pending Invoice @endif
+              @if ($poExport->poFinanceStatus == 3) Awaiting Payments @endif
+              @if ($poExport->poFinanceStatus == 4) 100% Paid @endif</th>
+            @endif
+
+
             <td>{{ $poExport->poNote }}</td>
             <td>
               @if ($poExport->poCancelled)

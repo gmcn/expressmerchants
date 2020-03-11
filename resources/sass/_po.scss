@@ -7,7 +7,6 @@
     button {
       display: block;
       text-align: left;
-      // width: 100%;
       background: #FF4848;
       padding: 10px;
       border: none;
@@ -80,6 +79,9 @@
       .po_number {
         font-size: 30px;
         letter-spacing: 3px;
+      }
+      .po_status {
+        color: #fff;
       }
       .add_pod {
         text-align: right;
