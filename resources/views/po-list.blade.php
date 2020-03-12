@@ -129,10 +129,10 @@
                   <input class="form-control" type="date" name="dateTo" value="{{ $dateTo }}">
                 </div>
 
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <h3>Date</h3>
                   <input class="form-control" type="date" name="date" value="{{ $date }}">
-                </div> -->
+                </div>
 
                 <div class="form-group">
                   <h3>POD Empty</h3>

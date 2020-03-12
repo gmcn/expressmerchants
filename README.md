@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 
 - Filtered CSV exports
 
+## [1.3.8] - 12-03-2020
+### Added
+- Single date filter re-added
+
 ## [1.3.7] - 11-03-2020
 ### Added
 - Job and finance statuses added to P/O edit for SA to assign
