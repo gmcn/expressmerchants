@@ -3,7 +3,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Filtered CSV exports
+## [1.3.9] - 02-04-2020
+### Added
+- Report download will use some [company, date to, date from] PO filter options
 
 ## [1.3.8] - 12-03-2020
 ### Added

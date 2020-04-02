@@ -16,15 +16,38 @@ use App\Company;
 use App\Merchant;
 
 use App\Exports\PoExport;
+use App\Exports\PoExportNoDate;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PoController extends Controller
 {
 
-  public function export()
+  public function export(Request $request)
   {
-      Excel::store(new PoExport, 'public/po_export.xlsx');
-      return Excel::download(new PoExport, 'po_export.xlsx');
+
+      // Excel::store(new PoExport, 'public/po_export.xlsx');
+      // return Excel::download(new PoExport, 'po_export.xlsx');
+
+      $exportDate = \Request::get('exportDate');
+      $month = date("m",strtotime($exportDate));
+
+      $exportDateFrom = \Request::get('exportDateFrom');
+      $exportDateTo = \Request::get('exportDateTo');
+
+      $exportCompany_id = \Request::get('exportCompany_id');
+
+
+      // return Excel::download(new PoExport($month), 'po_export.xlsx');
+
+      return (new PoExport)->forDateFrom($exportDateFrom)->forDateTo($exportDateTo)->forCompany($exportCompany_id)->download('po_export.xlsx');
+
+  }
+
+  public function exportNoDate()
+  {
+
+      // Excel::store(new PoExport, 'public/po_export.xlsx');
+      return Excel::download(new PoExportNoDate, 'po_export.xlsx');
   }
 
   public function addPo(Request $request)

@@ -52,6 +52,7 @@ Route::post('merchant-edit/{id}', 'MerchantController@editMerchant');
 
 //purchase order routes
 Route::get('po-export', 'PoController@export');
+Route::get('po-export-no-date', 'PoController@exportNoDate');
 Route::get('po-list', 'PoController@listFilter');
 Route::get('po-list', 'PoController@listPo');
 Route::get('po-create', 'PoController@addPo');

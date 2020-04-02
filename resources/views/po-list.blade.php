@@ -20,7 +20,30 @@
 
           @endif
 
-          <a class="btn btn-primary" href="{{ url('/po-export') }}">Export POs</a>
+
+          @if ($dateFrom && $dateTo)
+
+            <form method="GET" action="{{ url('/po-export') }}">
+              @if (Auth::user()->accessLevel == '1')
+              <input style="display: none;" type="text" name="exportCompany_id" value="{{ $company_id }}">
+              @else
+              <input style="display: none;" type="text" name="exportCompany_id" value="{{ Auth::user()->companyId }}">
+              @endif
+              <input style="display: none;" type="text" name="exportDateFrom" value="{{ $dateFrom }}">
+              <input style="display: none;" type="text" name="exportDateTo" value="{{ $dateTo }}">
+
+              <button class="btn btn-primary">Export POs</button>
+            </form>
+
+          @else
+
+            <a class="btn btn-primary" href="{{ url('/po-export-no-date') }}">Export POs</a>
+
+          @endif
+
+
+
+
 
           <hr />
 
